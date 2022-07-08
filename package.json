@@ -1,7 +1,7 @@
 {
-  "name": "vite-vue3-basic-template",
+  "name": "bdsaas-ui",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
