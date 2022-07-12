@@ -1,6 +1,6 @@
 ## 1.使用 SSH 地址拉代码
 
-Git 开启了仓库代码权限，只允许 [BDSaas](https://github.com/BDSaaS) 组织内部成员拉取推送代码，所以必须使用 ssh 地址进行身份验证！<br>
+Git 开启了仓库代码权限，只允许 [BDSaas](https://github.com/BDSaaS) 组织内部成员拉取推送代码，所以推荐使用 ssh 地址进行身份验证！<br>
 
 ![image-20220712162925854](\image-20220712162925854.png)
 
