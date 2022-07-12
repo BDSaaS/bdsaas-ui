@@ -63,32 +63,30 @@ $ pnpm run git-commit
 
 ## 组件列表
 
-- [ ] Button 组件（完成部分）
-- [x] Input 组件
-- [ ] Select 组件（完成了第一种）
-- [ ] Dropdown 组件
-- [x] Checkbox 组件
-- [ ] Radio 组件
-- [ ] Switch 组件
-- [x] List 组件
-- [ ] Tab 组件
-- [ ] Pagination 组件
-- [ ] Tag 组件
-- [ ] Message 组件
-- [ ] Notification 组件
-- [ ] Tooltip 组件
-- [ ] Popover 组件
-- [ ] Confirm 组件
-- [ ] Modal 框组件
-- [ ] Drawer 组件
-- [ ] DatePicker 组件
-- [ ] Icon 组件
-- [ ] Form 组件
-
-组件库设计稿缺失组件：
-
-1. 组织架构树
-2. 上传组件
-3. Modal 框
+| 序号 |          组件名          |        开发时间预估（天）        | 开发情况 |  开发人员  |
+| :--- | :----------------------: | :------------------------------: | :------: | :--------: |
+| 1    |          Button          |               0.5                | **80%**  |    汪博    |
+| 2    |          Input           |                /                 | **完成** |    汪博    |
+| 3    |          Select          |               1.5                | **50%**  | 汪博\|冯超 |
+| 4    |         Dropdown         |                2                 |  未完成  |    冯超    |
+| 5    |         Checkbox         |                /                 | **完成** |    汪博    |
+| 6    |          Radio           |                2                 |  未完成  |    薛锐    |
+| 7    |       Switch、角标       |                2                 |  未完成  |   卢佳佳   |
+| 8    |           List           |                /                 | **完成** |    汪博    |
+| 9    |           Tab            |                2                 |  未完成  |   王菁菁   |
+| 10   |        Pagination        |                3                 |  未完成  |   张世启   |
+| 11   |           Tag            |                2                 |  未完成  |   陈月瑶   |
+| 12   |         Message          |                3                 |  未完成  |   解安稳   |
+| 13   |       Notification       |                3                 |  未完成  |   解安稳   |
+| 14   |         Tooltip          |                3                 |  未完成  |   赖承哲   |
+| 15   |         Popover          |                3                 |  未完成  |   赖承哲   |
+| 16   |         Confirm          |                2                 |  未完成  |    薛冉    |
+| 17   |          Modal           |                2                 |  未完成  |    薛冉    |
+| 18   |          Drawer          |                3                 |  未完成  |   刘玉洲   |
+| 19   |        DatePicker        |               5-10               |  未完成  |    徐钰    |
+| 20   |           Icon           | 1（iconfont，直接加 class 解决） |  未完成  |    冯超    |
+| 21   |           Form           |               5-10               |  未完成  |    徐钰    |
+| 22   | 组织架构树（设计稿缺失） |               5-10               |  未完成  |    汪博    |
+| 23   |  上传组件（设计稿缺失）  |                /                 |  未完成  |     /      |
 
 Powered by [vite-vue3-basic-template](https://github.com/dizuncainiao/vite-vue3-basic-template)
