@@ -52,7 +52,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "qs": "^6.10.5",
-    "vue": "^3.2.27",
+    "vue": "^3.2.37",
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
