@@ -3,9 +3,9 @@
     <!-- 是否禁用 判断当前页码是否是 等于 1 -->
     <a
       class="b-right-arrow b-outside-border"
-      href="javascript:;"
       :class="{ disabled: isCurrentPage <= 1 }"
       @click="changePage(isCurrentPage - 1)"
+      href="javascript:;"
     >
       &lt;
     </a>
@@ -28,8 +28,8 @@
     >
     <a
       class="b-right-arrow b-outside-border"
-      href="javascript:;"
       :class="{ disabled: isCurrentPage >= pager.pageCount }"
+      href="javascript:;"
       @click="changePage(isCurrentPage + 1)"
     >
       >
@@ -52,8 +52,13 @@
         alt=""
       />
       <div class="b-select-dropdown b-popper" v-show="openPageNum">
-        <div class="b-select-dropdown-item" v-for="i in [10, 20, 30]" :key="i">
-          <span>{{ i }}</span>
+        <div
+          class="b-select-dropdown-item"
+          v-for="(item, index) in [10, 20, 30]"
+          :key="item"
+          @click="changePages(index)"
+        >
+          <span>{{ item }}</span>
           <span>条/页</span>
         </div>
       </div>
@@ -76,11 +81,11 @@ const prors = withDefaults(defineProps<pageType>(), {
 // 响应式数据绑定
 const pageData = reactive<pageDataType>({
   // 总条数
-  isTotal: 0,
+  isTotal: 100,
   // 当前页码
-  isCurrentPage: 0,
+  isCurrentPage: 1,
   // 每页几条数据
-  isPageSize: 0,
+  isPageSize: 10,
   // 按钮的个数
   btnCount: 5,
   // 打开页码列表
@@ -130,12 +135,21 @@ const pager = computed(() => {
   }
 })
 
+const changePages = (index: number) => {
+  console.log(index)
+}
+
 // 定义一个自定义事件 向父传参
 const emit = defineEmits(['current-change'])
 
 // 改变页码
 const changePage = (newPage: number) => {
   isCurrentPage.value = newPage
+  if (isCurrentPage.value < 1) {
+    isCurrentPage.value = 1
+  } else if (isCurrentPage.value > pager.value.pageCount) {
+    isCurrentPage.value = pager.value.pageCount
+  }
   // 通知父组件最新页码
   emit('current-change', newPage)
 }
