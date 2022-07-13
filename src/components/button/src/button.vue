@@ -18,7 +18,7 @@ import type {
 // import {ComponentOptionsBase} from "@vue/runtime-core"
 
 export default defineComponent({
-  name: 'DzButton',
+  name: 'BButton',
   props: {
     type: {
       type: String as PropType<ButtonType>,
@@ -44,11 +44,11 @@ export default defineComponent({
   setup(props, { slots }) {
     const { icon } = toRefs(props)
     const buttonClass = computed(() => [
-      'dz-button',
-      `dz-button-${props.type}`,
-      props.disabled && 'dz-button-disabled',
-      props.round && 'dz-button-round',
-      props.size && `dz-button-size-${props.size}`
+      'b-button',
+      `b-button-${props.type}`,
+      props.disabled && 'b-button-disabled',
+      props.round && 'b-button-round',
+      props.size && `b-button-size-${props.size}`
     ])
     const showPropIcon = computed(() => !slots.icon && props.icon)
     const iconClass = computed(() => [

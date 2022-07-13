@@ -1,6 +1,6 @@
 <template>
   <li
-    :class="[$props.value === selectedValue && 'selected', 'dz-select-option']"
+    :class="[$props.value === selectedValue && 'selected', 'b-select-option']"
     @click="clickHandler"
   >
     {{ $props.label }}
@@ -15,7 +15,7 @@ import { injectMore } from '@/utils'
 import emitter from '@/plugins/emitter'
 
 export default defineComponent({
-  name: 'DzOption',
+  name: 'BOption',
   props: {
     label: {
       type: String as PropType<OptionsItem['label']>,

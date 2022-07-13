@@ -1,6 +1,6 @@
 <template>
-  <div class="dz-select" @click.stop="showDropdown">
-    <dz-input
+  <div class="b-select" @click.stop="showDropdown">
+    <b-input
       ref="input"
       v-model="label"
       readonly
@@ -11,17 +11,17 @@
       <template #suffix>
         <i class="iconfont icon-xiajiantou"></i>
       </template>
-    </dz-input>
+    </b-input>
     <transition name="zoom-in-top">
-      <div v-show="visible" class="dz-select-dropdown">
-        <ul class="dz-select-dropdown-list">
+      <div v-show="visible" class="b-select-dropdown">
+        <ul class="b-select-dropdown-list">
           <template v-if="!$slots.default">
             <li
               v-for="(item, index) of $props.options"
               :key="index"
               :class="[
                 item.value === $props.modelValue && 'selected',
-                'dz-select-option'
+                'b-select-option'
               ]"
               @click="selectHandler(item)"
             >
@@ -49,12 +49,12 @@ import { getLabel } from './interface'
 import type { PropType } from 'vue'
 import type { Options, OptionsItem } from './interface'
 import { addEvent, provideMore, removeEvent } from '@/utils'
-import DzInput from '@/components/input/src/input.vue'
+import BInput from '@/components/input/src/input.vue'
 import emitter from '@/plugins/emitter'
 
 export default defineComponent({
-  name: 'DzSelect',
-  components: { DzInput },
+  name: 'BSelect',
+  components: { BInput },
   props: {
     modelValue: {
       type: String as PropType<string>,

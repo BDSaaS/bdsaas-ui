@@ -1,8 +1,8 @@
 <template>
-  <div class="dz-input">
+  <div class="b-input">
     <input
       ref="input"
-      class="dz-input-inner error"
+      class="b-input-inner error"
       placeholder="请输入"
       :type="$props.type"
       :value="$props.modelValue"
@@ -28,7 +28,7 @@ import type { PropType } from 'vue'
 type InputType = 'text' | 'search' | 'password'
 
 export default defineComponent({
-  name: 'DzInput',
+  name: 'BInput',
   props: {
     modelValue: {
       type: String as PropType<string>,

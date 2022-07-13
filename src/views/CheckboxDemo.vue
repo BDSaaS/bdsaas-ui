@@ -1,17 +1,17 @@
 <template>
-  <dz-checkbox v-model="checked" label="Hello world"></dz-checkbox>
+  <b-checkbox v-model="checked" label="Hello world"></b-checkbox>
   <br />
-  <dz-checkbox v-model="checked" disabled>Hello world</dz-checkbox>
+  <b-checkbox v-model="checked" disabled>Hello world</b-checkbox>
   <p>选中状态：{{ checked }}</p>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import DzCheckbox from '../components/checkbox/src/checkbox.vue'
+import BCheckbox from '../components/checkbox/src/checkbox.vue'
 
 export default defineComponent({
   name: 'CheckboxDemo',
-  components: { DzCheckbox },
+  components: { BCheckbox },
   setup() {
     const checked = ref(true)
 

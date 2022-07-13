@@ -21,11 +21,11 @@ const props = withDefaults(defineProps<Props>(), {
 const { icon } = toRefs(props)
 
 const buttonClass = computed(() => [
-  'dz-button',
-  `dz-button-${props.type}`,
-  props.disabled && 'dz-button-disabled',
-  props.round && 'dz-button-round',
-  props.size && `dz-button-size-${props.size}`
+  'b-button',
+  `b-button-${props.type}`,
+  props.disabled && 'b-button-disabled',
+  props.round && 'b-button-round',
+  props.size && `b-button-size-${props.size}`
 ])
 const isDisabled = ref(props.disabled)
 
@@ -36,7 +36,7 @@ const iconClass = computed(() => ['iconfont', showPropIcon.value && icon.value])
 
 <script lang="ts">
 export default {
-  name: 'DzButtonSetup'
+  name: 'BButtonSetup'
 }
 </script>
 

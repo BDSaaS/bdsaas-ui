@@ -1,31 +1,31 @@
 <template>
   <p>展开状态：{{ visible }}</p>
-  <dz-select
+  <b-select
     v-model="selected"
     :options="options"
     @visible-change="getVisible"
   />
   <p>选中的值：{{ selected }}</p>
-  <dz-select v-model="selected2" @visible-change="getVisible">
-    <dz-option
+  <b-select v-model="selected2" @visible-change="getVisible">
+    <b-option
       v-for="(item, index) of options"
       :key="index"
       :label="item.label"
       :value="item.value"
     />
-  </dz-select>
+  </b-select>
   <p>选中的值：{{ selected2 }}</p>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import type { Options } from '@/components/select/src/interface'
-import DzSelect from '@/components/select/src/select.vue'
-import DzOption from '@/components/select/src/options.vue'
+import BSelect from '@/components/select/src/select.vue'
+import BOption from '@/components/select/src/options.vue'
 
 export default defineComponent({
   name: 'SelectDemo',
-  components: { DzOption, DzSelect },
+  components: { BOption, BSelect },
   setup() {
     const selected = ref('1')
     const selected2 = ref('1')

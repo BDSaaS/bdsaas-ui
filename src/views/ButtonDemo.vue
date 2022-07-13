@@ -1,6 +1,6 @@
 <template>
   <div class="button-box">
-    <dz-button
+    <b-button
       :size="size"
       :type="type"
       :round="round"
@@ -12,8 +12,8 @@
       <template #icon>
         <i class="iconfont icon-icon-test"></i>
       </template>
-    </dz-button>
-    <dz-button-setup
+    </b-button>
+    <b-button-setup
       :size="size"
       :type="type"
       :round="round"
@@ -24,16 +24,14 @@
       <template #icon>
         <i class="iconfont icon-icon-test1"></i>
       </template>
-    </dz-button-setup>
+    </b-button-setup>
   </div>
 
   <div class="box">
-    <dz-button type="default" @click="setConfig('size')">设置尺寸</dz-button>
-    <dz-button type="default" @click="setConfig('type')">设置类型</dz-button>
-    <dz-button type="default" @click="setConfig('round')">设置圆角</dz-button>
-    <dz-button type="default" @click="setConfig('disabled')"
-      >设置禁用
-    </dz-button>
+    <b-button type="default" @click="setConfig('size')">设置尺寸</b-button>
+    <b-button type="default" @click="setConfig('type')">设置类型</b-button>
+    <b-button type="default" @click="setConfig('round')">设置圆角</b-button>
+    <b-button type="default" @click="setConfig('disabled')">设置禁用 </b-button>
   </div>
   <hr />
   <h3>单元测试组件</h3>
@@ -45,8 +43,8 @@ import { reactive, toRefs, unref } from 'vue'
 import HelloTest from '../../test/HelloTest.vue'
 import type { Ref } from 'vue'
 import type { ButtonSize, ButtonType } from '@/components/button/src/interface'
-import DzButton from '@/components/button/src/button.vue'
-import DzButtonSetup from '@/components/button/src/button-setup.vue'
+import BButton from '@/components/button/src/button.vue'
+import BButtonSetup from '@/components/button/src/button-setup.vue'
 
 type ArgType = 'size' | 'type' | 'round' | 'disabled'
 

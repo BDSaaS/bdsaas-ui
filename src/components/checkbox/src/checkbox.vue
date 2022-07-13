@@ -1,16 +1,16 @@
 <template>
-  <label class="dz-checkbox" :class="checkboxClass">
-    <span class="dz-checkbox-input">
-      <span class="dz-checkbox-inner iconfont icon-duihao"></span>
+  <label class="b-checkbox" :class="checkboxClass">
+    <span class="b-checkbox-input">
+      <span class="b-checkbox-inner iconfont icon-duihao"></span>
       <input
         :checked="modelValue"
         :disabled="disabled"
-        class="dz-checkbox-original"
+        class="b-checkbox-original"
         type="checkbox"
         @change="changeHandler"
       />
     </span>
-    <span v-if="$slots.default || label" class="dz-checkbox-label">
+    <span v-if="$slots.default || label" class="b-checkbox-label">
       <slot></slot>
       <template v-if="!$slots.default">{{ label }}</template>
     </span>
@@ -22,7 +22,7 @@ import { defineComponent, toRefs, computed } from 'vue'
 import type { PropType } from 'vue'
 
 export default defineComponent({
-  name: 'DzCheckbox',
+  name: 'BCheckbox',
   props: {
     label: {
       type: String as PropType<string>
