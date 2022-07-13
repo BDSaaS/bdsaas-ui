@@ -46,6 +46,12 @@ const routes: Array<RouteRecordRaw> = [
       import(
         /* webpackChunkName: "testPinia" */ '@/views/pinia-demo/TestPinia.vue'
       )
+  },
+  {
+    path: '/paginationDemo',
+    name: 'paginationDemo',
+    component: () =>
+      import(/* webpackChunkName: "testPinia" */ '@/views/paginationDemo.vue')
   }
 ]
 

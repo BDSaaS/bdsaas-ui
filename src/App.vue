@@ -11,6 +11,8 @@
     <router-link to="/selectDemo">下拉框组件</router-link>
     |
     <router-link to="/testPinia">Pinia Demo</router-link>
+    |
+    <router-link to="/paginationDemo">分页组件开发中...</router-link>
   </nav>
   <router-view />
 </template>
