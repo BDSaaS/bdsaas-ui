@@ -3,6 +3,7 @@
     <ul class="list clearfix">
       <li class="item" v-for="(v, i) in modulesNames" :key="i">
         <b-icon :name="v" :size="size" :color="color"></b-icon>
+        <p>{{ v }}</p>
       </li>
     </ul>
     <div style="margin-top: 20px;">
@@ -73,10 +74,14 @@ export default {
   .item {
     float: left;
     width: 200px;
-    height: 100px;
-    line-height: 100px;
+    min-height: 120px;
+    padding: 10px 0 0;
     text-align: center;
     border: 1px solid #eee;
+
+    p {
+      margin: 10px 0 0;
+    }
   }
 }
 </style>
