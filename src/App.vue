@@ -11,6 +11,10 @@
     <router-link to="/selectDemo">下拉框组件</router-link>
     |
     <router-link to="/paginationDemo">分页组件开发中...</router-link>
+    |
+    <router-link to="/iconDemo">icon组件</router-link>
+    |
+    <router-link to="/dropDownDemo">dropDown组件</router-link>
   </nav>
   <router-view />
 </template>
