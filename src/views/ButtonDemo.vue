@@ -1,30 +1,27 @@
 <template>
   <div class="button-box">
     <b-button
+      wrapper-class="button-wrapper"
       :size="size"
       :type="type"
       :round="round"
       :disabled="disabled"
-      icon="icon-icon-test1"
       @click="btnHandler"
     >
-      Hello World
-      <template #icon>
-        <i class="iconfont icon-icon-test"></i>
-      </template>
+      Hello
     </b-button>
-    <b-button-setup
+    <b-button
       :size="size"
       :type="type"
       :round="round"
       :disabled="disabled"
       icon="icon-icon-test1"
     >
-      Hello World（setup）
+      World
       <template #icon>
         <i class="iconfont icon-icon-test1"></i>
       </template>
-    </b-button-setup>
+    </b-button>
   </div>
 
   <div class="box">
@@ -44,7 +41,6 @@ import HelloTest from '../../test/HelloTest.vue'
 import type { Ref } from 'vue'
 import type { ButtonSize, ButtonType } from '@/components/button/src/interface'
 import BButton from '@/components/button/src/button.vue'
-import BButtonSetup from '@/components/button/src/button-setup.vue'
 
 type ArgType = 'size' | 'type' | 'round' | 'disabled'
 
@@ -94,7 +90,7 @@ function btnHandler() {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 .box {
   display: flex;
   justify-content: space-between;
