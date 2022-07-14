@@ -3,9 +3,10 @@ import checkbox from './checkbox'
 import list from './list'
 import input from './input'
 import select, { Option } from './select'
+import Icon from './select'
 import type { App } from 'vue'
 
-const components = [button, checkbox, list, input, select, Option]
+const components = [button, checkbox, list, input, select, Option, Icon]
 
 const install = (app: App) => {
   components.forEach(component => app.component(component.name, component))

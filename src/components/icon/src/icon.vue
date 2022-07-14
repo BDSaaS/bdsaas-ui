@@ -16,15 +16,15 @@
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-  name: 'SvgIcon',
+  name: 'BIcon',
   props: {
     name: {
       type: String as PropType<string>,
-      default: ''
+      required: true
     },
     color: {
       type: String as PropType<string>,
-      default: ''
+      default: '#000'
     },
     size: {
       type: Number as PropType<number>,

@@ -35,9 +35,9 @@ export default {
       modulesNames.push(fileName)
     }
 
-    const color = ref('#f00')
+    const color = ref('#000')
 
-    const size = ref(32)
+    const size = ref(28)
 
     const setSize = (val: number) => {
       size.value = val
