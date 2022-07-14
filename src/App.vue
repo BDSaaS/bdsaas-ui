@@ -22,6 +22,20 @@
 <script setup lang="ts"></script>
 
 <style>
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+.clearfix::after {
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  content: ".";
+}
+
 #app {
   margin-top: 60px;
   font-family: Avenir, Helvetica, Arial, sans-serif;

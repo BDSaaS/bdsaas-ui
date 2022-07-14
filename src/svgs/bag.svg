@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>短视频清理</title>
+    <g id="组件库" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="组件库3.0" transform="translate(-221.000000, -9608.000000)">
+            <g id="编组-31" transform="translate(60.000000, 9460.000000)">
+                <g id="短视频清理" transform="translate(161.000000, 148.000000)">
+                    <path d="M19,7 C20.1045695,7 21,7.8954305 21,9 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,9 C3,7.8954305 3.8954305,7 5,7 L19,7 Z M19,9 L5,9 L5,19 L19,19 L19,9 Z" id="矩形" fill="currentColor" fill-rule="nonzero"></path>
+                    <path d="M12,3 C15.2383969,3 17.8775718,5.56557489 17.9958615,8.77506174 L18,9 L6,9 C6,5.6862915 8.6862915,3 12,3 Z M12,5 C10.6047543,5 9.37635637,5.71436007 8.66060341,6.79728294 L8.535,7 L15.464,7 L15.3707485,6.84495359 C14.6927317,5.78715834 13.53039,5.07078389 12.2006732,5.00495638 L12,5 Z" id="矩形" fill="currentColor" fill-rule="nonzero"></path>
+                    <rect id="矩形" fill="currentColor" x="11" y="10" width="2" height="4"></rect>
+                    <rect id="矩形" fill="currentColor" x="5" y="11" width="14" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
