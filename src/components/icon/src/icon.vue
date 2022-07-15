@@ -4,11 +4,12 @@
     :style="{
       width: size + 'px',
       height: size + 'px',
-      color: color
+      color: color,
+      ...$attrs.style
     }"
     aria-hidden="true"
   >
-    <use :xlink:href="'#b-icon-' + name" />
+    <use :href="'#b-icon-' + name" />
   </svg>
 </template>
 
@@ -37,10 +38,6 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.b-icon {
-  vertical-align: middle;
-  fill: currentcolor;
-  transition: all 0.15s linear;
-}
+<style lang="less" scoped>
+@import "../style/index";
 </style>

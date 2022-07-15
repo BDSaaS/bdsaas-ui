@@ -1,7 +1,11 @@
 <template>
   <li
-    :class="[$props.value === selectedValue && 'selected', 'b-select-option']"
-    @click="clickHandler"
+    :class="[
+      $props.value === selectedValue && 'selected',
+      'b-select-option',
+      $props.disabled && 'b-select-disabled'
+    ]"
+    @click.stop="clickHandler"
   >
     {{ $props.label }}
   </li>
@@ -24,20 +28,25 @@ export default defineComponent({
     value: {
       type: String as PropType<OptionsItem['value']>,
       default: ''
+    },
+    disabled: {
+      type: Boolean as PropType<OptionsItem['disabled']>,
+      default: false
     }
   },
   setup(props) {
-    const { label, value } = toRefs(props)
+    const { label, value, disabled } = toRefs(props)
     const { selectHandler, selectedValue } = injectMore([
       'selectHandler',
       'selectedValue'
     ])
 
     const clickHandler = () => {
-      selectHandler.value({
-        label: label.value,
-        value: value.value
-      })
+      disabled.value ||
+        selectHandler.value({
+          label: label.value,
+          value: value.value
+        })
     }
 
     selectedValue.value === value.value && clickHandler()

@@ -1,6 +1,7 @@
 export type OptionsItem = {
   label: string
   value: any
+  disabled?: boolean
   [propName: string]: any
 }
 

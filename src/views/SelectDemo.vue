@@ -1,20 +1,31 @@
 <template>
-  <p>展开状态：{{ visible }}</p>
-  <b-select
-    v-model="selected"
-    :options="options"
-    @visible-change="getVisible"
-  />
-  <p>选中的值：{{ selected }}</p>
-  <b-select v-model="selected2" @visible-change="getVisible">
+  <p>一般用法：</p>
+  <b-select v-model="selected" :options="options1" />
+  <p>禁用状态：</p>
+  <b-select v-model="selected" :options="options1" disabled clearable />
+  <p>可清空：</p>
+  <b-select v-model="selected2" clearable>
     <b-option
-      v-for="(item, index) of options"
+      v-for="(item, index) of options1"
       :key="index"
       :label="item.label"
       :value="item.value"
     />
   </b-select>
-  <p>选中的值：{{ selected2 }}</p>
+  <p>带禁用项（传入options）：</p>
+  <b-select v-model="selected3" :options="options2"></b-select>
+  <p>带禁用项（不传options）：</p>
+  <b-select v-model="selected4">
+    <b-option
+      v-for="(item, index) of options2"
+      :key="index"
+      :label="item.label"
+      :value="item.value"
+      :disabled="item.disabled"
+    />
+  </b-select>
+  <p>没有边框：</p>
+  <b-select v-model="selected5" :options="options1" :border="false"></b-select>
 </template>
 
 <script lang="ts">
@@ -29,10 +40,20 @@ export default defineComponent({
   setup() {
     const selected = ref('1')
     const selected2 = ref('1')
-
-    const options = ref<Options>([
+    const selected3 = ref('1')
+    const selected4 = ref('1')
+    const selected5 = ref('1')
+    const options1 = ref<Options>([
       { value: '1', label: '选项一' },
       { value: '2', label: '选项二' },
+      { value: '3', label: '选项三' },
+      { value: '4', label: '选项四' },
+      { value: '5', label: '选项五' },
+      { value: '6', label: '选项六' }
+    ])
+    const options2 = ref<Options>([
+      { value: '1', label: '选项一' },
+      { value: '2', label: '选项二', disabled: true },
       { value: '3', label: '选项三' },
       { value: '4', label: '选项四' },
       { value: '5', label: '选项五' },
@@ -41,16 +62,15 @@ export default defineComponent({
 
     const visible = ref(false)
 
-    function getVisible(val: boolean) {
-      visible.value = val
-    }
-
     return {
       visible,
       selected,
       selected2,
-      options,
-      getVisible
+      selected3,
+      selected4,
+      selected5,
+      options1,
+      options2
     }
   }
 })
