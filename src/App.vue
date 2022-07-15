@@ -10,7 +10,7 @@
     |
     <router-link to="/selectDemo">下拉框组件</router-link>
     |
-    <router-link to="/paginationDemo">分页组件开发中...</router-link>
+    <router-link to="/paginationDemo">分页组件</router-link>
     |
     <router-link to="/iconDemo">icon组件</router-link>
     |

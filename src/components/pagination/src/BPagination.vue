@@ -7,7 +7,7 @@
       @click="changePage(false)"
       href="javascript:;"
     >
-      &lt;
+      <b-icon name="arrow-left-bold" :size="14" color="#9CA6B9"></b-icon>
     </a>
 
     <!-- ... -->
@@ -34,19 +34,25 @@
       href="javascript:;"
       @click="changePage(true)"
     >
-      >
+      <b-icon name="arrow-right-bold" :size="14" color="#9CA6B9"></b-icon>
     </a>
 
     <!-- 选择一页条数 -->
     <div
       class="b-page-num b-num-out-size-border"
-      @click="openPageNum = !openPageNum"
+      @click.stop="openPageNum = !openPageNum"
     >
       <div class="b-text-page-num">
         <span>{{ pageSize }}</span>
         <span>条/页</span>
       </div>
-      <img
+      <b-icon
+        class="b-page-num-icon"
+        :name="upDown"
+        :size="14"
+        color="#9CA6B9"
+      ></b-icon>
+      <!-- <img
         class="b-page-num-icon"
         :src="
           openPageNum
@@ -54,24 +60,35 @@
             : '../../../../public/编组 28.png'
         "
         alt=""
-      />
-      <div class="b-select-dropdown b-popper" v-show="openPageNum">
-        <div
-          class="b-select-dropdown-item"
-          v-for="item in pageNum"
-          :key="item"
-          @click="changePages(item)"
-        >
-          <span>{{ item }}</span>
-          <span>条/页</span>
+      /> -->
+      <transition name="zoom-in-top">
+        <div class="b-select-dropdown b-popper" v-show="openPageNum">
+          <div
+            class="b-select-dropdown-item"
+            v-for="item in pageNum"
+            :key="item"
+            @click="changePages(item)"
+          >
+            <span>{{ item }}</span>
+            <span>条/页</span>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { toRefs, ref, defineComponent, computed } from 'vue'
+import BIcon from '@/components/icon/src/icon.vue'
+import { addEvent, removeEvent } from '@/utils'
+import {
+  toRefs,
+  ref,
+  defineComponent,
+  computed,
+  onMounted,
+  onBeforeUnmount
+} from 'vue'
 import type { PropType } from 'vue'
 // 导入接口
 export default defineComponent({
@@ -102,9 +119,15 @@ export default defineComponent({
     const pageNum = [10, 20, 30]
     // 按钮的个数
     const btnCount = 10
+    const hiddenDropdown = () => (openPageNum.value = false)
+    onMounted(() => addEvent(document, 'click', hiddenDropdown))
+    onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
     // 总页数
     const pages = computed(() => Math.ceil(total.value / pageSize.value))
-
+    // 箭头样式
+    const upDown = computed(() =>
+      openPageNum.value ? 'arrow-up-bold' : 'arrow-down-bold'
+    )
     // 当前页码
     const currentPageNum = ref(props.currentPage || 1)
 
@@ -211,9 +234,13 @@ export default defineComponent({
       pages,
       openPageNum,
       pager,
+      upDown,
       changePage,
       changePages
     }
+  },
+  components: {
+    BIcon
   }
 })
 </script>

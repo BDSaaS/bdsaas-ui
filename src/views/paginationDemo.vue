@@ -1,5 +1,10 @@
 <template>
   <div class="b-pagination">
+    <div>
+      {{ '当前页:' + currentPage }}
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {{ '每页' + pageSize + '条' }}
+    </div>
     <b-pagination
       :total="total"
       :pageSize="pageSize"
@@ -42,6 +47,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .b-pagination {
-  margin: 100px 800px;
+  margin: 200px 800px;
 }
 </style>
