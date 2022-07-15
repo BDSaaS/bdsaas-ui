@@ -2,9 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 500px;
-  max-width: 600px;
-  height: 80px;
+  min-width: 550px;
   background: #fff;
 
   a {
@@ -12,7 +10,14 @@
     text-decoration: none;
   }
 
+  .disabled {
+    color: #9ca6b9;
+    cursor: not-allowed !important;
+    background: #fff;
+  }
+
   .b-outside-border {
+    box-sizing: border-box;
     width: 32px;
     height: 32px;
     margin-right: 4px;
@@ -27,8 +32,9 @@
     border-radius: 4px;
 
     &:hover {
-      background: #fff;
-      border: 1px solid #0056ff;
+      &:not(.disabled) {
+        border: 1px solid #0056ff;
+      }
     }
   }
 
@@ -70,9 +76,9 @@
         &:hover {
           width: 84px;
           height: 32px;
-          background: #0056ff;
+          background: rgb(0 86 255 / 3%);
           border-radius: 4px;
-          opacity: 0.03;
+          // opacity: 0.03;
         }
       }
     }
