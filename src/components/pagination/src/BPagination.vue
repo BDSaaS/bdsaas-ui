@@ -49,15 +49,6 @@
         :size="14"
         color="#9CA6B9"
       ></b-icon>
-      <!-- <img
-        class="b-page-num-icon"
-        :src="
-          openPageNum
-            ? '../../../../public/编组 29.png'
-            : '../../../../public/编组 28.png'
-        "
-        alt=""
-      /> -->
       <transition name="zoom-in-top">
         <div class="b-select-dropdown b-popper" v-show="openPageNum">
           <div
