@@ -5,7 +5,6 @@
       class="b-right-arrow b-outside-border"
       :class="{ disabled: currentPageNum <= 1 }"
       @click="changePage(false)"
-      href="javascript:;"
     >
       <b-icon name="arrow-left-bold" :size="14" color="#9CA6B9"></b-icon>
     </a>
@@ -18,7 +17,6 @@
       class="b-page-size b-outside-border"
       v-for="i in pager.btnArr"
       :key="i"
-      href="javascript:;"
       :class="{ active: i === currentPageNum }"
       @click="changePage(i)"
       >{{ i }}</a
@@ -31,7 +29,6 @@
     <a
       class="b-right-arrow b-outside-border"
       :class="{ disabled: currentPageNum >= pages }"
-      href="javascript:;"
       @click="changePage(true)"
     >
       <b-icon name="arrow-right-bold" :size="14" color="#9CA6B9"></b-icon>
