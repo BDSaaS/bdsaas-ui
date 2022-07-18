@@ -54,6 +54,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/dropDownDemo',
     name: 'DropDownDemo',
     component: () => import('@/views/dropDownDemo.vue')
+  },
+  {
+    path: '/modalDemo',
+    name: 'modalDemo',
+    component: () =>
+      import(/* webpackChunkName: "testPinia" */ '@/views/modalDemo.vue')
   }
 ]
 

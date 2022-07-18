@@ -15,6 +15,8 @@
     <router-link to="/iconDemo">icon组件</router-link>
     |
     <router-link to="/dropDownDemo">dropDown组件</router-link>
+    |
+    <router-link to="/modalDemo">modal组件</router-link>
   </nav>
   <router-view />
 </template>
