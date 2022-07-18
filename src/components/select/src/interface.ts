@@ -7,10 +7,14 @@ export type OptionsItem = {
 
 export type Options = Array<OptionsItem>
 
-export function getLabel(
-  options: Options,
-  value: OptionsItem['value']
-): OptionsItem['label'] {
-  return options.find(item => item.value === value)
-    ?.label as OptionsItem['label']
+export function getLabel(options: Options, value: string): string {
+  const result = options.find(item => item.value === value)
+    ? (options.find(item => item.value === value) as any).label
+    : ''
+  return result
+}
+
+export function getList(options: Options, value: string[]): OptionsItem[] {
+  const result = options.filter(item => value.includes(item.value))
+  return result
 }

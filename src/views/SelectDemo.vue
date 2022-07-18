@@ -1,10 +1,10 @@
 <template>
   <p>一般用法：</p>
-  <b-select v-model="selected" :options="options1" />
+  <b-select v-model="selected1" :options="options1" />
   <p>禁用状态：</p>
-  <b-select v-model="selected" :options="options1" disabled clearable />
+  <b-select v-model="selected2" :options="options1" disabled clearable />
   <p>可清空：</p>
-  <b-select v-model="selected2" clearable>
+  <b-select v-model="selected3" clearable>
     <b-option
       v-for="(item, index) of options1"
       :key="index"
@@ -13,9 +13,9 @@
     />
   </b-select>
   <p>带禁用项（传入options）：</p>
-  <b-select v-model="selected3" :options="options2"></b-select>
+  <b-select v-model="selected4" :options="options2"></b-select>
   <p>带禁用项（不传options）：</p>
-  <b-select v-model="selected4">
+  <b-select v-model="selected5">
     <b-option
       v-for="(item, index) of options2"
       :key="index"
@@ -25,7 +25,9 @@
     />
   </b-select>
   <p>没有边框：</p>
-  <b-select v-model="selected5" :options="options1" :border="false"></b-select>
+  <b-select v-model="selected6" :options="options1" :border="false"></b-select>
+  <p>多选：</p>
+  <b-select v-model="selected7" :options="options1" multiple></b-select>
 </template>
 
 <script lang="ts">
@@ -38,11 +40,13 @@ export default defineComponent({
   name: 'SelectDemo',
   components: { BOption, BSelect },
   setup() {
-    const selected = ref('1')
+    const selected1 = ref('1')
     const selected2 = ref('1')
     const selected3 = ref('1')
     const selected4 = ref('1')
     const selected5 = ref('1')
+    const selected6 = ref('1')
+    const selected7 = ref(['1', '2'])
     const options1 = ref<Options>([
       { value: '1', label: '选项一' },
       { value: '2', label: '选项二' },
@@ -64,11 +68,13 @@ export default defineComponent({
 
     return {
       visible,
-      selected,
+      selected1,
       selected2,
       selected3,
       selected4,
       selected5,
+      selected6,
+      selected7,
       options1,
       options2
     }

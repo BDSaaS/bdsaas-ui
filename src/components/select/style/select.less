@@ -1,14 +1,24 @@
 .b-select {
   position: relative;
-  display: inline-block;
+  display: block;
+  width: 260px;
+
+  &.b-select-non {
+    width: 160px;
+  }
+
+  &.b-select-inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
   .b-show-box {
     box-sizing: border-box;
-    width: 260px;
-    padding: 0 35px 0 16px;
+    min-height: 40px;
+    padding: 5px 35px 0 16px;
     overflow: hidden;
     font-size: 14px;
-    line-height: 40px;
+    line-height: 28px;
     white-space: nowrap;
     border: 1px solid #bcc4d6;
     border-radius: 4px;
@@ -22,7 +32,6 @@
     }
 
     &.b-show-box-non {
-      width: 160px;
       height: 68px;
       padding: 0 16px;
       line-height: 68px;
@@ -34,6 +43,40 @@
       color: #9ca6b9;
       cursor: not-allowed;
       border: 1px solid #e1e4e8;
+    }
+
+    &.b-show-box-multiple {
+      padding: 5px 35px 0 5px;
+    }
+
+    .b-tags {
+      padding: 0;
+      margin: 0;
+    }
+
+    .b-tag {
+      position: relative;
+      float: left;
+      padding: 0 28px 0 12px;
+      margin-right: 4px;
+      margin-bottom: 5px;
+      background: #f5f7fb;
+      border-radius: 4px;
+    }
+
+    .b-tag-close {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      z-index: 2;
+      padding: 2px;
+      cursor: pointer;
+      border-radius: 50%;
+
+      &:hover {
+        color: #fff !important;
+        background: #909399;
+      }
     }
   }
 
@@ -88,6 +131,12 @@
       .b-input-inner {
         cursor: not-allowed;
       }
+    }
+  }
+
+  &.b-select-multiple {
+    .b-input .b-input-inner.is-readonly {
+      cursor: default;
     }
   }
 
