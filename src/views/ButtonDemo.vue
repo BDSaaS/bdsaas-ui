@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, unref } from 'vue'
-import HelloTest from '../../test/HelloTest.vue'
+import HelloTest from '../../tests/HelloTest.vue'
 import type { Ref } from 'vue'
 import type { ButtonSize, ButtonType } from '@/components/button/src/interface'
 import BButton from '@/components/button/src/button.vue'
