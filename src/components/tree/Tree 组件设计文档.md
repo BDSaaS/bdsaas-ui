@@ -11,6 +11,12 @@
 
 - 继承一层结构所有功能
 - Checkbox 复选框的多选功能
+
+3. 高级功能
+
 - 默认展开所有树节点功能（defaultExpandAll）
 - 展开指定的树节点（v-model:expandedKeys）
+- 图标自定义
+- 右键菜单
 - 加入线（showLine）
+- 拖动
