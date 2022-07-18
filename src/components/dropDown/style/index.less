@@ -1,3 +1,152 @@
-.test {
-  color: red;
+.b-dropdown {
+  position: relative;
+  display: block;
+  width: 128px;
+
+  .omit {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgb(36 41 52 / 6%);
+  }
+
+  .show-box {
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 10px 30px 10px 20px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 28px;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgb(36 41 52 / 6%);
+
+    &.show-box-placeholder {
+      color: #9ca6b9;
+    }
+
+    .show-box-inline {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
+    &.show-box-disabled {
+      color: #9ca6b9;
+      cursor: not-allowed;
+    }
+  }
+
+  .arrow-down {
+    position: absolute;
+    top: 17px;
+    right: 8px;
+  }
+
+  .error-down {
+    position: absolute;
+    top: 17px;
+    right: 8px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .arrow-roate {
+    transform: rotateZ(180deg);
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    padding-top: 8px;
+    white-space: nowrap;
+
+    &-box {
+      max-height: 224px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar:horizontal {
+        height: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #edf1f6;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        cursor: pointer;
+        background-color: #d4e5fa;
+      }
+    }
+
+    .menu {
+      box-sizing: border-box;
+      padding: 10px 0;
+      margin: 0;
+      list-style: none;
+
+      .menu-item {
+        padding: 0 12px;
+        font-size: 14px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          color: #0056ff;
+        }
+
+        &.selected {
+          color: #0056ff;
+        }
+
+        &.disabled {
+          color: #9ca6b9;
+
+          &:hover {
+            cursor: not-allowed;
+            background: transparent;
+          }
+        }
+      }
+
+      .divided {
+        height: 1px;
+        margin: 5px 0;
+        background: #edf1f6;
+      }
+    }
+  }
+
+  &.b-dropdown-omit {
+    width: 48px;
+
+    .dropdown {
+      width: 160px;
+    }
+  }
 }

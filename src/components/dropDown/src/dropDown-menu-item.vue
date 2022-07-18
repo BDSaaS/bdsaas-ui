@@ -2,28 +2,28 @@
   <li
     :class="[
       typeof selectedValue === 'string' &&
-        value === selectedValue &&
+        $props.value === selectedValue &&
         'selected',
       Array.isArray(selectedValue) &&
-        selectedValue.includes(value) &&
+        selectedValue.includes($props.value) &&
         'selected',
-      'option',
-      disabled && 'disabled'
+      'b-select-option',
+      $props.disabled && 'b-select-disabled'
     ]"
     @click.stop="clickHandler"
   >
-    {{ label }}
+    {{ $props.label }}
   </li>
 </template>
 
 <script lang="ts">
 import { defineComponent, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import type { OptionsItem } from './interface'
+import type { OptionsItem } from './type'
 import { injectMore } from '@/utils'
 
 export default defineComponent({
-  name: 'BOption',
+  name: 'BDropDownMenuItem',
   props: {
     label: {
       type: String as PropType<OptionsItem['label']>,

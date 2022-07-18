@@ -5,8 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import VueTypeImports from 'vite-plugin-vue-type-imports'
 import AutoImport from 'unplugin-auto-import/vite'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { svgBuilder } from './svgBuilder'
 
 export default defineConfig(({ command, mode }) => {
@@ -31,7 +30,7 @@ export default defineConfig(({ command, mode }) => {
         },
         vueTemplate: true
       }),
-      svgBuilder('./src/svgs/')
+      svgBuilder('./src/assets/svgs/')
     ],
     css: {
       preprocessorOptions: {

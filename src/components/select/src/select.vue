@@ -1,29 +1,112 @@
 <template>
-  <div class="b-select" @click.stop="showDropdown">
+  <div
+    :class="[
+      'b-select',
+      !border && 'b-select-non',
+      inline && 'b-select-inline',
+      multiple && 'b-select-multiple'
+    ]"
+    @click.stop="clickHandler"
+  >
+    <div
+      v-if="!multiple"
+      :class="[
+        'show-box',
+        !modelValue && 'show-box-placeholder',
+        visible && 'show-box-focus',
+        !border && 'show-box-non',
+        disabled && 'show-box-disabled'
+      ]"
+    >
+      <div class="show-box-inline">{{ modelValue ? label : placeholder }}</div>
+      <b-icon
+        v-if="!border && (!clearable || !isMouseEnter || !modelValue)"
+        class="arrow-inline"
+        :class="{ 'arrow-roate': visible }"
+        name="arrow-down-bold"
+        color="#a3acbe"
+      ></b-icon>
+      <b-icon
+        v-if="!border && clearable && isMouseEnter && modelValue"
+        class="error-inline"
+        name="error"
+        color="#a3acbe"
+        @click.stop="clearHandler"
+        @mouseenter="mouseenterHandler"
+      ></b-icon>
+      <b-icon
+        v-if="border && (!clearable || !isMouseEnter || !modelValue)"
+        class="arrow-down"
+        :class="{ 'b-arrow-down-roate': visible }"
+        name="arrow-down-bold"
+        color="#a3acbe"
+      ></b-icon>
+      <b-icon
+        v-if="border && clearable && isMouseEnter && modelValue"
+        class="error-down"
+        name="error"
+        color="#a3acbe"
+        @click.stop="clearHandler"
+        @mouseenter="mouseenterHandler"
+      ></b-icon>
+    </div>
+    <div
+      v-if="multiple"
+      :class="[
+        'show-box',
+        modelValue.length && 'show-box-multiple',
+        !modelValue.length && 'show-box-placeholder',
+        visible && 'show-box-focus',
+        disabled && 'show-box-disabled'
+      ]"
+    >
+      {{ modelValue.length ? '' : placeholder }}
+      <ul class="tags clearfix">
+        <li class="tag" v-for="v in multipleList" :key="v.value">
+          {{ v.label
+          }}<b-icon
+            class="tag-close"
+            name="close"
+            :size="16"
+            color="#a3acbe"
+            @click.stop="tagClickHandler(v)"
+          ></b-icon>
+        </li>
+      </ul>
+      <b-icon
+        class="arrow-down"
+        :class="{ 'arrow-roate': visible }"
+        name="arrow-down-bold"
+        color="#a3acbe"
+      ></b-icon>
+    </div>
     <b-input
       ref="input"
-      v-model="label"
       readonly
       is-select
+      :class="{ 'input-disabled': disabled }"
+      @mouseenter="mouseenterHandler"
+      @mouseleave="mouseleaveHandler"
       @focus="focusHandler"
       @blur="blurHandler"
-    >
-      <template #suffix>
-        <i class="iconfont icon-xiajiantou"></i>
-      </template>
-    </b-input>
+    ></b-input>
     <transition name="zoom-in-top">
-      <div v-show="visible" class="b-select-dropdown">
-        <ul class="b-select-dropdown-list">
+      <div v-show="visible" class="dropdown">
+        <ul
+          class="dropdown-list"
+          :style="{ 'text-align': border ? 'left' : 'center' }"
+        >
           <template v-if="!$slots.default">
             <li
-              v-for="(item, index) of $props.options"
+              v-for="(item, index) of options"
               :key="index"
               :class="[
-                item.value === $props.modelValue && 'selected',
-                'b-select-option'
+                multiple && modelValue.includes(item.value) && 'selected',
+                !multiple && modelValue === item.value && 'selected',
+                'option',
+                item.disabled && 'disabled'
               ]"
-              @click="selectHandler(item)"
+              @click.stop="selectHandler(item)"
             >
               {{ item.label }}
             </li>
@@ -43,39 +126,72 @@ import {
   reactive,
   ref,
   toRefs,
-  watch
+  watch,
+  computed
 } from 'vue'
-import { getLabel } from './interface'
+import { getLabel, getList } from './interface'
 import type { PropType } from 'vue'
 import type { Options, OptionsItem } from './interface'
 import { addEvent, provideMore, removeEvent } from '@/utils'
 import BInput from '@/components/input/src/input.vue'
-import emitter from '@/plugins/emitter'
+import BIcon from '@/components/icon/src/icon.vue'
 
 export default defineComponent({
   name: 'BSelect',
-  components: { BInput },
+  components: { BInput, BIcon },
   props: {
     modelValue: {
-      type: String as PropType<string>,
+      // v-model双向绑定
+      type: [String, Array],
       default: ''
     },
     disabled: {
+      // 禁用
       type: Boolean as PropType<boolean>,
       default: false
     },
     options: {
+      // 列表数据
       type: Array as PropType<Options>,
       default: () => []
+    },
+    placeholder: {
+      // 默认展示文字
+      type: String as PropType<string>,
+      default: '请选择'
+    },
+    clearable: {
+      // 是否可清空
+      type: Boolean as PropType<boolean>,
+      default: false
+    },
+    border: {
+      // 是否有边框
+      type: Boolean as PropType<boolean>,
+      default: true
+    },
+    inline: {
+      // 是否是行内元素
+      type: Boolean as PropType<boolean>,
+      default: false
+    },
+    multiple: {
+      // 是否多选
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
   emits: ['update:modelValue', 'change', 'focus', 'blur', 'visible-change'],
   setup(props, { emit }) {
     const state = reactive({
-      label: getLabel(props.options, props.modelValue) || '',
-      visible: false
+      label: getLabel(props.options, props.modelValue as string),
+      multipleList: getList(props.options, props.modelValue as string[]),
+      visible: false,
+      isMouseEnter: false
     })
     const input = ref(null)
+
+    const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
 
     onMounted(() => addEvent(document, 'click', hiddenDropdown))
@@ -83,21 +199,36 @@ export default defineComponent({
     onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
 
     watch(
-      () => state.visible,
-      visible => {
+      [() => state.visible, () => props.modelValue],
+      (visible, modelValue) => {
         emit('visible-change', visible)
-        ;(input.value as any).setRotate(state.visible)
       }
     )
 
     function selectHandler(item: OptionsItem) {
-      state.label = item.label
-      emit('update:modelValue', item.value)
-      emitter.emit('getSelectedValue', item.value)
-    }
-
-    function showDropdown() {
-      state.visible = !state.visible
+      if (item.disabled) {
+        return false
+      }
+      let value = null
+      let label = ''
+      let multipleList: any[] = []
+      if (props.multiple) {
+        value = props.modelValue.includes(item.value)
+          ? (props.modelValue as string[]).filter(each => item.value !== each)
+          : [...props.modelValue, item.value]
+        multipleList = props.modelValue.includes(item.value)
+          ? state.multipleList.filter(each => item.value !== each.value)
+          : [...state.multipleList, item]
+        emit('change', value)
+      } else {
+        label = item.label
+        value = item.value
+        value !== props.modelValue && emit('change', value)
+        hiddenDropdown()
+      }
+      state.label = label
+      state.multipleList = multipleList
+      emit('update:modelValue', value)
     }
 
     function focusHandler(e: Event) {
@@ -108,9 +239,39 @@ export default defineComponent({
       emit('blur', e)
     }
 
+    function clickHandler() {
+      if (props.disabled) {
+        return false
+      }
+      state.visible ? hiddenDropdown() : showDropdown()
+    }
+
+    function mouseenterHandler() {
+      if (props.disabled) {
+        return false
+      }
+      state.isMouseEnter = true
+    }
+
+    function mouseleaveHandler() {
+      state.isMouseEnter = false
+    }
+
+    function clearHandler() {
+      state.label = ''
+      state.multipleList = []
+      props.multiple
+        ? emit('update:modelValue', [])
+        : emit('update:modelValue', '')
+    }
+
+    function tagClickHandler(item: OptionsItem) {
+      selectHandler(item)
+    }
+
     provideMore({
       selectHandler,
-      selectedValue: props.modelValue
+      selectedValue: computed(() => props.modelValue)
     })
 
     return {
@@ -118,8 +279,12 @@ export default defineComponent({
       input,
       blurHandler,
       focusHandler,
-      showDropdown,
-      selectHandler
+      clickHandler,
+      selectHandler,
+      mouseenterHandler,
+      mouseleaveHandler,
+      clearHandler,
+      tagClickHandler
     }
   }
 })

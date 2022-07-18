@@ -32,6 +32,7 @@ export default defineComponent({
     }
     function pageSizeChange(val: number) {
       pageSize.value = val
+      currentPage.value = 1
     }
     return {
       total,
@@ -47,6 +48,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .b-pagination {
-  margin: 200px 800px;
+  margin: 200px 700px;
 }
 </style>

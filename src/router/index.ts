@@ -60,6 +60,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'modalDemo',
     component: () =>
       import(/* webpackChunkName: "testPinia" */ '@/views/modalDemo.vue')
+  },
+  {
+    path: '/treeDemo',
+    name: 'TreeDemo',
+    component: () => import('@/views/TreeDemo.vue')
   }
 ]
 
