@@ -54,6 +54,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/dropDownDemo',
     name: 'DropDownDemo',
     component: () => import('@/views/dropDownDemo.vue')
+  },
+  {
+    path: '/treeDemo',
+    name: 'TreeDemo',
+    component: () => import('@/views/TreeDemo.vue')
   }
 ]
 
