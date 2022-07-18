@@ -31,7 +31,7 @@ export default defineConfig(({ command, mode }) => {
         },
         vueTemplate: true
       }),
-      svgBuilder('./src/svgs/')
+      svgBuilder('./src/assets/svgs/')
     ],
     css: {
       preprocessorOptions: {

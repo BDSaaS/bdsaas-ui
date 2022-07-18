@@ -3,15 +3,6 @@
   display: block;
   width: 260px;
 
-  &.b-select-non {
-    width: 160px;
-  }
-
-  &.b-select-inline {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
   .b-show-box {
     box-sizing: border-box;
     min-height: 40px;
@@ -210,5 +201,22 @@
         }
       }
     }
+  }
+
+  &.b-select-non {
+    width: 160px;
+
+    .b-select-dropdown {
+      top: 100%;
+    }
+
+    .b-select-dropdown-list {
+      padding: 20px;
+    }
+  }
+
+  &.b-select-inline {
+    display: inline-block;
+    vertical-align: middle;
   }
 }

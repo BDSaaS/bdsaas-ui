@@ -27,7 +27,7 @@ import { ref } from 'vue'
 export default {
   name: 'IconDemo',
   setup() {
-    const modulesFiles = import.meta.glob('@/svgs/*.svg')
+    const modulesFiles = import.meta.glob('@/assets/svgs/*.svg')
     const modulesNames = []
     for (const path in modulesFiles) {
       const splitArr = path.split('/')
