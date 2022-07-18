@@ -1,11 +1,10 @@
 <template>
   <svg
-    :class="['b-icon', $attrs.class]"
+    class="b-icon"
     :style="{
       width: size + 'px',
       height: size + 'px',
-      color: color,
-      ...$attrs.style
+      color: color
     }"
     aria-hidden="true"
   >
@@ -38,6 +37,6 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "../style/index";
 </style>

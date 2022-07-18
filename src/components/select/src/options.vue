@@ -2,26 +2,25 @@
   <li
     :class="[
       typeof selectedValue === 'string' &&
-        $props.value === selectedValue &&
+        value === selectedValue &&
         'selected',
       Array.isArray(selectedValue) &&
-        selectedValue.includes($props.value) &&
+        selectedValue.includes(value) &&
         'selected',
-      'b-select-option',
-      $props.disabled && 'b-select-disabled'
+      'option',
+      disabled && 'disabled'
     ]"
     @click.stop="clickHandler"
   >
-    {{ $props.label }}
+    {{ label }}
   </li>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, watch } from 'vue'
+import { defineComponent, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import type { OptionsItem } from './interface'
 import { injectMore } from '@/utils'
-import emitter from '@/plugins/emitter'
 
 export default defineComponent({
   name: 'BOption',
@@ -55,11 +54,6 @@ export default defineComponent({
     }
 
     selectedValue.value === value.value && clickHandler()
-
-    // emitter.on('getSelectedValue', value => {
-    //   console.log('我接受到了')
-    //   selectedValue.value = value
-    // })
 
     return { clickHandler, selectedValue }
   }

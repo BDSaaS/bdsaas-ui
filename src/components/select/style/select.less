@@ -3,7 +3,7 @@
   display: block;
   width: 260px;
 
-  .b-show-box {
+  .show-box {
     box-sizing: border-box;
     min-height: 40px;
     padding: 5px 35px 0 16px;
@@ -11,41 +11,34 @@
     font-size: 14px;
     line-height: 28px;
     white-space: nowrap;
+    background: #fff;
     border: 1px solid #bcc4d6;
     border-radius: 4px;
 
-    &.b-show-box-placeholder {
+    &.show-box-placeholder {
       color: #9ca6b9;
     }
 
-    &.b-show-box-focus {
+    &.show-box-focus {
       border: 1px solid #0056ff;
     }
 
-    &.b-show-box-non {
-      height: 68px;
-      padding: 0 16px;
-      line-height: 68px;
-      text-align: center;
-      border: none;
-    }
-
-    &.b-show-box-disabled {
+    &.show-box-disabled {
       color: #9ca6b9;
       cursor: not-allowed;
       border: 1px solid #e1e4e8;
     }
 
-    &.b-show-box-multiple {
+    &.show-box-multiple {
       padding: 5px 35px 0 5px;
     }
 
-    .b-tags {
+    .tags {
       padding: 0;
       margin: 0;
     }
 
-    .b-tag {
+    .tag {
       position: relative;
       float: left;
       padding: 0 28px 0 12px;
@@ -55,7 +48,7 @@
       border-radius: 4px;
     }
 
-    .b-tag-close {
+    .tag-close {
       position: absolute;
       top: 7px;
       right: 7px;
@@ -69,19 +62,34 @@
         background: #909399;
       }
     }
-  }
 
-  .b-arrow-down {
-    position: absolute;
-    top: 13px;
-    right: 10.5px;
+    .show-box-inline {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      vertical-align: middle;
+    }
 
-    &-roate {
-      transform: rotateZ(180deg);
+    &.show-box-non {
+      height: 68px;
+      padding: 0 16px;
+      line-height: 68px;
+      text-align: center;
+      border: none;
+
+      .show-box-inline {
+        max-width: calc(100% - 20px);
+      }
     }
   }
 
-  .b-error-down {
+  .arrow-down {
+    position: absolute;
+    top: 13px;
+    right: 10.5px;
+  }
+
+  .error-down {
     position: absolute;
     top: 13px;
     right: 10.5px;
@@ -89,14 +97,18 @@
     cursor: pointer;
   }
 
-  .b-arrow-inline {
+  .arrow-inline {
     margin-left: 6px;
   }
 
-  .b-error-inline {
+  .error-inline {
     z-index: 2;
     margin-left: 6px;
     cursor: pointer;
+  }
+
+  .arrow-roate {
+    transform: rotateZ(180deg);
   }
 
   .b-input {
@@ -118,20 +130,14 @@
       }
     }
 
-    &.b-input-disabled {
+    &.input-disabled {
       .b-input-inner {
         cursor: not-allowed;
       }
     }
   }
 
-  &.b-select-multiple {
-    .b-input .b-input-inner.is-readonly {
-      cursor: default;
-    }
-  }
-
-  &-dropdown {
+  .dropdown {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
@@ -145,8 +151,6 @@
     border-radius: 4px;
     box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
 
-    //background: #EDF1F6;
-    //border-radius: 2px;
     &::-webkit-scrollbar {
       width: 6px;
     }
@@ -176,7 +180,7 @@
       margin: 0;
       list-style: none;
 
-      .b-select-option {
+      .option {
         padding: 0 24px;
         font-size: 14px;
         line-height: 40px;
@@ -191,7 +195,7 @@
           background: rgb(0 86 255 / 3%);
         }
 
-        &.b-select-disabled {
+        &.disabled {
           color: #9ca6b9;
 
           &:hover {
@@ -203,14 +207,20 @@
     }
   }
 
+  &.b-select-multiple {
+    .b-input .b-input-inner.is-readonly {
+      cursor: default;
+    }
+  }
+
   &.b-select-non {
     width: 160px;
 
-    .b-select-dropdown {
+    .dropdown {
       top: 100%;
     }
 
-    .b-select-dropdown-list {
+    .dropdown-list {
       padding: 20px;
     }
   }
