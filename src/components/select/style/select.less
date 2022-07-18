@@ -15,6 +15,13 @@
     border: 1px solid #bcc4d6;
     border-radius: 4px;
 
+    .show-box-inline {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
     &.show-box-placeholder {
       color: #9ca6b9;
     }
@@ -27,6 +34,10 @@
       color: #9ca6b9;
       cursor: not-allowed;
       border: 1px solid #e1e4e8;
+
+      //.show-box-inline {
+      //  color: #9ca6b9;
+      //}
     }
 
     &.show-box-multiple {
@@ -61,13 +72,6 @@
         color: #fff !important;
         background: #909399;
       }
-    }
-
-    .show-box-inline {
-      display: inline-block;
-      max-width: 100%;
-      overflow: hidden;
-      vertical-align: middle;
     }
 
     &.show-box-non {
