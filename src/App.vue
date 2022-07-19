@@ -19,6 +19,8 @@
     <router-link to="/modalDemo">modal组件</router-link>
     |
     <router-link to="/treeDemo">Tree 组件</router-link>
+    |
+    <router-link to="/confirmDemo">confirm 组件</router-link>
   </nav>
   <router-view />
 </template>

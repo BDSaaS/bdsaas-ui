@@ -65,6 +65,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/treeDemo',
     name: 'TreeDemo',
     component: () => import('@/views/TreeDemo.vue')
+  },
+  {
+    path: '/confirmDemo',
+    name: 'confirmDemo',
+    component: () => import('@/views/confirmDemo.vue')
   }
 ]
 

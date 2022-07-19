@@ -6,7 +6,10 @@
       :class="{ disabled: currentPageNum <= 1 }"
       @click="changePage(false)"
     >
-      <b-icon name="arrow-left-bold" :size="14" color="#9CA6B9"></b-icon>
+      <b-icon
+        name="arrow-left-bold"
+        :style="{ fontSize: '14px', color: '#9CA6B9' }"
+      ></b-icon>
     </a>
 
     <!-- ... -->
@@ -31,7 +34,10 @@
       :class="{ disabled: currentPageNum >= pages }"
       @click="changePage(true)"
     >
-      <b-icon name="arrow-right-bold" :size="14" color="#9CA6B9"></b-icon>
+      <b-icon
+        name="arrow-right-bold"
+        :style="{ fontSize: '14px', color: '#9CA6B9' }"
+      ></b-icon>
     </a>
 
     <!-- 选择一页条数 -->
@@ -46,8 +52,7 @@
       <b-icon
         class="b-page-num-icon"
         :name="upDown"
-        :size="14"
-        color="#9CA6B9"
+        :style="{ fontSize: '14px', color: '#9CA6B9' }"
       ></b-icon>
       <transition name="zoom-in-top">
         <div class="b-select-dropdown b-popper" v-show="openPageNum">
