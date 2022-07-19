@@ -2,7 +2,7 @@
   <div class="content">
     <ul class="list clearfix">
       <li class="item" v-for="(v, i) in modulesNames" :key="i">
-        <b-icon :name="v" :size="size" :color="color"></b-icon>
+        <b-icon :name="v" :style="{ color, fontSize: `${size}px` }" />
         <p>{{ v }}</p>
       </li>
     </ul>
@@ -62,6 +62,11 @@ export default {
 }
 </script>
 <style scoped lang="less">
+.blue-30 {
+  font-size: 30px;
+  color: blue;
+}
+
 .content {
   width: 1200px;
   margin: 0 auto;
@@ -73,8 +78,8 @@ export default {
 
   .item {
     float: left;
-    width: 200px;
-    min-height: 120px;
+    width: 150px;
+    height: 150px;
     padding: 10px 0 0;
     text-align: center;
     border: 1px solid #eee;

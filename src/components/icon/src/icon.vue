@@ -1,13 +1,5 @@
 <template>
-  <svg
-    class="b-icon"
-    :style="{
-      width: size + 'px',
-      height: size + 'px',
-      color: color
-    }"
-    aria-hidden="true"
-  >
+  <svg class="b-icon" aria-hidden="true" width="1em" height="1em">
     <use :href="'#b-icon-' + name" />
   </svg>
 </template>
@@ -21,14 +13,6 @@ export default defineComponent({
     name: {
       type: String as PropType<string>,
       required: true
-    },
-    color: {
-      type: String as PropType<string>,
-      default: '#000'
-    },
-    size: {
-      type: Number as PropType<number>,
-      default: 14
     }
   },
   setup() {
