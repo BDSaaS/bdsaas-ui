@@ -143,7 +143,6 @@
 
   .dropdown {
     position: absolute;
-    top: calc(100% + 8px);
     left: 0;
     z-index: 9;
     width: 100%;
@@ -154,6 +153,14 @@
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
+
+    &.dropdown-top {
+      top: calc(100% + 8px);
+    }
+
+    &.dropdown-bottom {
+      bottom: calc(100% + 8px);
+    }
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -180,7 +187,7 @@
 
     &-list {
       box-sizing: border-box;
-      padding: 20px 0;
+      padding: 10px 0;
       margin: 0;
       list-style: none;
 

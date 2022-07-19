@@ -6,11 +6,17 @@
     @mouseenter="mouseenterHandler"
     @mouseleave="mouseleaveHandler"
   >
-    <div v-if="omit" class="omit" :class="{ 'omit-disabled': disabled }">
-      <b-icon name="more"></b-icon>
+    <div
+      v-if="omit"
+      ref="box"
+      class="omit"
+      :class="{ 'omit-disabled': disabled, 'omit-hover': isMouseEnter }"
+    >
+      <b-icon name="more" style="font-size: 24px;"></b-icon>
     </div>
     <div
       v-if="!omit"
+      ref="box"
       :class="[
         'show-box',
         !modelValue && 'show-box-placeholder',
@@ -34,8 +40,15 @@
         @mouseenter="mouseenterHandler"
       ></b-icon>
     </div>
-    <transition name="zoom-in-top">
-      <div v-show="visible" class="dropdown">
+    <transition :name="position === 'top' ? 'zoom-in-top' : 'zoom-in-bottom'">
+      <div
+        v-show="visible"
+        class="dropdown"
+        :class="{
+          'dropdown-top': position === 'top',
+          'dropdown-bottom': position === 'bottom'
+        }"
+      >
         <div class="dropdown-box">
           <template v-if="!$slots.default">
             <ul class="menu">
@@ -122,8 +135,10 @@ export default defineComponent({
     const state = reactive({
       label: getLabel(props.options, props.modelValue as string),
       visible: false,
-      isMouseEnter: false
+      isMouseEnter: false,
+      position: ''
     })
+    const box = ref(null)
 
     const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
@@ -158,6 +173,16 @@ export default defineComponent({
         return false
       }
       if (props.trigger === 'click') {
+        const top = (box as any).value.getBoundingClientRect().top
+        const bottom =
+          document.documentElement.clientHeight -
+          (box as any).value.getBoundingClientRect().bottom
+        const distance = 232
+        if (top >= distance && bottom < distance) {
+          state.position = 'bottom'
+        } else {
+          state.position = 'top'
+        }
         state.visible ? hiddenDropdown() : showDropdown()
       }
     }
@@ -165,6 +190,16 @@ export default defineComponent({
     function mouseenterHandler() {
       if (props.disabled) {
         return false
+      }
+      const top = (box as any).value.getBoundingClientRect().top
+      const bottom =
+        document.documentElement.clientHeight -
+        (box as any).value.getBoundingClientRect().bottom
+      const distance = 232
+      if (top >= distance && bottom < distance) {
+        state.position = 'bottom'
+      } else {
+        state.position = 'top'
       }
       state.isMouseEnter = true
       props.trigger === 'hover' && showDropdown()
@@ -187,6 +222,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
+      box,
       clickHandler,
       selectHandler,
       mouseenterHandler,
