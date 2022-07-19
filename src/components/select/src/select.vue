@@ -24,13 +24,13 @@
         class="arrow-inline"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        color="#a3acbe"
+        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="!border && clearable && isMouseEnter && modelValue"
         class="error-inline"
         name="error"
-        color="#a3acbe"
+        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -39,13 +39,13 @@
         class="arrow-down"
         :class="{ 'b-arrow-down-roate': visible }"
         name="arrow-down-bold"
-        color="#a3acbe"
+        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="border && clearable && isMouseEnter && modelValue"
         class="error-down"
         name="error"
-        color="#a3acbe"
+        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -68,7 +68,7 @@
             class="tag-close"
             name="close"
             :size="16"
-            color="#a3acbe"
+            style="color: #a3acbe;"
             @click.stop="tagClickHandler(v)"
           ></b-icon>
         </li>
@@ -77,7 +77,7 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        color="#a3acbe"
+        style="color: #a3acbe;"
       ></b-icon>
     </div>
     <b-input

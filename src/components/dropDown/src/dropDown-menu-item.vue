@@ -1,18 +1,15 @@
 <template>
+  <li v-if="divided" class="divided"></li>
   <li
+    v-if="!divided"
     :class="[
-      typeof selectedValue === 'string' &&
-        $props.value === selectedValue &&
-        'selected',
-      Array.isArray(selectedValue) &&
-        selectedValue.includes($props.value) &&
-        'selected',
-      'b-select-option',
-      $props.disabled && 'b-select-disabled'
+      value === selectedValue && 'selected',
+      'menu-item',
+      disabled && 'disabled'
     ]"
     @click.stop="clickHandler"
   >
-    {{ $props.label }}
+    {{ label }}
   </li>
 </template>
 
@@ -35,6 +32,10 @@ export default defineComponent({
     },
     disabled: {
       type: Boolean as PropType<OptionsItem['disabled']>,
+      default: false
+    },
+    divided: {
+      type: Boolean as PropType<OptionsItem['divided']>,
       default: false
     }
   },

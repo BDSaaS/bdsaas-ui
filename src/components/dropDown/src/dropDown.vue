@@ -6,8 +6,8 @@
     @mouseenter="mouseenterHandler"
     @mouseleave="mouseleaveHandler"
   >
-    <div v-if="omit" class="omit">
-      <b-icon name="more" color="#a3acbe"></b-icon>
+    <div v-if="omit" class="omit" :class="{ 'omit-disabled': disabled }">
+      <b-icon name="more"></b-icon>
     </div>
     <div
       v-if="!omit"
@@ -23,13 +23,13 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        color="#a3acbe"
+        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="clearable && isMouseEnter && modelValue"
         class="error-down"
         name="error"
-        color="#a3acbe"
+        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -37,8 +37,8 @@
     <transition name="zoom-in-top">
       <div v-show="visible" class="dropdown">
         <div class="dropdown-box">
-          <ul class="menu">
-            <template v-if="!$slots.default">
+          <template v-if="!$slots.default">
+            <ul class="menu">
               <template v-for="(item, index) of options" :key="index">
                 <li v-if="item.divided" class="divided"></li>
                 <li
@@ -52,9 +52,9 @@
                   {{ item.label }}
                 </li>
               </template>
-            </template>
-            <slot v-else></slot>
-          </ul>
+            </ul>
+          </template>
+          <slot v-else></slot>
         </div>
       </div>
     </transition>
@@ -107,10 +107,12 @@ export default defineComponent({
       default: false
     },
     omit: {
+      // 是否是收起状态
       type: Boolean as PropType<boolean>,
       default: false
     },
     trigger: {
+      // 触发条件
       type: String as PropType<string>,
       default: 'hover'
     }

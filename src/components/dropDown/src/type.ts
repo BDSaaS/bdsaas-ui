@@ -2,6 +2,7 @@ export type OptionsItem = {
   label: string
   value: any
   disabled?: boolean
+  divided?: boolean
   [propName: string]: any
 }
 
