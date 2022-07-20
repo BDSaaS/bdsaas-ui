@@ -35,7 +35,8 @@ export default defineConfig(({ command, mode }) => {
     css: {
       preprocessorOptions: {
         less: {
-          javascriptEnabled: true
+          javascriptEnabled: true,
+          additionalData: "@import './src/assets/css/common.less';"
         }
       }
     },
