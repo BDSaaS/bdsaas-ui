@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
 
@@ -56,16 +56,14 @@ export default defineComponent({
     },
     // 树最外层 class，用来自定义样式
     wrapperClass: {
-      type: String as PropType<string>
+      type: String as PropType<string>,
+      default: ''
     }
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
   setup(props) {
     const { wrapperClass } = toRefs(props)
-    const treeClass = computed(() => [
-      'b-tree',
-      unref(wrapperClass) && unref(wrapperClass)
-    ])
+    const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
 
     return {
       treeClass

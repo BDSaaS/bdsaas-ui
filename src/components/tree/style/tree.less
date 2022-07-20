@@ -1,4 +1,10 @@
 .b-tree {
+  user-select: none;
+
+  ul {
+    padding-left: 24px;
+  }
+
   &-node {
     &-content {
       display: flex;
@@ -7,38 +13,57 @@
 
     &-label {
       display: inline-flex;
+      flex: 1;
       align-items: center;
       min-height: 32px;
       padding: 0 8px;
+      cursor: pointer;
 
       &:hover {
-        background: rgb(0 86 255 / 6%);
+        background: rgb(0 86 255 / 3%);
       }
 
-      &:active {
+      &:active,
+      &.is-selected {
         background: rgb(0 86 255 / 6%);
       }
     }
 
     &-inner {
-      padding-left: 8px;
+      display: inline-flex;
+      align-items: center;
     }
 
     &-title {
       font-size: 14px;
       color: #242934;
-      cursor: pointer;
     }
 
     &-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      padding-right: 6px;
       font-size: 16px;
     }
 
+    &-checkbox {
+      & + .b-tree-node-inner {
+        padding-left: 8px;
+      }
+    }
+
     &-switch {
+      display: inline-flex;
+      width: 16px;
+      font-size: 16px;
       color: #9ca6b9;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &.is-expanded {
+        transform: rotate3d(0, 0, 1, 90deg);
+      }
     }
   }
 }
