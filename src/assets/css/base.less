@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+p,
+form,
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
 .tr-focus-mask {
   position: fixed;
   top: 0;
@@ -63,4 +72,15 @@
 .zoom-in-bottom-leave-active {
   opacity: 0;
   transform: scaleY(0);
+}
+
+/* 手风琴式展开动画 */
+.collapse-transition-enter-active,
+.collapse-transition-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.collapse-transition-enter-from,
+.collapse-transition-leave-to {
+  max-height: 0;
 }
