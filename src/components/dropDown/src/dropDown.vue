@@ -95,7 +95,7 @@ import {
 } from 'vue'
 import { getLabel, getChildrenList } from './type'
 import type { PropType } from 'vue'
-import type { Options, OptionsItem, ChildrenOptionsItem } from './type'
+import type { Options, OptionsItem } from './type'
 import { addEvent, provideMore, removeEvent } from '@/utils'
 import BIcon from '@/components/icon/src/icon.vue'
 

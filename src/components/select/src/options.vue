@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from 'vue'
+import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { OptionsItem } from './interface'
 import { injectMore } from '@/utils'
