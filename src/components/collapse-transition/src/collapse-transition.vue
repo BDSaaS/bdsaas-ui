@@ -73,3 +73,7 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="less">
+@import "../style/collapse-transition";
+</style>
