@@ -1,6 +1,12 @@
 /*  主题颜色  */
 @mainColor: #0056ff;
 
+/*  悬停颜色  */
+@hoverColor: #004de5;
+
+/*  按下颜色  */
+@activeColor: #0046d0;
+
 /*  辅助颜色  */
 @successColor: #2ed4a9;
 @dangerColor: #f12525;
@@ -27,6 +33,7 @@
   align-items: @alignItems;
   justify-content: @justifyContent;
 }
+
 .flex-column-mixin(@direction,@alignItems,@justifyContent) {
   display: flex;
   flex-direction: @direction;
