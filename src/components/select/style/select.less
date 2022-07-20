@@ -12,7 +12,7 @@
     line-height: 28px;
     white-space: nowrap;
     background: #fff;
-    border: 1px solid #e1e4e8;
+    border: 1px solid @line;
     border-radius: 4px;
 
     .show-box-inline {
@@ -23,24 +23,24 @@
     }
 
     &.show-box-hover {
-      border: 1px solid #bcc4d6;
+      border: 1px solid @border;
     }
 
     &.show-box-placeholder {
-      color: #9ca6b9;
+      color: @secondaryText;
     }
 
     &.show-box-focus {
-      border: 1px solid #0056ff;
+      border: 1px solid @mainColor;
     }
 
     &.show-box-disabled {
-      color: #9ca6b9;
+      color: @secondaryText;
       cursor: not-allowed;
-      border: 1px solid #e1e4e8;
+      border: 1px solid @line;
 
       //.show-box-inline {
-      //  color: #9ca6b9;
+      //  color: @secondaryText;
       //}
     }
 
@@ -183,7 +183,7 @@
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: #edf1f6;
+        background-color: @line;
         border-radius: 10px;
         transition: all 0.2s ease-in-out;
       }
@@ -208,16 +208,16 @@
         cursor: pointer;
 
         &:hover {
-          background: rgb(0 86 255 / 3%);
+          background: @backgroundColor;
         }
 
         &.selected {
-          color: #0056ff;
-          background: rgb(0 86 255 / 3%);
+          color: @mainColor;
+          background: @backgroundColor;
         }
 
         &.disabled {
-          color: #9ca6b9;
+          color: @secondaryText;
 
           &:hover {
             cursor: not-allowed;

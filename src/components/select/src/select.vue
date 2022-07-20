@@ -59,6 +59,7 @@
       ref="box"
       :class="[
         'show-box',
+        isMouseEnter && !disabled && 'show-box-hover',
         modelValue.length && 'show-box-multiple',
         !modelValue.length && 'show-box-placeholder',
         visible && 'show-box-focus',
@@ -212,12 +213,9 @@ export default defineComponent({
 
     onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
 
-    watch(
-      [() => state.visible, () => props.modelValue],
-      (visible, modelValue) => {
-        emit('visible-change', visible)
-      }
-    )
+    watch([() => state.visible, () => props.modelValue], visible => {
+      emit('visible-change', visible)
+    })
 
     function selectHandler(item: OptionsItem) {
       if (item.disabled) {
