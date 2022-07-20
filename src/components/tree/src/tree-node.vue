@@ -23,7 +23,6 @@
             </span>
           </slot>
           <span class="b-tree-node-title">
-            {{ $props.treeNodeData.key }}
             {{ $props.treeNodeData.title }}
           </span>
         </span>

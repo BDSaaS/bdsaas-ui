@@ -1,17 +1,21 @@
 <template>
   <ul :class="treeClass">
     <tree-node
-      v-for="item of $props.treeData"
+      v-for="item of treeDataCache"
       :key="item.key"
       :tree-node-data="item"
     />
   </ul>
+  <hr />
+  {{ treeDataCache }}
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
+import type { PropType, Ref } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
+import { handleArrData } from '../../../../bd-tools/handle-data'
+import { isObject } from '../../../../bd-tools/is'
 
 export default defineComponent({
   name: 'BTree',
@@ -62,11 +66,26 @@ export default defineComponent({
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
   setup(props) {
-    const { wrapperClass } = toRefs(props)
+    const { wrapperClass, treeData } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
+    const treeDataCache = ref([]) as Ref<ITreeNode[]>
+
+    watchEffect(() => {
+      treeDataCache.value = unref(treeData)
+      handleArrData(unref(treeDataCache), 'children', item => {
+        if (isObject(item)) {
+          Object.assign(item, {
+            selected: false,
+            isExpanded: false,
+            checked: false
+          })
+        }
+      })
+    })
 
     return {
-      treeClass
+      treeClass,
+      treeDataCache
     }
   }
 })
