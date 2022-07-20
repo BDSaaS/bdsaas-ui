@@ -13,14 +13,14 @@
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 5px 0 rgb(36 41 52 / 6%);
-
-    &:hover {
-      color: inherit;
-    }
   }
 
   .omit-disabled {
     cursor: not-allowed;
+  }
+
+  .omit-hover {
+    color: inherit;
   }
 
   .show-box {
@@ -73,12 +73,20 @@
 
   .dropdown {
     position: absolute;
-    top: 100%;
     left: 0;
     z-index: 9;
     width: 100%;
-    padding-top: 8px;
     white-space: nowrap;
+
+    &.dropdown-top {
+      top: 100%;
+      padding-top: 8px;
+    }
+
+    &.dropdown-bottom {
+      bottom: 100%;
+      padding-bottom: 8px;
+    }
 
     &-box {
       max-height: 224px;

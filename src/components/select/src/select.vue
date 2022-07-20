@@ -10,6 +10,7 @@
   >
     <div
       v-if="!multiple"
+      ref="box"
       :class="[
         'show-box',
         !modelValue && 'show-box-placeholder',
@@ -37,7 +38,7 @@
       <b-icon
         v-if="border && (!clearable || !isMouseEnter || !modelValue)"
         class="arrow-down"
-        :class="{ 'b-arrow-down-roate': visible }"
+        :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
         style="color: #a3acbe;"
       ></b-icon>
@@ -52,6 +53,7 @@
     </div>
     <div
       v-if="multiple"
+      ref="box"
       :class="[
         'show-box',
         modelValue.length && 'show-box-multiple',
@@ -90,8 +92,15 @@
       @focus="focusHandler"
       @blur="blurHandler"
     ></b-input>
-    <transition name="zoom-in-top">
-      <div v-show="visible" class="dropdown">
+    <transition :name="position === 'top' ? 'zoom-in-top' : 'zoom-in-bottom'">
+      <div
+        v-show="visible"
+        class="dropdown"
+        :class="{
+          'dropdown-top': position === 'top',
+          'dropdown-bottom': position === 'bottom'
+        }"
+      >
         <ul
           class="dropdown-list"
           :style="{ 'text-align': border ? 'left' : 'center' }"
@@ -187,9 +196,10 @@ export default defineComponent({
       label: getLabel(props.options, props.modelValue as string),
       multipleList: getList(props.options, props.modelValue as string[]),
       visible: false,
-      isMouseEnter: false
+      isMouseEnter: false,
+      position: ''
     })
-    const input = ref(null)
+    const box = ref(null)
 
     const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
@@ -243,6 +253,16 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
+      const top = (box as any).value.getBoundingClientRect().top
+      const bottom =
+        document.documentElement.clientHeight -
+        (box as any).value.getBoundingClientRect().bottom
+      const distance = 232
+      if (top >= distance && bottom < distance) {
+        state.position = 'bottom'
+      } else {
+        state.position = 'top'
+      }
       state.visible ? hiddenDropdown() : showDropdown()
     }
 
@@ -276,7 +296,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      input,
+      box,
       blurHandler,
       focusHandler,
       clickHandler,

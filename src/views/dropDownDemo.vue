@@ -14,12 +14,7 @@
   <p>收起状态：</p>
   <b-drop-down v-model="selected7" :options="options1" omit />
   <p>默认插槽：</p>
-  <b-drop-down
-    v-model="selected8"
-    :options="options1"
-    trigger="click"
-    @change="changeHandle"
-  >
+  <b-drop-down v-model="selected8" :options="options1">
     <b-drop-down-menu>
       <b-drop-down-menu-item
         v-for="(item, index) of options2"
