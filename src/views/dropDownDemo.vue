@@ -25,6 +25,25 @@
       ></b-drop-down-menu-item>
     </b-drop-down-menu>
   </b-drop-down>
+  <p>含有children：</p>
+  <b-drop-down v-model="selected9" :options="options4" trigger="click">
+    <template #children-item="scope">
+      <div
+        style="
+          padding: 0 12px;
+          line-height: 40px;
+          text-align: center;
+          cursor: pointer;
+"
+        :style="{
+          color: childrenSelected === scope.row.value ? '#0056ff' : 'inherit'
+        }"
+        @click.stop="childrenItemClickHandler(scope.row)"
+      >
+        {{ scope.row.label }}
+      </div>
+    </template>
+  </b-drop-down>
 </template>
 
 <script lang="ts">
@@ -45,6 +64,7 @@ export default defineComponent({
     const selected6 = ref('1')
     const selected7 = ref('1')
     const selected8 = ref('1')
+    const selected9 = ref('1')
     const options1 = ref([
       { value: '1', label: '选项一' },
       { value: '2', label: '选项二' },
@@ -69,6 +89,39 @@ export default defineComponent({
       { value: '5', label: '选项五' },
       { value: '6', label: '选项六' }
     ])
+    const options4 = ref([
+      { value: '1', label: '选项一' },
+      { value: '2', label: '选项二' },
+      { value: '3', label: '选项三' },
+      { value: '4', label: '选项四' },
+      { value: '5', label: '选项五' },
+      {
+        value: '6',
+        label: '选项六',
+        children: [
+          {
+            value: '6-1',
+            label: '选项六-1'
+          },
+          {
+            value: '6-2',
+            label: '选项六-2'
+          },
+          {
+            value: '6-3',
+            label: '选项六-3'
+          },
+          {
+            value: '6-4',
+            label: '选项六-4'
+          }
+        ]
+      }
+    ])
+    const childrenSelected = ref('')
+    function childrenItemClickHandler(row: any) {
+      childrenSelected.value = row.value
+    }
 
     return {
       selected1,
@@ -79,9 +132,13 @@ export default defineComponent({
       selected6,
       selected7,
       selected8,
+      selected9,
       options1,
       options2,
-      options3
+      options3,
+      options4,
+      childrenSelected,
+      childrenItemClickHandler
     }
   }
 })

@@ -12,7 +12,7 @@
     line-height: 28px;
     white-space: nowrap;
     background: #fff;
-    border: 1px solid #bcc4d6;
+    border: 1px solid #e1e4e8;
     border-radius: 4px;
 
     .show-box-inline {
@@ -20,6 +20,10 @@
       max-width: 100%;
       overflow: hidden;
       vertical-align: middle;
+    }
+
+    &.show-box-hover {
+      border: 1px solid #bcc4d6;
     }
 
     &.show-box-placeholder {
@@ -146,43 +150,48 @@
     left: 0;
     z-index: 9;
     width: 100%;
-    max-height: 224px;
-    overflow-x: hidden;
-    overflow-y: auto;
     white-space: nowrap;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
 
     &.dropdown-top {
-      top: calc(100% + 8px);
+      top: 100%;
+      padding-top: 8px;
     }
 
     &.dropdown-bottom {
-      bottom: calc(100% + 8px);
+      bottom: 100%;
+      padding-bottom: 8px;
     }
 
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
+    .dropdown-box {
+      max-height: 224px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
 
-    &::-webkit-scrollbar:horizontal {
-      height: 6px;
-    }
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
 
-    &::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
+      &::-webkit-scrollbar:horizontal {
+        height: 6px;
+      }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #edf1f6;
-      border-radius: 10px;
-      transition: all 0.2s ease-in-out;
-    }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
 
-    &::-webkit-scrollbar-thumb:hover {
-      cursor: pointer;
-      background-color: #d4e5fa;
+      &::-webkit-scrollbar-thumb {
+        background-color: #edf1f6;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        cursor: pointer;
+        background-color: #d4e5fa;
+      }
     }
 
     &-list {
@@ -193,6 +202,7 @@
 
       .option {
         padding: 0 24px;
+        overflow: hidden;
         font-size: 14px;
         line-height: 40px;
         cursor: pointer;
@@ -233,6 +243,10 @@
 
     .dropdown-list {
       padding: 20px;
+
+      .option {
+        padding: 0;
+      }
     }
   }
 

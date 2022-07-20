@@ -48,26 +48,35 @@
           'dropdown-top': position === 'top',
           'dropdown-bottom': position === 'bottom'
         }"
+        @click.stop
       >
-        <div class="dropdown-box">
-          <template v-if="!$slots.default">
-            <ul class="menu">
-              <template v-for="(item, index) of options" :key="index">
-                <li v-if="item.divided" class="divided"></li>
-                <li
-                  :class="[
-                    modelValue === item.value && 'selected',
-                    'menu-item',
-                    item.disabled && 'disabled'
-                  ]"
-                  @click.stop="selectHandler(item)"
-                >
-                  {{ item.label }}
-                </li>
-              </template>
-            </ul>
-          </template>
-          <slot v-else></slot>
+        <div class="dropdown-both">
+          <div class="dropdown-box">
+            <template v-if="!$slots.default">
+              <ul class="menu">
+                <template v-for="(item, index) of options" :key="index">
+                  <li v-if="item.divided" class="divided"></li>
+                  <li class="menu-item" @click.stop="selectHandler(item)">
+                    <div
+                      class="menu-item-text"
+                      :class="[
+                        modelValue === item.value && 'selected',
+                        item.disabled && 'disabled'
+                      ]"
+                    >
+                      {{ item.label }}
+                    </div>
+                  </li>
+                </template>
+              </ul>
+            </template>
+            <slot v-else></slot>
+          </div>
+          <div v-show="childrenList.length" class="dropdown-childrenbox">
+            <template v-for="v in childrenList" :key="v.value">
+              <slot name="children-item" :row="v"></slot>
+            </template>
+          </div>
         </div>
       </div>
     </transition>
@@ -86,7 +95,7 @@ import {
 } from 'vue'
 import { getLabel } from './type'
 import type { PropType } from 'vue'
-import type { Options, OptionsItem } from './type'
+import type { Options, OptionsItem, ChildrenOptionsItem } from './type'
 import { addEvent, provideMore, removeEvent } from '@/utils'
 import BIcon from '@/components/icon/src/icon.vue'
 
@@ -132,11 +141,18 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'change', 'visible-change'],
   setup(props, { emit }) {
-    const state = reactive({
+    const state = reactive<{
+      label: string
+      visible: boolean
+      isMouseEnter: boolean
+      position: string
+      childrenList: ChildrenOptionsItem[]
+    }>({
       label: getLabel(props.options, props.modelValue as string),
       visible: false,
       isMouseEnter: false,
-      position: ''
+      position: '',
+      childrenList: []
     })
     const box = ref(null)
 
@@ -158,13 +174,23 @@ export default defineComponent({
       if (item.disabled) {
         return false
       }
-      let value = null
+      let value = ''
       let label = ''
+      let childrenList: ChildrenOptionsItem[] = []
       label = item.label
       value = item.value
-      hiddenDropdown()
-      value !== props.modelValue && emit('change', value)
+      props.options.forEach((v: OptionsItem) => {
+        v.value === value &&
+          Array.isArray(v.children) &&
+          (childrenList = (v.children as ChildrenOptionsItem[]).map(item => ({
+            ...item
+          })))
+      })
       state.label = label
+      state.childrenList = childrenList
+      console.log('childrenList', childrenList)
+      !state.childrenList.length && hiddenDropdown()
+      value !== props.modelValue && emit('change', value)
       emit('update:modelValue', value)
     }
 
@@ -173,6 +199,30 @@ export default defineComponent({
         return false
       }
       if (props.trigger === 'click') {
+        if (state.visible) {
+          hiddenDropdown()
+        } else {
+          const top = (box as any).value.getBoundingClientRect().top
+          const bottom =
+            document.documentElement.clientHeight -
+            (box as any).value.getBoundingClientRect().bottom
+          const distance = 232
+          if (top >= distance && bottom < distance) {
+            state.position = 'bottom'
+          } else {
+            state.position = 'top'
+          }
+          showDropdown()
+        }
+      }
+    }
+
+    function mouseenterHandler() {
+      if (props.disabled) {
+        return false
+      }
+      state.isMouseEnter = true
+      if (props.trigger === 'hover') {
         const top = (box as any).value.getBoundingClientRect().top
         const bottom =
           document.documentElement.clientHeight -
@@ -183,26 +233,8 @@ export default defineComponent({
         } else {
           state.position = 'top'
         }
-        state.visible ? hiddenDropdown() : showDropdown()
+        showDropdown()
       }
-    }
-
-    function mouseenterHandler() {
-      if (props.disabled) {
-        return false
-      }
-      const top = (box as any).value.getBoundingClientRect().top
-      const bottom =
-        document.documentElement.clientHeight -
-        (box as any).value.getBoundingClientRect().bottom
-      const distance = 232
-      if (top >= distance && bottom < distance) {
-        state.position = 'bottom'
-      } else {
-        state.position = 'top'
-      }
-      state.isMouseEnter = true
-      props.trigger === 'hover' && showDropdown()
     }
 
     function mouseleaveHandler() {

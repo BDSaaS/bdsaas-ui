@@ -1,15 +1,12 @@
 <template>
   <li v-if="divided" class="divided"></li>
-  <li
-    v-if="!divided"
-    :class="[
-      value === selectedValue && 'selected',
-      'menu-item',
-      disabled && 'disabled'
-    ]"
-    @click.stop="clickHandler"
-  >
-    {{ label }}
+  <li v-if="!divided" class="menu-item" @click.stop="clickHandler">
+    <div
+      class="menu-item-text"
+      :class="[value === selectedValue && 'selected', disabled && 'disabled']"
+    >
+      {{ label }}
+    </div>
   </li>
 </template>
 

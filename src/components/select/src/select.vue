@@ -6,6 +6,8 @@
       inline && 'b-select-inline',
       multiple && 'b-select-multiple'
     ]"
+    @mouseenter="mouseenterHandler"
+    @mouseleave="mouseleaveHandler"
     @click.stop="clickHandler"
   >
     <div
@@ -13,6 +15,7 @@
       ref="box"
       :class="[
         'show-box',
+        isMouseEnter && !disabled && 'show-box-hover',
         !modelValue && 'show-box-placeholder',
         visible && 'show-box-focus',
         !border && 'show-box-non',
@@ -87,8 +90,6 @@
       readonly
       is-select
       :class="{ 'input-disabled': disabled }"
-      @mouseenter="mouseenterHandler"
-      @mouseleave="mouseleaveHandler"
       @focus="focusHandler"
       @blur="blurHandler"
     ></b-input>
@@ -100,28 +101,31 @@
           'dropdown-top': position === 'top',
           'dropdown-bottom': position === 'bottom'
         }"
+        @click.stop
       >
-        <ul
-          class="dropdown-list"
-          :style="{ 'text-align': border ? 'left' : 'center' }"
-        >
-          <template v-if="!$slots.default">
-            <li
-              v-for="(item, index) of options"
-              :key="index"
-              :class="[
-                multiple && modelValue.includes(item.value) && 'selected',
-                !multiple && modelValue === item.value && 'selected',
-                'option',
-                item.disabled && 'disabled'
-              ]"
-              @click.stop="selectHandler(item)"
-            >
-              {{ item.label }}
-            </li>
-          </template>
-          <slot v-else></slot>
-        </ul>
+        <div class="dropdown-box">
+          <ul
+            class="dropdown-list"
+            :style="{ 'text-align': border ? 'left' : 'center' }"
+          >
+            <template v-if="!$slots.default">
+              <li
+                v-for="(item, index) of options"
+                :key="index"
+                :class="[
+                  multiple && modelValue.includes(item.value) && 'selected',
+                  !multiple && modelValue === item.value && 'selected',
+                  'option',
+                  item.disabled && 'disabled'
+                ]"
+                @click.stop="selectHandler(item)"
+              >
+                {{ item.label }}
+              </li>
+            </template>
+            <slot v-else></slot>
+          </ul>
+        </div>
       </div>
     </transition>
   </div>
@@ -253,17 +257,21 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
-      const top = (box as any).value.getBoundingClientRect().top
-      const bottom =
-        document.documentElement.clientHeight -
-        (box as any).value.getBoundingClientRect().bottom
-      const distance = 232
-      if (top >= distance && bottom < distance) {
-        state.position = 'bottom'
+      if (state.visible) {
+        hiddenDropdown()
       } else {
-        state.position = 'top'
+        const top = (box as any).value.getBoundingClientRect().top
+        const bottom =
+          document.documentElement.clientHeight -
+          (box as any).value.getBoundingClientRect().bottom
+        const distance = 232
+        if (top >= distance && bottom < distance) {
+          state.position = 'bottom'
+        } else {
+          state.position = 'top'
+        }
+        showDropdown()
       }
-      state.visible ? hiddenDropdown() : showDropdown()
     }
 
     function mouseenterHandler() {
