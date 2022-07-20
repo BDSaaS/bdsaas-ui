@@ -1,21 +1,21 @@
 <template>
-  <ul :class="treeClass">
-    <tree-node
-      v-for="item of $props.treeData"
-      :key="item.key"
-      :tree-node-data="item"
-    />
+  <ul>
+    <li v-for="item of $props.treeData" :key="item.key">
+      <b-icon class="red" name="arrow-right-bold" />
+      <span>{{ item.title }}</span>
+      <BTree v-if="item.children?.length" :tree-data="item.children" />
+    </li>
   </ul>
 </template>
 
 <script lang="ts">
 import { PropType } from 'vue'
-import type { Key, TreeNode as ITreeNode } from './interface'
-import TreeNode from '@/components/tree/src/tree-node.vue'
+import { Key, TreeNode } from './interface'
+import BIcon from '@/components/icon/src/icon.vue'
 
 export default defineComponent({
   name: 'BTree',
-  components: { TreeNode },
+  components: { BIcon },
   props: {
     // 点击节点本身的选中
     selectedKeys: {
@@ -45,30 +45,18 @@ export default defineComponent({
     showLine: {
       type: Boolean as PropType<boolean>
     },
-    // 显示图标
-    showIcon: {
-      type: Boolean as PropType<boolean>
-    },
     // 数据
     treeData: {
-      type: Array as PropType<ITreeNode[]>,
+      type: Array as PropType<TreeNode[]>,
       required: true
-    },
-    // 树最外层 class，用来自定义样式
-    wrapperClass: {
-      type: String as PropType<string>
     }
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
-  setup(props) {
-    const { wrapperClass } = toRefs(props)
-    const treeClass = computed(() => [
-      'b-tree',
-      unref(wrapperClass) && unref(wrapperClass)
-    ])
+  setup() {
+    const h1 = 'Tree 组件'
 
     return {
-      treeClass
+      h1
     }
   }
 })
