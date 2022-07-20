@@ -28,13 +28,11 @@
         class="arrow-inline"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="!border && clearable && isMouseEnter && modelValue"
         class="error-inline"
         name="error"
-        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -43,13 +41,11 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="border && clearable && isMouseEnter && modelValue"
         class="error-down"
         name="error"
-        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -74,7 +70,6 @@
             class="tag-close"
             name="close"
             :size="16"
-            style="color: #a3acbe;"
             @click.stop="tagClickHandler(v)"
           ></b-icon>
         </li>
@@ -83,7 +78,6 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
     </div>
     <b-input
@@ -201,10 +195,25 @@ export default defineComponent({
       label: getLabel(props.options, props.modelValue as string),
       multipleList: getList(props.options, props.modelValue as string[]),
       visible: false,
-      isMouseEnter: false,
-      position: ''
+      isMouseEnter: false
     })
     const box = ref(null)
+    const position = computed(() => {
+      let flag = ''
+      if (state.visible) {
+        const top = (box as any).value.getBoundingClientRect().top
+        const bottom =
+          document.documentElement.clientHeight -
+          (box as any).value.getBoundingClientRect().bottom
+        const distance = 232
+        if (top >= distance && bottom < distance) {
+          flag = 'bottom'
+        } else {
+          flag = 'top'
+        }
+      }
+      return flag
+    })
 
     const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
@@ -213,9 +222,31 @@ export default defineComponent({
 
     onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
 
-    watch([() => state.visible, () => props.modelValue], visible => {
-      emit('visible-change', visible)
-    })
+    watch(
+      () => state.visible,
+      visible => {
+        emit('visible-change', visible)
+      }
+    )
+
+    watch(
+      () => props.modelValue,
+      modelValue => {
+        if (props.options.length) {
+          state.label = getLabel(props.options, modelValue as string)
+          state.multipleList = getList(props.options, modelValue as string[])
+        }
+        emit('change', modelValue)
+      }
+    )
+
+    watch(
+      () => props.options,
+      options => {
+        state.label = getLabel(options, props.modelValue as string)
+        state.multipleList = getList(options, props.modelValue as string[])
+      }
+    )
 
     function selectHandler(item: OptionsItem) {
       if (item.disabled) {
@@ -223,19 +254,17 @@ export default defineComponent({
       }
       let value = null
       let label = ''
-      let multipleList: any[] = []
+      let multipleList: Options = []
       if (props.multiple) {
         value = props.modelValue.includes(item.value)
           ? (props.modelValue as string[]).filter(each => item.value !== each)
           : [...props.modelValue, item.value]
-        multipleList = props.modelValue.includes(item.value)
+        multipleList = state.multipleList.includes(item.value)
           ? state.multipleList.filter(each => item.value !== each.value)
           : [...state.multipleList, item]
-        emit('change', value)
       } else {
-        label = item.label
         value = item.value
-        value !== props.modelValue && emit('change', value)
+        label = item.label
         hiddenDropdown()
       }
       state.label = label
@@ -255,21 +284,7 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
-      if (state.visible) {
-        hiddenDropdown()
-      } else {
-        const top = (box as any).value.getBoundingClientRect().top
-        const bottom =
-          document.documentElement.clientHeight -
-          (box as any).value.getBoundingClientRect().bottom
-        const distance = 232
-        if (top >= distance && bottom < distance) {
-          state.position = 'bottom'
-        } else {
-          state.position = 'top'
-        }
-        showDropdown()
-      }
+      state.visible ? hiddenDropdown() : showDropdown()
     }
 
     function mouseenterHandler() {
@@ -284,8 +299,6 @@ export default defineComponent({
     }
 
     function clearHandler() {
-      state.label = ''
-      state.multipleList = []
       props.multiple
         ? emit('update:modelValue', [])
         : emit('update:modelValue', '')
@@ -303,6 +316,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       box,
+      position,
       blurHandler,
       focusHandler,
       clickHandler,

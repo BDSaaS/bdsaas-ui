@@ -1,11 +1,15 @@
 <template>
-  <li v-if="divided" class="divided"></li>
-  <li v-if="!divided" class="menu-item" @click.stop="clickHandler">
+  <li v-if="obj.divided" class="divided"></li>
+  <li v-if="!obj.divided" class="menu-item">
     <div
       class="menu-item-text"
-      :class="[value === selectedValue && 'selected', disabled && 'disabled']"
+      :class="[
+        obj.value === selectedValue && 'selected',
+        obj.disabled && 'disabled'
+      ]"
+      @click.stop="clickHandler"
     >
-      {{ label }}
+      {{ obj.label }}
     </div>
   </li>
 </template>
@@ -19,39 +23,31 @@ import { injectMore } from '@/utils'
 export default defineComponent({
   name: 'BDropDownMenuItem',
   props: {
-    label: {
-      type: String as PropType<OptionsItem['label']>,
-      default: ''
-    },
-    value: {
-      type: String as PropType<OptionsItem['value']>,
-      default: ''
-    },
-    disabled: {
-      type: Boolean as PropType<OptionsItem['disabled']>,
-      default: false
-    },
-    divided: {
-      type: Boolean as PropType<OptionsItem['divided']>,
-      default: false
+    obj: {
+      type: Object as PropType<OptionsItem>,
+      default: () => ({})
     }
   },
   setup(props) {
-    const { label, value, disabled } = toRefs(props)
+    const { label, value, disabled, divided, children } =
+      props.obj as OptionsItem
     const { selectHandler, selectedValue } = injectMore([
       'selectHandler',
       'selectedValue'
     ])
 
     const clickHandler = () => {
-      disabled.value ||
+      disabled ||
         selectHandler.value({
-          label: label.value,
-          value: value.value
+          label: label,
+          value: value,
+          disabled: disabled,
+          divided: divided,
+          children: children
         })
     }
 
-    selectedValue.value === value.value && clickHandler()
+    selectedValue.value === value && clickHandler()
 
     return { clickHandler, selectedValue }
   }

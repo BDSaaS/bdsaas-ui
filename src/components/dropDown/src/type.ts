@@ -20,3 +20,18 @@ export function getLabel(options: Options, value: string): string {
     : ''
   return result
 }
+
+export function getChildrenList(
+  options: Options,
+  modelValue: string
+): ChildrenOptionsItem[] {
+  let list: ChildrenOptionsItem[] = []
+  options.forEach((v: OptionsItem) => {
+    v.value === modelValue &&
+      Array.isArray(v.children) &&
+      (list = (v.children as ChildrenOptionsItem[]).map(item => ({
+        ...item
+      })))
+  })
+  return list
+}

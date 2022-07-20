@@ -14,14 +14,12 @@
   <p>收起状态：</p>
   <b-drop-down v-model="selected7" :options="options1" omit />
   <p>默认插槽：</p>
-  <b-drop-down v-model="selected8" :options="options1">
+  <b-drop-down v-model="selected8">
     <b-drop-down-menu>
       <b-drop-down-menu-item
         v-for="(item, index) of options2"
         :key="index"
-        :label="item.label"
-        :value="item.value"
-        :disabled="item.disabled"
+        :obj="item"
       ></b-drop-down-menu-item>
     </b-drop-down-menu>
   </b-drop-down>
@@ -64,7 +62,7 @@ export default defineComponent({
     const selected6 = ref('1')
     const selected7 = ref('1')
     const selected8 = ref('1')
-    const selected9 = ref('1')
+    const selected9 = ref('6')
     const options1 = ref([
       { value: '1', label: '选项一' },
       { value: '2', label: '选项二' },
@@ -91,9 +89,6 @@ export default defineComponent({
     ])
     const options4 = ref([
       { value: '1', label: '选项一' },
-      { value: '2', label: '选项二' },
-      { value: '3', label: '选项三' },
-      { value: '4', label: '选项四' },
       { value: '5', label: '选项五' },
       {
         value: '6',

@@ -5,24 +5,13 @@
   <b-select v-model="selected2" :options="options1" disabled clearable />
   <p>可清空：</p>
   <b-select v-model="selected3" clearable>
-    <b-option
-      v-for="(item, index) of options1"
-      :key="index"
-      :label="item.label"
-      :value="item.value"
-    />
+    <b-option v-for="(item, index) of options1" :key="index" :obj="item" />
   </b-select>
   <p>带禁用项（传入options）：</p>
   <b-select v-model="selected4" :options="options2"></b-select>
   <p>带禁用项（不传options）：</p>
   <b-select v-model="selected5">
-    <b-option
-      v-for="(item, index) of options2"
-      :key="index"
-      :label="item.label"
-      :value="item.value"
-      :disabled="item.disabled"
-    />
+    <b-option v-for="(item, index) of options2" :key="index" :obj="item" />
   </b-select>
   <p>没有边框：</p>
   <b-select v-model="selected6" :options="options1" :border="false"></b-select>

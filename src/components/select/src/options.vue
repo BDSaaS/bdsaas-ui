@@ -2,17 +2,17 @@
   <li
     :class="[
       typeof selectedValue === 'string' &&
-        value === selectedValue &&
+        obj.value === selectedValue &&
         'selected',
       Array.isArray(selectedValue) &&
-        selectedValue.includes(value) &&
+        selectedValue.includes(obj.value) &&
         'selected',
       'option',
-      disabled && 'disabled'
+      obj.disabled && 'disabled'
     ]"
     @click.stop="clickHandler"
   >
-    {{ label }}
+    {{ obj.label }}
   </li>
 </template>
 
@@ -25,35 +25,28 @@ import { injectMore } from '@/utils'
 export default defineComponent({
   name: 'BOption',
   props: {
-    label: {
-      type: String as PropType<OptionsItem['label']>,
-      default: ''
-    },
-    value: {
-      type: String as PropType<OptionsItem['value']>,
-      default: ''
-    },
-    disabled: {
-      type: Boolean as PropType<OptionsItem['disabled']>,
-      default: false
+    obj: {
+      type: Object as PropType<OptionsItem>,
+      default: () => ({})
     }
   },
   setup(props) {
-    const { label, value, disabled } = toRefs(props)
+    const { label, value, disabled } = props.obj as OptionsItem
     const { selectHandler, selectedValue } = injectMore([
       'selectHandler',
       'selectedValue'
     ])
 
     const clickHandler = () => {
-      disabled.value ||
+      disabled ||
         selectHandler.value({
-          label: label.value,
-          value: value.value
+          label: label,
+          value: value,
+          disabled: disabled
         })
     }
 
-    selectedValue.value === value.value && clickHandler()
+    selectedValue.value === value && clickHandler()
 
     return { clickHandler, selectedValue }
   }
