@@ -11,8 +11,20 @@ import { Ref } from 'vue'
 
 const treeData = ref([
   {
-    title: 'parent 1',
-    key: '0-0'
+    title: '父节点-1',
+    key: '0-0',
+    children: [
+      {
+        title: '父节点-1-1',
+        key: '0-1-1',
+        children: [
+          {
+            title: '父节点-1-1-1',
+            key: '0-1-1-1'
+          }
+        ]
+      }
+    ]
   },
   {
     title: 'parent 2',
