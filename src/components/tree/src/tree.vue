@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts">
-import type { PropType, Ref } from 'vue'
+import type { PropType } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
-import { handleArrData } from '../../../../bd-tools/handle-data'
-import { isObject } from '../../../../bd-tools/is'
+import { treeDataCache, useInitTreeData } from '@/components/tree/src/hooks'
+import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
   name: 'BTree',
@@ -68,20 +68,8 @@ export default defineComponent({
   setup(props) {
     const { wrapperClass, treeData } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
-    const treeDataCache = ref([]) as Ref<ITreeNode[]>
 
-    watchEffect(() => {
-      treeDataCache.value = unref(treeData)
-      handleArrData(unref(treeDataCache), 'children', item => {
-        if (isObject(item)) {
-          Object.assign(item, {
-            selected: false,
-            isExpanded: false,
-            checked: false
-          })
-        }
-      })
-    })
+    useInitTreeData(cloneDeep(unref(treeData)))
 
     return {
       treeClass,
