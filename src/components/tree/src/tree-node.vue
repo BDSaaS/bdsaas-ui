@@ -14,6 +14,7 @@
         <b-checkbox
           v-model="$props.treeNodeData.checked"
           class="b-tree-node-checkbox"
+          @click.stop
         />
         <!--      TODO 根据 Tree 的 show-icon 属性，判断显示，有插槽默认值以及定制图标-->
         <span class="b-tree-node-inner">
@@ -44,11 +45,14 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
-import { TreeNode } from '@/components/tree/src/interface'
+import type { PropType } from 'vue'
+import { getCurrentInstance } from 'vue'
+import type { TreeNode } from '@/components/tree/src/interface'
 import BIcon from '@/components/icon/src/icon.vue'
 import BCheckbox from '@/components/checkbox/src/checkbox.vue'
 import CollapseTransition from '@/components/collapse-transition/src/collapse-transition.vue'
+import { injectMore } from '@tools/utils/vue-utils'
+import { singleSelect } from '@/components/tree/src/hooks/useSelect'
 
 export default defineComponent({
   name: 'tree-node',
@@ -61,6 +65,11 @@ export default defineComponent({
   },
   setup(props) {
     const { treeNodeData } = toRefs(props)
+    const { currentSelectedIndex, multiple, treeDataCache } = injectMore([
+      'currentSelectedIndex',
+      'multiple',
+      'treeDataCache'
+    ])
 
     const hasLeaf = computed(
       () => (unref(treeNodeData).children as TreeNode[])?.length > 0
@@ -78,6 +87,16 @@ export default defineComponent({
 
     function clickNode() {
       unref(treeNodeData).selected = !unref(treeNodeData).selected
+      // 单选情况下启用
+      if (!multiple.value) {
+        const prevIndex = currentSelectedIndex.value as string
+        currentSelectedIndex.value = unref(treeNodeData).currentIndex
+        singleSelect({
+          prevIndex,
+          currentIndex: unref(currentSelectedIndex),
+          treeData: unref(treeDataCache) as TreeNode[]
+        })
+      }
     }
 
     function expandNode() {

@@ -6,16 +6,15 @@
       :tree-node-data="item"
     />
   </ul>
-  <hr />
-  {{ treeDataCache }}
 </template>
 
 <script lang="ts">
 import type { PropType } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
-import { treeDataCache, useInitTreeData } from '@/components/tree/src/hooks'
+import { treeDataCache, useInitTreeData } from './hooks/useInitData'
 import { cloneDeep } from 'lodash-es'
+import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
   name: 'BTree',
@@ -27,7 +26,8 @@ export default defineComponent({
     },
     // 是否开启多选（只针对点击节点本身的多选）
     multiple: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: false
     },
     // 点击复选框的选中
     checkedKeys: {
@@ -66,8 +66,16 @@ export default defineComponent({
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
   setup(props) {
-    const { wrapperClass, treeData } = toRefs(props)
+    const { wrapperClass, treeData, multiple } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
+    // 单选情况使用
+    const currentSelectedIndex = ref<null | string>('')
+
+    provideMore({
+      currentSelectedIndex,
+      multiple,
+      treeDataCache
+    })
 
     useInitTreeData(cloneDeep(unref(treeData)))
 
