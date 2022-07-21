@@ -14,7 +14,12 @@
     <b-option v-for="(item, index) of options2" :key="index" :obj="item" />
   </b-select>
   <p>没有边框：</p>
-  <b-select v-model="selected6" :options="options1" :border="false"></b-select>
+  <b-select
+    v-model="selected6"
+    :options="options1"
+    :border="false"
+    clearable
+  ></b-select>
   <p>多选：</p>
   <b-select v-model="selected7" :options="options1" multiple></b-select>
 </template>

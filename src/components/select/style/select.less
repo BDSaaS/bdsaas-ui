@@ -19,7 +19,7 @@
       display: inline-block;
       max-width: 100%;
       overflow: hidden;
-      vertical-align: middle;
+      vertical-align: top;
     }
 
     &.show-box-hover {
@@ -108,14 +108,18 @@
   }
 
   .arrow-inline {
+    margin-top: 27px;
     margin-left: 6px;
     color: @secondaryText;
+    vertical-align: top;
   }
 
   .error-inline {
     z-index: 2;
+    margin-top: 27px;
     margin-left: 6px;
     color: @secondaryText;
+    vertical-align: top;
     cursor: pointer;
   }
 
@@ -171,7 +175,7 @@
       overflow-x: hidden;
       overflow-y: auto;
       background: #fff;
-      border-radius: 4px;
+      border-radius: 8px;
       box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
 
       &::-webkit-scrollbar {
