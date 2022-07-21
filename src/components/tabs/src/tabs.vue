@@ -150,9 +150,10 @@ export default defineComponent({
   components: {
     'tab-header-render': {
       render() {
-        return h('div', { label: this.label, name: this.name }, [
+        return h('div', { className: 'item-box' }, [
           renderSlot(this.slotData, 'header', {
-            row: { label: this.label, name: this.name }
+            label: this.label,
+            name: this.name
           })
         ])
       },

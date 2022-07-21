@@ -57,25 +57,25 @@
   <b-tabs v-model="tabsValue4" type="card-space">
     <b-tab-pane name="add">
       <template #header="scope">
-        <b-icon :name="scope.row.name" />{{ scope.row.name }}
+        <b-icon :name="scope.name" />{{ scope.name }}
       </template>
       <div style="padding: 20px;">add</div>
     </b-tab-pane>
     <b-tab-pane name="app">
       <template #header="scope">
-        <b-icon :name="scope.row.name" />{{ scope.row.name }}
+        <b-icon :name="scope.name" />{{ scope.name }}
       </template>
       <div style="padding: 20px;">app</div>
     </b-tab-pane>
     <b-tab-pane name="approval">
       <template #header="scope">
-        <b-icon :name="scope.row.name" />{{ scope.row.name }}
+        <b-icon :name="scope.name" />{{ scope.name }}
       </template>
       <div style="padding: 20px;">approval</div>
     </b-tab-pane>
     <b-tab-pane name="arrow-down-bold">
       <template #header="scope">
-        <b-icon :name="scope.row.name" />{{ scope.row.name }}
+        <b-icon :name="scope.name" />{{ scope.name }}
       </template>
       <div style="padding: 20px;">arrow-down-bold</div>
     </b-tab-pane>
