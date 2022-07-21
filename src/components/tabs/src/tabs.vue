@@ -13,12 +13,17 @@
           :key="v.name"
           class="item"
           :class="{ active: modelValue === v.name }"
-          :name="v.name"
           @click="headerItemClickHandler(v.name)"
           @mouseenter="headerItemMouseenterHandler(v.name)"
           @mouseleave="headerItemMouseleaveHandler"
         >
-          <a class="item-text">{{ v.label }}</a>
+          <tab-header-render
+            v-if="v.slot.header"
+            :label="v.label"
+            :name="v.name"
+            :slotData="v.slot"
+          ></tab-header-render>
+          <span v-else class="item-text">{{ v.label }}</span>
         </li>
       </ul>
       <div
@@ -35,7 +40,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, watch, nextTick } from 'vue'
+import {
+  defineComponent,
+  PropType,
+  ref,
+  watch,
+  nextTick,
+  renderSlot
+} from 'vue'
 import type { TabPaneProps } from './type'
 import { provideMore } from '@tools/utils/vue-utils'
 
@@ -64,7 +76,11 @@ export default defineComponent({
     let headerItemsLeft: number[] = []
 
     function initList(item: TabPaneProps) {
-      headerList.value.push({ ...item })
+      headerList.value.push({
+        label: item.label,
+        name: item.name,
+        slot: item.slot
+      })
     }
 
     function headerItemClickHandler(name: string) {
@@ -129,6 +145,30 @@ export default defineComponent({
       headerItemClickHandler,
       headerItemMouseenterHandler,
       headerItemMouseleaveHandler
+    }
+  },
+  components: {
+    'tab-header-render': {
+      render() {
+        return h('div', { label: this.label, name: this.name }, [
+          renderSlot(this.slotData, 'header', {
+            row: { label: this.label, name: this.name }
+          })
+        ])
+      },
+      props: {
+        label: {
+          type: String as PropType<string>,
+          default: ''
+        },
+        name: {
+          type: String as PropType<string>,
+          default: ''
+        },
+        slotData: {
+          required: true
+        }
+      }
     }
   }
 })
