@@ -6,6 +6,7 @@ import select, { Option } from './select'
 import Icon from './icon'
 import DropDown, { DropDownMenu, DropDownMenuItem } from './dropDown'
 import Tabs from './tabs'
+import Drawer from './drawer'
 import type { App } from 'vue'
 
 const components = [
@@ -19,7 +20,8 @@ const components = [
   DropDown,
   DropDownMenu,
   DropDownMenuItem,
-  Tabs
+  Tabs,
+  Drawer
 ]
 
 const install = (app: App) => {
