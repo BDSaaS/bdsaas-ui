@@ -6,6 +6,8 @@
       inline && 'b-select-inline',
       multiple && 'b-select-multiple'
     ]"
+    @mouseenter="mouseenterHandler"
+    @mouseleave="mouseleaveHandler"
     @click.stop="clickHandler"
   >
     <div
@@ -13,6 +15,7 @@
       ref="box"
       :class="[
         'show-box',
+        isMouseEnter && !disabled && 'show-box-hover',
         !modelValue && 'show-box-placeholder',
         visible && 'show-box-focus',
         !border && 'show-box-non',
@@ -25,13 +28,11 @@
         class="arrow-inline"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="!border && clearable && isMouseEnter && modelValue"
         class="error-inline"
         name="error"
-        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -40,13 +41,11 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="border && clearable && isMouseEnter && modelValue"
         class="error-down"
         name="error"
-        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -56,6 +55,7 @@
       ref="box"
       :class="[
         'show-box',
+        isMouseEnter && !disabled && 'show-box-hover',
         modelValue.length && 'show-box-multiple',
         !modelValue.length && 'show-box-placeholder',
         visible && 'show-box-focus',
@@ -70,7 +70,6 @@
             class="tag-close"
             name="close"
             :size="16"
-            style="color: #a3acbe;"
             @click.stop="tagClickHandler(v)"
           ></b-icon>
         </li>
@@ -79,7 +78,6 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
     </div>
     <b-input
@@ -87,8 +85,6 @@
       readonly
       is-select
       :class="{ 'input-disabled': disabled }"
-      @mouseenter="mouseenterHandler"
-      @mouseleave="mouseleaveHandler"
       @focus="focusHandler"
       @blur="blurHandler"
     ></b-input>
@@ -100,28 +96,31 @@
           'dropdown-top': position === 'top',
           'dropdown-bottom': position === 'bottom'
         }"
+        @click.stop
       >
-        <ul
-          class="dropdown-list"
-          :style="{ 'text-align': border ? 'left' : 'center' }"
-        >
-          <template v-if="!$slots.default">
-            <li
-              v-for="(item, index) of options"
-              :key="index"
-              :class="[
-                multiple && modelValue.includes(item.value) && 'selected',
-                !multiple && modelValue === item.value && 'selected',
-                'option',
-                item.disabled && 'disabled'
-              ]"
-              @click.stop="selectHandler(item)"
-            >
-              {{ item.label }}
-            </li>
-          </template>
-          <slot v-else></slot>
-        </ul>
+        <div class="dropdown-box">
+          <ul
+            class="dropdown-list"
+            :style="{ 'text-align': border ? 'left' : 'center' }"
+          >
+            <template v-if="!$slots.default">
+              <li
+                v-for="(item, index) of options"
+                :key="index"
+                :class="[
+                  multiple && modelValue.includes(item.value) && 'selected',
+                  !multiple && modelValue === item.value && 'selected',
+                  'option',
+                  item.disabled && 'disabled'
+                ]"
+                @click.stop="selectHandler(item)"
+              >
+                {{ item.label }}
+              </li>
+            </template>
+            <slot v-else></slot>
+          </ul>
+        </div>
       </div>
     </transition>
   </div>
@@ -141,7 +140,7 @@ import {
 import { getLabel, getList } from './interface'
 import type { PropType } from 'vue'
 import type { Options, OptionsItem } from './interface'
-import { addEvent, provideMore, removeEvent } from '@/utils'
+import { addEvent, provideMore, removeEvent } from '@tools/utils/vue-utils'
 import BInput from '@/components/input/src/input.vue'
 import BIcon from '@/components/icon/src/icon.vue'
 
@@ -196,10 +195,25 @@ export default defineComponent({
       label: getLabel(props.options, props.modelValue as string),
       multipleList: getList(props.options, props.modelValue as string[]),
       visible: false,
-      isMouseEnter: false,
-      position: ''
+      isMouseEnter: false
     })
     const box = ref(null)
+    const position = computed(() => {
+      let flag = ''
+      if (state.visible) {
+        const top = (box as any).value.getBoundingClientRect().top
+        const bottom =
+          document.documentElement.clientHeight -
+          (box as any).value.getBoundingClientRect().bottom
+        const distance = 232
+        if (top >= distance && bottom < distance) {
+          flag = 'bottom'
+        } else {
+          flag = 'top'
+        }
+      }
+      return flag
+    })
 
     const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
@@ -209,9 +223,28 @@ export default defineComponent({
     onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
 
     watch(
-      [() => state.visible, () => props.modelValue],
-      (visible, modelValue) => {
+      () => state.visible,
+      visible => {
         emit('visible-change', visible)
+      }
+    )
+
+    watch(
+      () => props.modelValue,
+      modelValue => {
+        if (props.options.length) {
+          state.label = getLabel(props.options, modelValue as string)
+          state.multipleList = getList(props.options, modelValue as string[])
+        }
+        emit('change', modelValue)
+      }
+    )
+
+    watch(
+      () => props.options,
+      options => {
+        state.label = getLabel(options, props.modelValue as string)
+        state.multipleList = getList(options, props.modelValue as string[])
       }
     )
 
@@ -221,19 +254,17 @@ export default defineComponent({
       }
       let value = null
       let label = ''
-      let multipleList: any[] = []
+      let multipleList: Options = []
       if (props.multiple) {
         value = props.modelValue.includes(item.value)
           ? (props.modelValue as string[]).filter(each => item.value !== each)
           : [...props.modelValue, item.value]
-        multipleList = props.modelValue.includes(item.value)
+        multipleList = state.multipleList.includes(item.value)
           ? state.multipleList.filter(each => item.value !== each.value)
           : [...state.multipleList, item]
-        emit('change', value)
       } else {
-        label = item.label
         value = item.value
-        value !== props.modelValue && emit('change', value)
+        label = item.label
         hiddenDropdown()
       }
       state.label = label
@@ -253,16 +284,6 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
-      const top = (box as any).value.getBoundingClientRect().top
-      const bottom =
-        document.documentElement.clientHeight -
-        (box as any).value.getBoundingClientRect().bottom
-      const distance = 232
-      if (top >= distance && bottom < distance) {
-        state.position = 'bottom'
-      } else {
-        state.position = 'top'
-      }
       state.visible ? hiddenDropdown() : showDropdown()
     }
 
@@ -278,8 +299,6 @@ export default defineComponent({
     }
 
     function clearHandler() {
-      state.label = ''
-      state.multipleList = []
       props.multiple
         ? emit('update:modelValue', [])
         : emit('update:modelValue', '')
@@ -297,6 +316,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       box,
+      position,
       blurHandler,
       focusHandler,
       clickHandler,

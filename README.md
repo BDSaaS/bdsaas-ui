@@ -31,7 +31,7 @@ $ pnpm run prepare
 五、 运行组件单元测试
 
 ```sh
-$ pnpm run tests
+$ pnpm run test
 ```
 
 一个极简的组件单元测试案例，打开控制台感受 **vitest** 的极致速度！

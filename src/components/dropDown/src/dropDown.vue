@@ -19,6 +19,7 @@
       ref="box"
       :class="[
         'show-box',
+        isMouseEnter && !disabled && 'show-box-hover',
         !modelValue && 'show-box-placeholder',
         disabled && 'show-box-disabled'
       ]"
@@ -29,13 +30,11 @@
         class="arrow-down"
         :class="{ 'arrow-roate': visible }"
         name="arrow-down-bold"
-        style="color: #a3acbe;"
       ></b-icon>
       <b-icon
         v-if="clearable && isMouseEnter && modelValue"
         class="error-down"
         name="error"
-        style="color: #a3acbe;"
         @click.stop="clearHandler"
         @mouseenter="mouseenterHandler"
       ></b-icon>
@@ -48,26 +47,36 @@
           'dropdown-top': position === 'top',
           'dropdown-bottom': position === 'bottom'
         }"
+        @click.stop
       >
-        <div class="dropdown-box">
-          <template v-if="!$slots.default">
-            <ul class="menu">
-              <template v-for="(item, index) of options" :key="index">
-                <li v-if="item.divided" class="divided"></li>
-                <li
-                  :class="[
-                    modelValue === item.value && 'selected',
-                    'menu-item',
-                    item.disabled && 'disabled'
-                  ]"
-                  @click.stop="selectHandler(item)"
-                >
-                  {{ item.label }}
-                </li>
-              </template>
-            </ul>
-          </template>
-          <slot v-else></slot>
+        <div class="dropdown-both">
+          <div class="dropdown-box">
+            <template v-if="!$slots.default">
+              <ul class="menu">
+                <template v-for="(item, index) of options" :key="index">
+                  <li v-if="item.divided" class="divided"></li>
+                  <li class="menu-item">
+                    <div
+                      class="menu-item-text"
+                      :class="[
+                        modelValue === item.value && 'selected',
+                        item.disabled && 'disabled'
+                      ]"
+                      @click.stop="selectHandler(item)"
+                    >
+                      {{ item.label }}
+                    </div>
+                  </li>
+                </template>
+              </ul>
+            </template>
+            <slot v-else></slot>
+          </div>
+          <div v-show="childrenList.length" class="dropdown-childrenbox">
+            <template v-for="v in childrenList" :key="v.value">
+              <slot name="children-item" :row="v"></slot>
+            </template>
+          </div>
         </div>
       </div>
     </transition>
@@ -84,10 +93,10 @@ import {
   watch,
   computed
 } from 'vue'
-import { getLabel } from './type'
+import { getLabel, getChildrenList } from './type'
 import type { PropType } from 'vue'
 import type { Options, OptionsItem } from './type'
-import { addEvent, provideMore, removeEvent } from '@/utils'
+import { addEvent, provideMore, removeEvent } from '@tools/utils/vue-utils'
 import BIcon from '@/components/icon/src/icon.vue'
 
 export default defineComponent({
@@ -133,12 +142,28 @@ export default defineComponent({
   emits: ['update:modelValue', 'change', 'visible-change'],
   setup(props, { emit }) {
     const state = reactive({
-      label: getLabel(props.options, props.modelValue as string),
+      label: getLabel(props.options, props.modelValue),
+      childrenList: getChildrenList(props.options, props.modelValue),
       visible: false,
-      isMouseEnter: false,
-      position: ''
+      isMouseEnter: false
     })
     const box = ref(null)
+    const position = computed(() => {
+      let flag: string = position.value || ''
+      if (state.visible) {
+        const top = (box as any).value.getBoundingClientRect().top
+        const bottom =
+          document.documentElement.clientHeight -
+          (box as any).value.getBoundingClientRect().bottom
+        const distance = 232
+        if (top >= distance && bottom < distance) {
+          flag = 'bottom'
+        } else {
+          flag = 'top'
+        }
+      }
+      return flag
+    })
 
     const showDropdown = () => (state.visible = true)
     const hiddenDropdown = () => (state.visible = false)
@@ -148,9 +173,28 @@ export default defineComponent({
     onBeforeUnmount(() => removeEvent(document, 'click', hiddenDropdown))
 
     watch(
-      [() => state.visible, () => props.modelValue],
-      (visible, modelValue) => {
+      () => state.visible,
+      visible => {
         emit('visible-change', visible)
+      }
+    )
+
+    watch(
+      () => props.options,
+      options => {
+        state.label = getLabel(options, props.modelValue)
+        state.childrenList = getChildrenList(options, props.modelValue)
+      }
+    )
+
+    watch(
+      () => props.modelValue,
+      modelValue => {
+        if (props.options.length) {
+          state.label = getLabel(props.options, props.modelValue)
+          state.childrenList = getChildrenList(props.options, props.modelValue)
+        }
+        emit('change', modelValue)
       }
     )
 
@@ -158,14 +202,12 @@ export default defineComponent({
       if (item.disabled) {
         return false
       }
-      let value = null
-      let label = ''
-      label = item.label
-      value = item.value
-      hiddenDropdown()
-      value !== props.modelValue && emit('change', value)
+      let label = item.label
+      let childrenList = item.children ? item.children.map(v => ({ ...v })) : []
+      !childrenList.length && hiddenDropdown()
       state.label = label
-      emit('update:modelValue', value)
+      state.childrenList = childrenList
+      emit('update:modelValue', item.value)
     }
 
     function clickHandler() {
@@ -173,16 +215,6 @@ export default defineComponent({
         return false
       }
       if (props.trigger === 'click') {
-        const top = (box as any).value.getBoundingClientRect().top
-        const bottom =
-          document.documentElement.clientHeight -
-          (box as any).value.getBoundingClientRect().bottom
-        const distance = 232
-        if (top >= distance && bottom < distance) {
-          state.position = 'bottom'
-        } else {
-          state.position = 'top'
-        }
         state.visible ? hiddenDropdown() : showDropdown()
       }
     }
@@ -191,18 +223,10 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
-      const top = (box as any).value.getBoundingClientRect().top
-      const bottom =
-        document.documentElement.clientHeight -
-        (box as any).value.getBoundingClientRect().bottom
-      const distance = 232
-      if (top >= distance && bottom < distance) {
-        state.position = 'bottom'
-      } else {
-        state.position = 'top'
-      }
       state.isMouseEnter = true
-      props.trigger === 'hover' && showDropdown()
+      if (props.trigger === 'hover') {
+        showDropdown()
+      }
     }
 
     function mouseleaveHandler() {
@@ -211,7 +235,6 @@ export default defineComponent({
     }
 
     function clearHandler() {
-      state.label = ''
       emit('update:modelValue', '')
     }
 
@@ -223,6 +246,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       box,
+      position,
       clickHandler,
       selectHandler,
       mouseenterHandler,

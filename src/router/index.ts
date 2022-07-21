@@ -75,6 +75,26 @@ const routes: Array<RouteRecordRaw> = [
     path: '/messageDemo',
     name: 'messageDemo',
     component: () => import('@/views/messageDemo.vue')
+  },
+  {
+    path: '/badgeDemo',
+    name: 'badgeDemo',
+    component: () => import('@/views/badgeDemo.vue')
+  },
+  {
+    path: '/tabsDemo',
+    name: 'TabsDemo',
+    component: () => import('@/views/tabsDemo.vue')
+  },
+  {
+    path: '/switchDemo',
+    name: 'switchDemo',
+    component: () => import('@/views/switchDemo.vue')
+  },
+  {
+    path: '/drawerDemo',
+    name: 'DrawerDemo',
+    component: () => import('@/views/DrawerDemo.vue')
   }
 ]
 

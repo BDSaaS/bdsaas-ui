@@ -1,21 +1,24 @@
 <template>
-  <ul>
-    <li v-for="item of $props.treeData" :key="item.key">
-      <b-icon class="red" name="arrow-right-bold" />
-      <span>{{ item.title }}</span>
-      <BTree v-if="item.children?.length" :tree-data="item.children" />
-    </li>
+  <ul :class="treeClass">
+    <tree-node
+      v-for="item of treeDataCache"
+      :key="item.key"
+      :tree-node-data="item"
+    />
   </ul>
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
-import { Key, TreeNode } from './interface'
-import BIcon from '@/components/icon/src/icon.vue'
+import type { PropType } from 'vue'
+import type { Key, TreeNode as ITreeNode } from './interface'
+import TreeNode from '@/components/tree/src/tree-node.vue'
+import { treeDataCache, useInitTreeData } from './hooks/useInitData'
+import { cloneDeep } from 'lodash-es'
+import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
   name: 'BTree',
-  components: { BIcon },
+  components: { TreeNode },
   props: {
     // 点击节点本身的选中
     selectedKeys: {
@@ -23,7 +26,8 @@ export default defineComponent({
     },
     // 是否开启多选（只针对点击节点本身的多选）
     multiple: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: false
     },
     // 点击复选框的选中
     checkedKeys: {
@@ -45,18 +49,39 @@ export default defineComponent({
     showLine: {
       type: Boolean as PropType<boolean>
     },
+    // 显示图标
+    showIcon: {
+      type: Boolean as PropType<boolean>
+    },
     // 数据
     treeData: {
-      type: Array as PropType<TreeNode[]>,
+      type: Array as PropType<ITreeNode[]>,
       required: true
+    },
+    // 树最外层 class，用来自定义样式
+    wrapperClass: {
+      type: String as PropType<string>,
+      default: ''
     }
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
-  setup() {
-    const h1 = 'Tree 组件'
+  setup(props) {
+    const { wrapperClass, treeData, multiple } = toRefs(props)
+    const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
+    // 单选情况使用
+    const currentSelectedIndex = ref<null | string>('')
+
+    provideMore({
+      currentSelectedIndex,
+      multiple,
+      treeDataCache
+    })
+
+    useInitTreeData(cloneDeep(unref(treeData)))
 
     return {
-      h1
+      treeClass,
+      treeDataCache
     }
   }
 })

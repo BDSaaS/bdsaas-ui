@@ -73,7 +73,7 @@
 
 <script lang="ts">
 import BIcon from '@/components/icon/src/icon.vue'
-import { addEvent, removeEvent } from '@/utils'
+import { addEvent, removeEvent } from '@tools/utils/vue-utils'
 import {
   toRefs,
   ref,

@@ -1,6 +1,10 @@
 <template>
-  <div style="display: flex; justify-content: center;">
-    <BTree :tree-data="treeData" />
+  <div style="width: 500px; margin: 0 auto;">
+    <h2>节点单选</h2>
+    <BTree :tree-data="treeData" wrapper-class="test-tree" />
+    <h2>节点多选</h2>
+    <!--    FIXME 依赖注入会引发多个 Tree 组件数据冲突 bug-->
+    <BTree :tree-data="treeData2" multiple wrapper-class="test-tree" />
   </div>
 </template>
 
@@ -9,14 +13,51 @@ import BTree from '@/components/tree/src/tree.vue'
 import { TreeNode } from '@/components/tree/src/interface'
 import { Ref } from 'vue'
 
-const treeData = ref([
+const testData = [
   {
-    title: 'parent 1',
+    title: '父节点-1',
     key: '0-0'
   },
   {
     title: 'parent 2',
     key: '0-1'
   }
-]) as Ref<TreeNode[]>
+]
+const testData2 = [
+  {
+    title: '父节点-1',
+    key: '0-0',
+    children: [
+      {
+        title: '父节点-1-1',
+        key: '0-1-1',
+        children: [
+          {
+            title: '父节点-1-1-1',
+            key: '0-1-1-1',
+            checkAble: false
+          }
+        ]
+      },
+      {
+        title: '父节点-1-2',
+        key: '0-1-2',
+        children: [
+          {
+            title: '父节点-1-1-2',
+            key: '0-1-1-2',
+            checkAble: false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'parent 2',
+    key: '0-1'
+  }
+]
+
+const treeData = ref(testData) as Ref<TreeNode[]>
+const treeData2 = ref(testData2) as Ref<TreeNode[]>
 </script>
