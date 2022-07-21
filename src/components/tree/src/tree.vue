@@ -64,19 +64,31 @@ export default defineComponent({
     }
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
-  setup(props) {
-    const { wrapperClass, treeData, multiple } = toRefs(props)
+  setup(props, { emit }) {
+    const { wrapperClass, treeData, multiple, selectedKeys } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用
     const currentSelectedIndex = ref<null | string>('')
     const treeDataCache = ref([]) as Ref<ITreeNode[]>
 
-    useInitTreeData(treeData, treeDataCache)
+    function updateSelectedKeys(keys: Key[]) {
+      console.log(keys, 'line 75')
+      // Fixme 节点多选有（值不对，收起） bug
+      emit('update:selectedKeys', keys)
+    }
+
+    useInitTreeData({
+      treeData,
+      treeDataCache,
+      selectedKeys: selectedKeys as Ref<Key[]>
+    })
 
     provideMore({
       currentSelectedIndex,
       multiple,
-      treeDataCache
+      treeDataCache,
+      selectedKeys,
+      updateSelectedKeys
     })
 
     return {

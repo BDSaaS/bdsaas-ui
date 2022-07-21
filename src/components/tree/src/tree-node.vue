@@ -51,7 +51,10 @@ import BIcon from '@/components/icon/src/icon.vue'
 import BCheckbox from '@/components/checkbox/src/checkbox.vue'
 import CollapseTransition from '@/components/collapse-transition/src/collapse-transition.vue'
 import { injectMore } from '@tools/utils/vue-utils'
-import { singleSelect } from '@/components/tree/src/hooks/useSelect'
+import {
+  useSetSelectedKeys,
+  useSingleSelect
+} from '@/components/tree/src/hooks/useSelect'
 
 export default defineComponent({
   name: 'tree-node',
@@ -64,10 +67,18 @@ export default defineComponent({
   },
   setup(props) {
     const { treeNodeData } = toRefs(props)
-    const { currentSelectedIndex, multiple, treeDataCache } = injectMore([
+    const {
+      currentSelectedIndex,
+      multiple,
+      treeDataCache,
+      selectedKeys,
+      updateSelectedKeys
+    } = injectMore([
       'currentSelectedIndex',
       'multiple',
-      'treeDataCache'
+      'treeDataCache',
+      'selectedKeys',
+      'updateSelectedKeys'
     ])
 
     const hasLeaf = computed(
@@ -89,24 +100,37 @@ export default defineComponent({
     }
 
     function clickNode() {
-      // 单选情况下启用
+      // Todo 待转成 hooks
+      /**
+       * 点击子节点本身进行选中，可取消选中（有选中状态）
+       * 点击子节点本身进行选中，点击其他行取消选中（有选中状态）
+       */
       if (!multiple.value) {
         const prevIndex = currentSelectedIndex.value as string
         const currentIndex = unref(treeNodeData).currentIndex as string
         currentSelectedIndex.value = currentIndex
 
         if (Object.is(prevIndex, currentIndex)) {
-          return setNodeSelected()
+          setNodeSelected()
+        } else {
+          useSingleSelect({
+            prevIndex,
+            currentIndex,
+            treeData: unref(treeDataCache) as TreeNode[]
+          })
         }
-
-        singleSelect({
-          prevIndex,
-          currentIndex,
-          treeData: unref(treeDataCache) as TreeNode[]
-        })
       } else {
         setNodeSelected()
       }
+
+      unref(updateSelectedKeys)(
+        useSetSelectedKeys({
+          multiple: multiple.value,
+          selectedKeys: toRaw(unref(selectedKeys)),
+          selectedKey: unref(treeNodeData).key,
+          selected: toRaw(unref(treeNodeData)).selected as boolean
+        })
+      )
     }
 
     function expandNode() {

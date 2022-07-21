@@ -1,9 +1,15 @@
-import { TreeNode } from '@/components/tree/src/interface'
+import { Key, TreeNode } from '@/components/tree/src/interface'
 
 type Params = {
   prevIndex: string
   currentIndex: string
   treeData: TreeNode[]
+}
+type Params2 = {
+  multiple: boolean
+  selectedKeys: Key[]
+  selectedKey: Key
+  selected: boolean
 }
 
 function getTreeNode(
@@ -23,7 +29,7 @@ function getIndexList(indexString: string): number[] {
   return indexString.split('-').map(Number)
 }
 
-export function singleSelect({ prevIndex, currentIndex, treeData }: Params) {
+export function useSingleSelect({ prevIndex, currentIndex, treeData }: Params) {
   const prevSelectedTreeNode = getTreeNode(
     treeData,
     'children',
@@ -36,4 +42,29 @@ export function singleSelect({ prevIndex, currentIndex, treeData }: Params) {
   )
   prevSelectedTreeNode.selected = false
   currentSelectedTreeNode.selected = true
+}
+
+export function useSetSelectedKeys({
+  multiple,
+  selectedKeys,
+  selectedKey,
+  selected
+}: Params2): Key[] {
+  console.log('selected', selected)
+  if (selected) {
+    if (multiple) {
+      selectedKeys.push(selectedKey)
+      selectedKeys = [...new Set(selectedKeys)]
+    } else {
+      selectedKeys = [selectedKey]
+    }
+  } else {
+    if (multiple) {
+      const index = selectedKeys.findIndex(key => key === selectedKey)
+      selectedKeys.splice(index)
+    } else {
+      selectedKeys = []
+    }
+  }
+  return selectedKeys
 }
