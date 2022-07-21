@@ -1,19 +1,19 @@
 <template>
-  <p>一般用法：</p>
+  <p style="margin: 20px 0;">一般用法：</p>
   <b-drop-down v-model="selected1" :options="options1" />
-  <p>点击触发：</p>
+  <p style="margin: 20px 0;">点击触发：</p>
   <b-drop-down v-model="selected2" :options="options1" trigger="click" />
-  <p>禁用状态：</p>
+  <p style="margin: 20px 0;">禁用状态：</p>
   <b-drop-down v-model="selected3" :options="options1" disabled />
-  <p>带禁用项：</p>
+  <p style="margin: 20px 0;">带禁用项：</p>
   <b-drop-down v-model="selected4" :options="options2" />
-  <p>带分割线：</p>
+  <p style="margin: 20px 0;">带分割线：</p>
   <b-drop-down v-model="selected5" :options="options3" />
-  <p>可清空：</p>
+  <p style="margin: 20px 0;">可清空：</p>
   <b-drop-down v-model="selected6" :options="options1" clearable />
-  <p>收起状态：</p>
+  <p style="margin: 20px 0;">收起状态：</p>
   <b-drop-down v-model="selected7" :options="options1" omit />
-  <p>默认插槽：</p>
+  <p style="margin: 20px 0;">默认插槽：</p>
   <b-drop-down v-model="selected8">
     <b-drop-down-menu>
       <b-drop-down-menu-item
@@ -23,7 +23,7 @@
       ></b-drop-down-menu-item>
     </b-drop-down-menu>
   </b-drop-down>
-  <p>含有children：</p>
+  <p style="margin: 20px 0;">含有children：</p>
   <b-drop-down v-model="selected9" :options="options4" trigger="click">
     <template #children-item="scope">
       <div

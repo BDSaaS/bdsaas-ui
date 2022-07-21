@@ -1,1 +1,4 @@
-export default {}
+export type TabPaneProps = {
+  label: string
+  name: string
+}

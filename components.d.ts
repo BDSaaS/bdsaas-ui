@@ -10,7 +10,7 @@ declare module '@vue/runtime-core' {
     Checkbox: typeof import('./src/components/checkbox/src/checkbox.vue')['default']
     Input: typeof import('./src/components/input/src/input.vue')['default']
     List: typeof import('./src/components/list/src/list.vue')['default']
-    Options: typeof import('./src/components/select/src/options.vue')['default']
+    Options: typeof import('./src/components/select/src/option.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('./src/components/select/src/select.vue')['default']
