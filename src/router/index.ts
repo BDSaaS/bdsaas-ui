@@ -80,6 +80,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/tabsDemo',
     name: 'TabsDemo',
     component: () => import('@/views/tabsDemo.vue')
+  },
+  {
+    path: '/switchDemo',
+    name: 'switchDemo',
+    component: () => import('@/views/switchDemo.vue')
   }
 ]
 
