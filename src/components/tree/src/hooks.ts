@@ -1,7 +1,7 @@
 import { Ref } from 'vue'
 import { TreeNode } from '@/components/tree/src/interface'
-import { handleArrData } from '@tools/handle-data'
-import { isObject } from '@tools/is'
+import { handleArrData } from '@tools/utils/handle-data'
+import { isObject } from '@tools/utils/is'
 
 export const treeDataCache = ref([]) as Ref<TreeNode[]>
 

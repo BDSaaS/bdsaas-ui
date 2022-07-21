@@ -3,8 +3,8 @@
     <div class="b-tree-node-content">
       <span :class="switchClass" @click="expandNode">
         <b-icon
-          class="b-tree-node-switch-icon"
           v-if="hasLeaf"
+          class="b-tree-node-switch-icon"
           name="arrow-right-bold"
         />
       </span>
