@@ -1,12 +1,14 @@
 <template>
-  <div class="b-badge">
+  <div class="b-badge-box">
     <b-badge :value="content" :is-dot="isDot" :max="max">
-      <b-button>数量</b-button>
+      <b-button>按钮</b-button>
     </b-badge>
-    <b-button @click="content++">数量+</b-button>
-    <b-button @click="content--">数量-</b-button>
-    <b-button @click="changeIsdot">isDot</b-button>
-    <b-button @click="changeMax">最大值99</b-button>
+    <div>
+      <b-button @click="content++">数量+</b-button>
+      <b-button @click="content--">数量-</b-button>
+      <b-button @click="changeIsdot">isDot</b-button>
+      <b-button @click="changeMax">最大值99</b-button>
+    </div>
   </div>
 </template>
 
@@ -34,7 +36,14 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-.b-badge {
-  margin: 50px 300px;
+.b-badge-box {
+  display: flex;
+  width: 800px;
+  height: 300px;
+  margin: 100px auto;
+
+  & > div {
+    margin-left: 100px;
+  }
 }
 </style>
