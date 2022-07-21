@@ -18,7 +18,7 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { OptionsItem } from './type'
-import { injectMore } from '@/utils'
+import { injectMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
   name: 'BDropDownMenuItem',

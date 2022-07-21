@@ -140,7 +140,7 @@ import {
 import { getLabel, getList } from './interface'
 import type { PropType } from 'vue'
 import type { Options, OptionsItem } from './interface'
-import { addEvent, provideMore, removeEvent } from '@/utils'
+import { addEvent, provideMore, removeEvent } from '@tools/utils/vue-utils'
 import BInput from '@/components/input/src/input.vue'
 import BIcon from '@/components/icon/src/icon.vue'
 

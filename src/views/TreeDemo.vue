@@ -2,10 +2,6 @@
   <div style="width: 500px; margin: 0 auto;">
     <BTree :tree-data="treeData" wrapper-class="test-tree" />
   </div>
-  <hr />
-  <div>
-    {{ treeData }}
-  </div>
 </template>
 
 <script setup lang="ts">

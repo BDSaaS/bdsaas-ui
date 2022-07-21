@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@tools/*": ["bd-tools/*"],
       "#/*": ["types/*"]
     },
     "target": "esnext",

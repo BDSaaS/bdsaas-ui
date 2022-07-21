@@ -42,7 +42,8 @@ export default defineConfig(({ command, mode }) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src')
+        '@': path.resolve(__dirname, 'src'),
+        '@tools': path.resolve(__dirname, 'bd-tools')
       }
     },
     server: {
