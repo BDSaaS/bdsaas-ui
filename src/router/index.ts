@@ -70,6 +70,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/confirmDemo',
     name: 'confirmDemo',
     component: () => import('@/views/confirmDemo.vue')
+  },
+  {
+    path: '/drawerDemo',
+    name: 'DrawerDemo',
+    component: () => import('@/views/DrawerDemo.vue')
   }
 ]
 

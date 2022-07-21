@@ -21,6 +21,8 @@
     <router-link to="/treeDemo">Tree 组件</router-link>
     |
     <router-link to="/confirmDemo">confirm 组件</router-link>
+    |
+    <router-link to="/drawerDemo">抽屉组件</router-link>
   </nav>
   <router-view />
 </template>
