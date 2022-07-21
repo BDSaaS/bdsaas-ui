@@ -37,7 +37,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref, watch, nextTick } from 'vue'
 import type { TabPaneProps } from './type'
-import { provideMore } from '@/utils'
+import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
   name: 'BTabs',
