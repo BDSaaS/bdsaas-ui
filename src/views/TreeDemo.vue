@@ -3,7 +3,6 @@
     <h2>节点单选</h2>
     <BTree :tree-data="treeData" wrapper-class="test-tree" />
     <h2>节点多选</h2>
-    <!--    FIXME 依赖注入会引发多个 Tree 组件数据冲突 bug-->
     <BTree :tree-data="treeData2" multiple wrapper-class="test-tree" />
   </div>
 </template>
@@ -53,7 +52,7 @@ const testData2 = [
     ]
   },
   {
-    title: 'parent 2',
+    title: '父节点-2',
     key: '0-1'
   }
 ]

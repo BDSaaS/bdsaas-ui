@@ -9,11 +9,10 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
+import type { PropType, Ref } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
-import { treeDataCache, useInitTreeData } from './hooks/useInitData'
-import { cloneDeep } from 'lodash-es'
+import { useInitTreeData } from './hooks/useInitData'
 import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
@@ -70,14 +69,15 @@ export default defineComponent({
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用
     const currentSelectedIndex = ref<null | string>('')
+    const treeDataCache = ref([]) as Ref<ITreeNode[]>
+
+    useInitTreeData(treeData, treeDataCache)
 
     provideMore({
       currentSelectedIndex,
       multiple,
       treeDataCache
     })
-
-    useInitTreeData(cloneDeep(unref(treeData)))
 
     return {
       treeClass,

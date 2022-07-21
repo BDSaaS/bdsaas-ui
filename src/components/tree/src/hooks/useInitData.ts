@@ -1,11 +1,12 @@
 import { Ref } from 'vue'
 import { TreeNode } from '@/components/tree/src/interface'
 import { isArray, isObject } from '@tools/utils/is'
+import { cloneDeep } from 'lodash-es'
 
-export const treeDataCache = ref([]) as Ref<TreeNode[]>
+// export const treeDataCache = ref([]) as Ref<TreeNode[]>
 
 /*递归给树数组子项加上当前索引*/
-function treeDataInitHandle(
+export function treeDataInitHandle(
   target: TreeNode[],
   parentCurrentIndex?: string
 ): void {
@@ -27,9 +28,13 @@ function treeDataInitHandle(
 }
 
 /*初始化 treeData*/
-export function useInitTreeData(treeData: TreeNode[]) {
+export function useInitTreeData(
+  treeData: Ref<TreeNode[]>,
+  treeDataCache: Ref<TreeNode[]>
+) {
   watchEffect(() => {
-    treeDataCache.value = treeData
-    treeDataInitHandle(treeDataCache.value)
+    const cache = cloneDeep(toRaw(unref(treeData)))
+    treeDataInitHandle(cache)
+    treeDataCache.value = cache
   })
 }

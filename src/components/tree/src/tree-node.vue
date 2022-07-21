@@ -46,7 +46,6 @@
 
 <script lang="ts">
 import type { PropType } from 'vue'
-import { getCurrentInstance } from 'vue'
 import type { TreeNode } from '@/components/tree/src/interface'
 import BIcon from '@/components/icon/src/icon.vue'
 import BCheckbox from '@/components/checkbox/src/checkbox.vue'
@@ -85,17 +84,28 @@ export default defineComponent({
       unref(treeNodeData).isExpanded && 'is-expanded'
     ])
 
-    function clickNode() {
+    function setNodeSelected() {
       unref(treeNodeData).selected = !unref(treeNodeData).selected
+    }
+
+    function clickNode() {
       // 单选情况下启用
       if (!multiple.value) {
         const prevIndex = currentSelectedIndex.value as string
-        currentSelectedIndex.value = unref(treeNodeData).currentIndex
+        const currentIndex = unref(treeNodeData).currentIndex as string
+        currentSelectedIndex.value = currentIndex
+
+        if (Object.is(prevIndex, currentIndex)) {
+          return setNodeSelected()
+        }
+
         singleSelect({
           prevIndex,
-          currentIndex: unref(currentSelectedIndex),
+          currentIndex,
           treeData: unref(treeDataCache) as TreeNode[]
         })
+      } else {
+        setNodeSelected()
       }
     }
 
