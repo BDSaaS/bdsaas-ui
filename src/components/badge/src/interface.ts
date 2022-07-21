@@ -1,6 +1,7 @@
 export type badgeValue = string | number
 export type badgeDot = boolean
 export type badgeMax = number
+export type badgeType = 'shallow' | 'danger'
 export interface badgeProps {
   value: {
     type: [string, number]

@@ -34,11 +34,30 @@
     border-radius: 50%;
     transform: translateY(-50%) translateX(100%);
   }
+
+  .b-badge-shallow {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #f12525;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #feeaea;
+    border-radius: 10px;
+    transform: translateY(-50%) translateX(100%);
+  }
 }
 
 .b-zoom-in-center-enter-active,
 .b-zoom-in-center-leave-active {
-  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: all 0.3s ease;
 }
 
 .b-zoom-in-center-enter,

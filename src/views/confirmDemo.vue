@@ -1,8 +1,4 @@
 <template>
-  <div class="xw">
-    <span>s</span>
-    <span>w</span>
-  </div>
   <b-button type="primary" @click="showConfirm">打开confirm</b-button>
   <b-confirm :visible="visible" @submit="handleOk" @cancel="toggle">
     <template #header>
@@ -55,9 +51,3 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="less" scoped>
-.xw {
-  color: @mainColor;
-  .flex-column-mixin(column, center, center);
-}
-</style>

@@ -17,7 +17,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import BButton from '@/components/button/src/button.vue'
-import type { badgeValue, badgeDot, badgeMax } from './interface'
+import type { badgeValue, badgeDot, badgeMax, badgeType } from './interface'
 import type { PropType } from 'vue'
 export default defineComponent({
   name: 'BBadge',
@@ -37,20 +37,26 @@ export default defineComponent({
     isDot: {
       type: Boolean as PropType<badgeDot>,
       default: false
+    },
+    type: {
+      type: String as PropType<badgeType>,
+      default: ''
     }
   },
   setup(props) {
-    const { isDot } = toRefs(props)
+    const { isDot, type } = toRefs(props)
     const content = computed(() => {
       if (isDot.value) return ''
       if (typeof props.value === 'number' && typeof props.max === 'number') {
         return props.max < props.value ? `${props.max}+` : props.value
       }
+
       return props.value
     })
     const badgeClass = computed(() => [
       props.isDot && 'b-badge-isdot',
-      !props.isDot && 'b-badge-content'
+      !props.isDot && 'b-badge-content',
+      type.value && !props.isDot && `b-badge-${type.value}`
     ])
     return {
       content,
