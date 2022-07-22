@@ -9,11 +9,10 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
+import type { PropType, Ref } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
-import { treeDataCache, useInitTreeData } from './hooks/useInitData'
-import { cloneDeep } from 'lodash-es'
+import { useInitTreeData } from './hooks/useInitData'
 import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
@@ -65,19 +64,32 @@ export default defineComponent({
     }
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
-  setup(props) {
-    const { wrapperClass, treeData, multiple } = toRefs(props)
+  setup(props, { emit }) {
+    const { wrapperClass, treeData, multiple, selectedKeys } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用
     const currentSelectedIndex = ref<null | string>('')
+    const treeDataCache = ref([]) as Ref<ITreeNode[]>
+
+    function updateSelectedKeys(keys: Key[]) {
+      console.log(keys, 'line 75')
+      // Fixme 节点多选有（值不对，收起） bug
+      emit('update:selectedKeys', keys)
+    }
+
+    useInitTreeData({
+      treeData,
+      treeDataCache,
+      selectedKeys: selectedKeys as Ref<Key[]>
+    })
 
     provideMore({
       currentSelectedIndex,
       multiple,
-      treeDataCache
+      treeDataCache,
+      selectedKeys,
+      updateSelectedKeys
     })
-
-    useInitTreeData(cloneDeep(unref(treeData)))
 
     return {
       treeClass,

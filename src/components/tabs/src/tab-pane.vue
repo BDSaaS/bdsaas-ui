@@ -1,5 +1,7 @@
 <template>
-  <div class="hide" :class="{ show: activeName === name }"><slot></slot></div>
+  <div class="hide" :class="{ show: activeName === name }">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,12 +21,13 @@ export default defineComponent({
       default: ''
     }
   },
-  setup(props) {
+  setup(props, { slots }) {
     const { initList, activeName } = injectMore(['initList', 'activeName'])
 
     initList.value({
       label: props.label,
-      name: props.name
+      name: props.name,
+      slot: slots
     })
 
     return {

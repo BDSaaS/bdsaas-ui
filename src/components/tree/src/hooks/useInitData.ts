@@ -1,19 +1,31 @@
 import { Ref } from 'vue'
-import { TreeNode } from '@/components/tree/src/interface'
+import { Key, TreeNode } from '@/components/tree/src/interface'
 import { isArray, isObject } from '@tools/utils/is'
+import { cloneDeep } from 'lodash-es'
 
-export const treeDataCache = ref([]) as Ref<TreeNode[]>
+type Params = {
+  treeData: Ref<TreeNode[]>
+  treeDataCache: Ref<TreeNode[]>
+  selectedKeys: Ref<Key[]>
+}
+
+type Params2 = {
+  target: TreeNode[]
+  parentCurrentIndex?: string
+  selectedKeys?: Key[]
+}
 
 /*递归给树数组子项加上当前索引*/
-function treeDataInitHandle(
-  target: TreeNode[],
-  parentCurrentIndex?: string
-): void {
+export function treeDataInitHandle({
+  target,
+  parentCurrentIndex,
+  selectedKeys
+}: Params2): void {
   if (isArray(target) && target.length) {
     target.forEach((item, index) => {
       isObject(item) &&
         Object.assign(item, {
-          selected: false,
+          selected: selectedKeys?.includes(item.key),
           isExpanded: false,
           checked: false,
           selectIndex: index,
@@ -21,15 +33,27 @@ function treeDataInitHandle(
             ? `${parentCurrentIndex}-${index}`
             : `${index}`
         })
-      item.children && treeDataInitHandle(item.children, item.currentIndex)
+      item.children &&
+        treeDataInitHandle({
+          target: item.children,
+          parentCurrentIndex: item.currentIndex
+        })
     })
   }
 }
 
 /*初始化 treeData*/
-export function useInitTreeData(treeData: TreeNode[]) {
+export function useInitTreeData({
+  treeData,
+  treeDataCache,
+  selectedKeys
+}: Params) {
   watchEffect(() => {
-    treeDataCache.value = treeData
-    treeDataInitHandle(treeDataCache.value)
+    const target = cloneDeep(toRaw(unref(treeData)))
+    treeDataInitHandle({
+      target,
+      selectedKeys: unref(selectedKeys)
+    })
+    treeDataCache.value = target
   })
 }

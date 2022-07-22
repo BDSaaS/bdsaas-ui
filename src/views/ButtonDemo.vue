@@ -61,7 +61,6 @@ const configAsRefs = toRefs(btnConfig)
 
 const { size, type, round, disabled } = configAsRefs
 
-// fixme 3.使用泛型约束只能入我们想要的参数
 function setValue<T, U extends T>(data: Ref<T>, value: U) {
   data.value = value
 }

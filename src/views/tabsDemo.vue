@@ -53,12 +53,40 @@
       <div style="padding: 20px;">呵呵了</div>
     </b-tab-pane>
   </b-tabs>
+  <p style="margin: 20px 0;">自定义头部：</p>
+  <b-tabs v-model="tabsValue4" type="card-space">
+    <b-tab-pane name="add">
+      <template #header="scope">
+        <b-icon :name="scope.name" />{{ scope.name }}
+      </template>
+      <div style="padding: 20px;">add</div>
+    </b-tab-pane>
+    <b-tab-pane name="app">
+      <template #header="scope">
+        <b-icon :name="scope.name" />{{ scope.name }}
+      </template>
+      <div style="padding: 20px;">app</div>
+    </b-tab-pane>
+    <b-tab-pane name="approval">
+      <template #header="scope">
+        <b-icon :name="scope.name" />{{ scope.name }}
+      </template>
+      <div style="padding: 20px;">approval</div>
+    </b-tab-pane>
+    <b-tab-pane name="arrow-down-bold">
+      <template #header="scope">
+        <b-icon :name="scope.name" />{{ scope.name }}
+      </template>
+      <div style="padding: 20px;">arrow-down-bold</div>
+    </b-tab-pane>
+  </b-tabs>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import BTabs from '@/components/tabs/src/tabs.vue'
 import BTabPane from '@/components/tabs/src/tab-pane.vue'
+import BIcon from '@/components/icon/src/icon.vue'
 
 export default defineComponent({
   name: 'TabsDemo',
@@ -66,16 +94,19 @@ export default defineComponent({
     const tabsValue1 = ref('all')
     const tabsValue2 = ref('all')
     const tabsValue3 = ref('all')
+    const tabsValue4 = ref('add')
 
     return {
       tabsValue1,
       tabsValue2,
-      tabsValue3
+      tabsValue3,
+      tabsValue4
     }
   },
   components: {
     BTabs,
-    BTabPane
+    BTabPane,
+    BIcon
   }
 })
 </script>
