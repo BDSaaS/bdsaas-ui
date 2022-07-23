@@ -54,7 +54,7 @@ import { injectMore } from '@tools/utils/vue-utils'
 import {
   useSetSelectedKeys,
   useSingleSelect
-} from '@/components/tree/src/hooks/usehandleSelect'
+} from '@/components/tree/src/hooks/useHandleSelect'
 
 export default defineComponent({
   name: 'tree-node',
