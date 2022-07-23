@@ -4,14 +4,14 @@
       :type="showIcon ? 'primary' : 'default'"
       size="small"
       @click="showIcon = !showIcon"
-      >切换显示图标</b-button
-    >
+      >切换显示图标
+    </b-button>
     <b-button
       :type="checkAble ? 'primary' : 'default'"
       size="small"
       @click="checkAble = !checkAble"
-      >切换显示复选框</b-button
-    >
+      >切换显示复选框
+    </b-button>
     <!--    <b-button size="small" @click="checkAble = !checkAble">切换显示复选框</b-button>-->
   </div>
   <div style="display: flex; justify-content: center; margin: 0 auto;">
