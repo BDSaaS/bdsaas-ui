@@ -12,6 +12,7 @@
         <!--      TODO Tree 的 checkAble 属性优先，再根据独立节点的 checkAble 属性-->
         <!--        <b-checkbox v-if="$props.treeNodeData.checkAble" />-->
         <b-checkbox
+          v-if="checkAble && $props.treeNodeData.checkAble !== false"
           v-model="$props.treeNodeData.checked"
           class="b-tree-node-checkbox"
           @click.stop
@@ -72,13 +73,15 @@ export default defineComponent({
       multiple,
       treeDataCache,
       selectedKeys,
-      updateSelectedKeys
+      updateSelectedKeys,
+      checkAble
     } = injectMore([
       'currentSelectedIndex',
       'multiple',
       'treeDataCache',
       'selectedKeys',
-      'updateSelectedKeys'
+      'updateSelectedKeys',
+      'checkAble'
     ])
 
     const hasLeaf = computed(
@@ -137,6 +140,7 @@ export default defineComponent({
 
     return {
       hasLeaf,
+      checkAble,
       labelClass,
       switchClass,
       clickNode,

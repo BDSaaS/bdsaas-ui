@@ -7,6 +7,7 @@
 - 可初始传入选中值，双向绑定（v-model:selectedKeys）50%（初始传入没有 prevIndex）
 - 一层结构的多选功能（multiple）√
 - 节点前添加 Checkbox 复选框（checkAble）（v-model:checkedKeys）
+- 控制复选框显示（checkAble）√
 
 2. 多层结构
 

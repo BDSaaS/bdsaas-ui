@@ -1058,7 +1058,8 @@ export const testData3 = [
     children: [
       {
         title: '节点-1-0',
-        key: '01'
+        key: '01',
+        checkAble: false
       }
     ]
   }

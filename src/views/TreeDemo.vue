@@ -13,6 +13,7 @@
       <BTree
         v-model:selected-keys="selectedKeys2"
         :tree-data="treeData2"
+        check-able
         multiple
         wrapper-class="test-tree"
       />
@@ -46,7 +47,7 @@ const testData = [
 const treeData = ref(testData) as Ref<TreeNode[]>
 const treeData2 = ref(testData3) as Ref<TreeNode[]>
 const selectedKeys: Ref<string[]> = ref(['00'])
-const selectedKeys2: Ref<string[]> = ref(['0', '01'])
+const selectedKeys2: Ref<string[]> = ref(['0'])
 </script>
 
 <style scoped>

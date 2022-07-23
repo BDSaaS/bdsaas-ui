@@ -68,7 +68,8 @@ export default defineComponent({
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
   setup(props, { emit }) {
-    const { wrapperClass, treeData, multiple, selectedKeys } = toRefs(props)
+    const { wrapperClass, treeData, multiple, selectedKeys, checkAble } =
+      toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用（传入 selectedKeys，将初始选中的那一项的索引作为 currentSelectedIndex 的初始值）
     const currentSelectedIndex = ref('')
@@ -85,7 +86,7 @@ export default defineComponent({
       treeDataCache,
       selectedKeys: toRaw(unref(selectedKeys)),
       multiple: toRaw(unref(multiple)),
-      currentSelectedIndex: currentSelectedIndex
+      currentSelectedIndex
     })
 
     provideMore({
@@ -93,7 +94,8 @@ export default defineComponent({
       multiple,
       treeDataCache,
       selectedKeys,
-      updateSelectedKeys
+      updateSelectedKeys,
+      checkAble
     })
 
     return {
