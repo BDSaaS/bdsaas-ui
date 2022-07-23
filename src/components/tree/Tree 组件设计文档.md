@@ -8,6 +8,7 @@
 - 一层结构的多选功能（multiple）√
 - 节点前添加 Checkbox 复选框（checkAble）（v-model:checkedKeys）
 - 控制复选框显示（checkAble）√
+- 控制图标显示（showIcon）√
 
 2. 多层结构
 

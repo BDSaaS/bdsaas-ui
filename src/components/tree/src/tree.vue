@@ -21,12 +21,12 @@ export default defineComponent({
   name: 'BTree',
   components: { TreeNode },
   props: {
-    // 点击节点本身的选中
+    // 点击节点本身的选中（完成）
     selectedKeys: {
       type: Array as PropType<Key[]>,
       required: true
     },
-    // 是否开启多选（只针对点击节点本身的多选）
+    // 是否开启多选（只针对点击节点本身的多选）（完成）
     multiple: {
       type: Boolean as PropType<boolean>,
       default: false
@@ -51,16 +51,17 @@ export default defineComponent({
     showLine: {
       type: Boolean as PropType<boolean>
     },
-    // 显示图标
+    // 显示图标（完成）
     showIcon: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: false
     },
-    // 数据
+    // 数据（完成）
     treeData: {
       type: Array as PropType<ITreeNode[]>,
       required: true
     },
-    // 树最外层 class，用来自定义样式
+    // 树最外层 class，用来自定义样式（完成）
     wrapperClass: {
       type: String as PropType<string>,
       default: ''
@@ -68,8 +69,14 @@ export default defineComponent({
   },
   emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
   setup(props, { emit }) {
-    const { wrapperClass, treeData, multiple, selectedKeys, checkAble } =
-      toRefs(props)
+    const {
+      wrapperClass,
+      treeData,
+      multiple,
+      selectedKeys,
+      checkAble,
+      showIcon
+    } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用（传入 selectedKeys，将初始选中的那一项的索引作为 currentSelectedIndex 的初始值）
     const currentSelectedIndex = ref('')
@@ -95,7 +102,8 @@ export default defineComponent({
       treeDataCache,
       selectedKeys,
       updateSelectedKeys,
-      checkAble
+      checkAble,
+      showIcon
     })
 
     return {

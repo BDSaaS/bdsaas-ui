@@ -19,7 +19,7 @@
         />
         <!--      TODO 根据 Tree 的 show-icon 属性，判断显示，有插槽默认值以及定制图标-->
         <span class="b-tree-node-inner">
-          <slot name="icon">
+          <slot v-if="showIcon" name="icon">
             <span class="b-tree-node-icon">
               <b-icon name="customer" />
             </span>
@@ -74,14 +74,16 @@ export default defineComponent({
       treeDataCache,
       selectedKeys,
       updateSelectedKeys,
-      checkAble
+      checkAble,
+      showIcon
     } = injectMore([
       'currentSelectedIndex',
       'multiple',
       'treeDataCache',
       'selectedKeys',
       'updateSelectedKeys',
-      'checkAble'
+      'checkAble',
+      'showIcon'
     ])
 
     const hasLeaf = computed(
@@ -144,7 +146,8 @@ export default defineComponent({
       labelClass,
       switchClass,
       clickNode,
-      expandNode
+      expandNode,
+      showIcon
     }
   }
 })
