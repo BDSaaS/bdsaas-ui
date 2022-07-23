@@ -22,8 +22,6 @@
     |
     <router-link to="/confirmDemo">confirm 组件</router-link>
     |
-    <router-link to="/messageDemo">message 组件</router-link>
-    |
     <router-link to="/badgeDemo">badge 组件</router-link>
     |
     <router-link to="/tabsDemo">tabs组件</router-link>
@@ -33,6 +31,8 @@
     <router-link to="/drawerDemo">抽屉组件</router-link>
     |
     <router-link to="/messageDemo">message 组件</router-link>
+    |
+    <router-link to="/noticeDemo">notice 组件</router-link>
   </nav>
   <router-view />
 </template>

@@ -8,7 +8,7 @@ document.head.appendChild(styleHtml)
 interface defaultOptionsInter {
   type?: string
   text?: string
-  zIndex?: number | string
+  zIndex?: number
   duration?: number
   offsetTop?: number
   showClose?: boolean
@@ -41,15 +41,11 @@ class Message {
     } = defaultOptions
     const el: any = document.createElement('div')
     el.className = 'b-message b-message-opacity b-message-' + type
-    ;(el.style as any).zIndex = zIndex
+    el.style.zIndex = zIndex + ''
     el.id = 'b-' + new Date().getTime()
-    this.instances.push(el)
-    // 显示
-    Message.showMessage(el)
     const p: HTMLParagraphElement = document.createElement('p')
     p.className = 'content'
     if (center) p.classList.add('center')
-    el.appendChild(p)
     p.innerHTML = text
     if (showClose || !duration) {
       const span: HTMLSpanElement = document.createElement('span')
@@ -64,10 +60,13 @@ class Message {
       }
     }
     document.body.appendChild(el)
+    this.instances.push(el)
+    el.appendChild(p)
     Message.setTop(this.instances.at(-1), offsetTop)
+    // 显示
+    Message.showMessage(el)
     if (duration) {
       // 判断当前延迟时间是否为0, 如果为0，则不自动消失。
-      // 隐藏
       el.timer = Message.hideMessage(
         el,
         duration,
@@ -89,6 +88,12 @@ class Message {
       }
     }
   }
+  // 显示message
+  static showMessage(dom: HTMLDivElement) {
+    setTimeout(() => {
+      dom.classList.remove('b-message-opacity')
+    }, 200)
+  }
   // 隐藏
   static hideMessage(
     dom: HTMLDivElement,
@@ -108,12 +113,6 @@ class Message {
           this.setTop(Message.instances[i], offsetTop)
       }, 50)
     }, duration)
-  }
-  // 显示message
-  static showMessage(dom: HTMLDivElement) {
-    setTimeout(() => {
-      dom.classList.remove('b-message-opacity')
-    }, 200)
   }
   // 设置message高度
   static setTop(dom: any, offsetTop: number) {
