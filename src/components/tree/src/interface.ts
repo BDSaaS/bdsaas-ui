@@ -11,6 +11,7 @@ export interface TreeNode {
   checked?: boolean // 目前组件内使用，用于选中一行的 checkbox（该值组件生成）
   isExpanded?: boolean // 目前组件内使用，用于展开一行树节点的 children（该值组件生成）
   currentIndex?: string // 目前组件内使用，用于获取节点当前索引（该值组件生成）
+  initialSelected?: boolean // 目前组件内使用，单选情况下，将当前选中的 key 的 currentIndex 置为 prevIndex 的标志（该值组件生成）
   title: string // 节点的文本
   children?: TreeNode[]
 }

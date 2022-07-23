@@ -54,7 +54,7 @@ import { injectMore } from '@tools/utils/vue-utils'
 import {
   useSetSelectedKeys,
   useSingleSelect
-} from '@/components/tree/src/hooks/useSelect'
+} from '@/components/tree/src/hooks/usehandleSelect'
 
 export default defineComponent({
   name: 'tree-node',
@@ -101,11 +101,11 @@ export default defineComponent({
 
     function clickNode() {
       // Todo 待转成 hooks
-      /**
-       * 点击子节点本身进行选中，可取消选中（有选中状态）
-       * 点击子节点本身进行选中，点击其他行取消选中（有选中状态）
-       */
-      if (!multiple.value) {
+      /*多选*/
+      if (multiple.value) {
+        setNodeSelected()
+      } else {
+        /*单选--点击子节点本身进行选中，可取消选中，可取消其他行选中（有选中状态）*/
         const prevIndex = currentSelectedIndex.value as string
         const currentIndex = unref(treeNodeData).currentIndex as string
         currentSelectedIndex.value = currentIndex
@@ -115,12 +115,10 @@ export default defineComponent({
         } else {
           useSingleSelect({
             prevIndex,
-            currentIndex,
+            currentSelectedTreeNode: unref(treeNodeData),
             treeData: unref(treeDataCache) as TreeNode[]
           })
         }
-      } else {
-        setNodeSelected()
       }
 
       unref(updateSelectedKeys)(

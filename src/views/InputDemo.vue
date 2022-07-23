@@ -50,7 +50,7 @@ export default defineComponent({
   setup() {
     const msg = ref('Hello world!')
 
-    function changeHandler(val: any) {
+    function changeHandler(val: string) {
       console.log(val, 'line 54')
     }
 

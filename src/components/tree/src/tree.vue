@@ -1,4 +1,6 @@
 <template>
+  {{ treeDataCache }}
+  <hr />
   <ul :class="treeClass">
     <tree-node
       v-for="item of treeDataCache"
@@ -12,7 +14,7 @@
 import type { PropType, Ref } from 'vue'
 import type { Key, TreeNode as ITreeNode } from './interface'
 import TreeNode from '@/components/tree/src/tree-node.vue'
-import { useInitTreeData } from './hooks/useInitData'
+import { useInitTreeData } from './hooks/useHandleData'
 import { provideMore } from '@tools/utils/vue-utils'
 
 export default defineComponent({
@@ -21,7 +23,8 @@ export default defineComponent({
   props: {
     // 点击节点本身的选中
     selectedKeys: {
-      type: Array as PropType<Key[]>
+      type: Array as PropType<Key[]>,
+      required: true
     },
     // 是否开启多选（只针对点击节点本身的多选）
     multiple: {
@@ -67,8 +70,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const { wrapperClass, treeData, multiple, selectedKeys } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
-    // 单选情况使用
-    const currentSelectedIndex = ref<null | string>('')
+    // 单选情况使用（传入 selectedKeys，将初始选中的那一项的索引作为 currentSelectedIndex 的初始值）
+    const currentSelectedIndex = ref('')
     const treeDataCache = ref([]) as Ref<ITreeNode[]>
 
     function updateSelectedKeys(keys: Key[]) {
@@ -78,9 +81,11 @@ export default defineComponent({
     }
 
     useInitTreeData({
-      treeData,
+      treeData: toRaw(unref(treeData)),
       treeDataCache,
-      selectedKeys: selectedKeys as Ref<Key[]>
+      selectedKeys: toRaw(unref(selectedKeys)),
+      multiple: toRaw(unref(multiple)),
+      currentSelectedIndex: currentSelectedIndex
     })
 
     provideMore({

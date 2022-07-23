@@ -1040,3 +1040,26 @@ export const testData2 = [
     ]
   }
 ]
+
+export const testData3 = [
+  {
+    title: '节点-0',
+    key: '0',
+    children: [
+      {
+        title: '节点-0-0',
+        key: '00'
+      }
+    ]
+  },
+  {
+    title: '节点-1',
+    key: '1',
+    children: [
+      {
+        title: '节点-1-0',
+        key: '01'
+      }
+    ]
+  }
+]
