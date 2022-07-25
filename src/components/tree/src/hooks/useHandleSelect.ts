@@ -12,7 +12,7 @@ type Params2 = {
   selected: boolean
 }
 
-function getTreeNode(
+export function getTreeNode(
   treeData: TreeNode[],
   index: number[],
   childKey: 'children' = 'children'
@@ -25,7 +25,7 @@ function getTreeNode(
   }
 }
 
-function getIndexList(indexString: string): number[] {
+export function getIndexList(indexString: string): number[] {
   return indexString.split('-').map(Number)
 }
 
@@ -55,7 +55,9 @@ export function useSetSelectedKeys({
   } else {
     if (multiple) {
       const index = selectedKeys.findIndex(key => key === selectedKey)
-      selectedKeys.splice(index)
+      selectedKeys.splice(index, 1)
+      /*☀️☀️☀️☀️☀️☀️*/
+      selectedKeys = [...new Set(selectedKeys)]
     } else {
       selectedKeys = []
     }

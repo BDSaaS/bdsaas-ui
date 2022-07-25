@@ -1,4 +1,11 @@
-import { provide, inject, reactive, toRefs } from 'vue'
+import { provide, inject, reactive, toRefs, isRef, toRaw, unref } from 'vue'
+import type { Ref } from 'vue'
+
+/*ref 一键获取原始值*/
+export function getRaw<T extends object>(target: Ref<T>): T {
+  return isRef(target) ? toRaw(unref(target)) : toRaw(target)
+}
+
 /**
  * 绑定事件
  * @param target
