@@ -28,15 +28,16 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 export default defineComponent({
   name: 'notice-components',
   props: {
-    type: String,
-    title: String,
-    message: String,
-    position: String,
-    zIndex: Number,
-    showClose: Boolean
+    type: String as PropType<string>,
+    title: String as PropType<string>,
+    message: String as PropType<string>,
+    position: String as PropType<string>,
+    zIndex: Number as PropType<number>,
+    showClose: Boolean as PropType<boolean>
   },
   setup(props) {
     console.log(props)

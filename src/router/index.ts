@@ -100,6 +100,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/drawerDemo',
     name: 'DrawerDemo',
     component: () => import('@/views/DrawerDemo.vue')
+  },
+  {
+    path: '/radioDemo',
+    name: 'radioDemo',
+    component: () => import('@/views/radioDemo.vue')
+  },
+  {
+    path: '/radioGroupDemo',
+    name: 'radioGroupDemo',
+    component: () => import('@/views/radioGroupDemo.vue')
   }
 ]
 

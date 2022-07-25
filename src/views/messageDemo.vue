@@ -1,6 +1,5 @@
 <template>
   <div>
-    <span class="active"></span>
     <span @click="noticeInfo">info</span>|
     <span @click="noticeError">error</span>|
     <span @click="noticeWarn">warn</span>|
@@ -76,14 +75,3 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="less" scoped>
-.active {
-  position: fixed;
-  top: 200px;
-  z-index: 11111111;
-  display: block;
-  width: 100%;
-  height: 200px;
-  background: #004de5;
-}
-</style>
