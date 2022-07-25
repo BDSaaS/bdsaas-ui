@@ -107,9 +107,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/radioDemo.vue')
   },
   {
-    path: '/radioGroupDemo',
-    name: 'radioGroupDemo',
-    component: () => import('@/views/radioGroupDemo.vue')
+    path: '/tagDemo',
+    name: 'TagDemo',
+    component: () => import('@/views/TagDemo.vue')
   }
 ]
 
