@@ -84,15 +84,15 @@ export default defineComponent({
 
     function updateSelectedKeys(keys: Key[]) {
       console.log(keys, 'line 75')
-      // Fixme 节点多选有（值不对，收起） bug
+      // Fixme 节点多选有（值不对） bug
       emit('update:selectedKeys', keys)
     }
 
     useInitTreeData({
-      treeData: toRaw(unref(treeData)),
+      treeData: getRaw(treeData),
       treeDataCache,
-      selectedKeys: toRaw(unref(selectedKeys)),
-      multiple: toRaw(unref(multiple)),
+      selectedKeys: getRaw(selectedKeys),
+      multiple: unref(multiple),
       currentSelectedIndex
     })
 

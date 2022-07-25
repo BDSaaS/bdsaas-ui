@@ -1,8 +1,8 @@
 import { provide, inject, reactive, toRefs, isRef, toRaw, unref } from 'vue'
-import type { Ref, UnwrapNestedRefs } from 'vue'
+import type { Ref } from 'vue'
 
-/*ref，reactive 获取原始值*/
-export function getRaw<T extends object>(target: Ref<T> | UnwrapNestedRefs<T>) {
+/*ref 一键获取原始值*/
+export function getRaw<T extends object>(target: Ref<T>) {
   return isRef(target) ? toRaw(unref(target)) : toRaw(target)
 }
 

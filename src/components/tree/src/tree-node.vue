@@ -129,9 +129,9 @@ export default defineComponent({
       unref(updateSelectedKeys)(
         useSetSelectedKeys({
           multiple: multiple.value,
-          selectedKeys: toRaw(unref(selectedKeys)),
+          selectedKeys: getRaw(selectedKeys),
           selectedKey: unref(treeNodeData).key,
-          selected: toRaw(unref(treeNodeData)).selected as boolean
+          selected: getRaw(treeNodeData).selected as boolean
         })
       )
     }
