@@ -9,12 +9,11 @@
         />
       </span>
       <span :class="labelClass" @click="clickNode">
-        <!--      TODO Tree 的 checkAble 属性优先，再根据独立节点的 checkAble 属性-->
-        <!--        <b-checkbox v-if="$props.treeNodeData.checkAble" />-->
         <b-checkbox
           v-if="checkAble && $props.treeNodeData.checkAble !== false"
           v-model="$props.treeNodeData.checked"
           class="b-tree-node-checkbox"
+          @change="checkHandler"
           @click.stop
         />
         <!--      TODO 根据 Tree 的 show-icon 属性，判断显示，有插槽默认值以及定制图标-->
@@ -57,6 +56,7 @@ import {
   useSingleSelect
 } from '@/components/tree/src/hooks/useHandleSelect'
 import { Key } from '@/components/tree/src/interface'
+import { isArray } from '@tools/utils/is'
 
 export default defineComponent({
   name: 'tree-node',
@@ -141,6 +141,14 @@ export default defineComponent({
       unref(treeNodeData).isExpanded = !unref(treeNodeData).isExpanded
     }
 
+    function checkHandler(val: boolean) {
+      if (isArray(unref(treeNodeData).children)) {
+        ;(unref(treeNodeData).children as TreeNode[]).forEach(item => {
+          item.checked = val
+        })
+      }
+    }
+
     return {
       hasLeaf,
       checkAble,
@@ -148,6 +156,7 @@ export default defineComponent({
       switchClass,
       clickNode,
       expandNode,
+      checkHandler,
       showIcon
     }
   }
