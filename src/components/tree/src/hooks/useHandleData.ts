@@ -9,6 +9,7 @@ type Params = {
   selectedKeys: Key[]
   multiple: boolean
   currentSelectedIndex: Ref<string>
+  defaultExpandAll: boolean
 }
 
 type Params2 = {
@@ -17,6 +18,7 @@ type Params2 = {
   selectedKeys: Key[]
   multiple: boolean
   currentSelectedIndex: Ref<string>
+  defaultExpandAll: boolean
 }
 
 function setInitialSelected(item: TreeNode, currentSelectedIndex: Ref<string>) {
@@ -30,14 +32,15 @@ export function treeDataInitHandle({
   parentCurrentIndex,
   selectedKeys,
   multiple,
-  currentSelectedIndex
+  currentSelectedIndex,
+  defaultExpandAll
 }: Params2): void {
   if (isArray(target) && target.length) {
     target.forEach((item, index) => {
       isObject(item) &&
         Object.assign(item, {
           selected: selectedKeys?.includes(item.key),
-          isExpanded: false,
+          isExpanded: defaultExpandAll,
           checked: false,
           currentIndex: parentCurrentIndex
             ? `${parentCurrentIndex}-${index}`
@@ -55,7 +58,8 @@ export function treeDataInitHandle({
           parentCurrentIndex: item.currentIndex,
           selectedKeys,
           multiple,
-          currentSelectedIndex
+          currentSelectedIndex,
+          defaultExpandAll
         })
     })
   }
@@ -67,14 +71,16 @@ export function useInitTreeData({
   treeDataCache,
   selectedKeys,
   multiple,
-  currentSelectedIndex
+  currentSelectedIndex,
+  defaultExpandAll
 }: Params) {
   const target = cloneDeep(treeData)
   treeDataInitHandle({
     target,
     selectedKeys: unref(selectedKeys),
     multiple,
-    currentSelectedIndex
+    currentSelectedIndex,
+    defaultExpandAll
   })
   treeDataCache.value = target
 }

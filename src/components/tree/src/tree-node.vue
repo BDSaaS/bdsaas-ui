@@ -88,7 +88,7 @@ export default defineComponent({
     ])
 
     const hasLeaf = computed(
-      () => (unref(treeNodeData).children as TreeNode[])?.length > 0
+      () => (unref(treeNodeData).children as TreeNode[])?.length
     )
 
     const labelClass = computed(() => [

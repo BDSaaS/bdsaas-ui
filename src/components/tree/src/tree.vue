@@ -39,9 +39,10 @@ export default defineComponent({
     checkAble: {
       type: Boolean as PropType<boolean>
     },
-    // 是否默认展开所有树节点功能
+    // 是否默认展开所有树节点功能（完成）
     defaultExpandAll: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: false
     },
     // 展开指定的树节点
     expandedKeys: {
@@ -75,6 +76,7 @@ export default defineComponent({
       multiple,
       selectedKeys,
       checkAble,
+      defaultExpandAll,
       showIcon
     } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
@@ -83,8 +85,6 @@ export default defineComponent({
     const treeDataCache = ref([]) as Ref<ITreeNode[]>
 
     function updateSelectedKeys(keys: Key[]) {
-      console.log(keys, 'line 75')
-      // Fixme 节点多选有（值不对） bug
       emit('update:selectedKeys', keys)
     }
 
@@ -93,7 +93,8 @@ export default defineComponent({
       treeDataCache,
       selectedKeys: getRaw(selectedKeys),
       multiple: unref(multiple),
-      currentSelectedIndex
+      currentSelectedIndex,
+      defaultExpandAll: unref(defaultExpandAll)
     })
 
     provideMore({

@@ -1062,5 +1062,19 @@ export const testData3 = [
         checkAble: false
       }
     ]
+  },
+  {
+    title: '节点-2',
+    key: '2',
+    children: [
+      {
+        title: '节点-2-0',
+        key: '02'
+      },
+      {
+        title: '节点-2-1',
+        key: '12'
+      }
+    ]
   }
 ]

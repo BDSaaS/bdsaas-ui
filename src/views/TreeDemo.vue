@@ -12,7 +12,6 @@
       @click="checkAble = !checkAble"
       >切换显示复选框
     </b-button>
-    <!--    <b-button size="small" @click="checkAble = !checkAble">切换显示复选框</b-button>-->
   </div>
   <div style="display: flex; justify-content: center; margin: 0 auto;">
     <div class="tree-box">
@@ -32,6 +31,7 @@
         :tree-data="treeData2"
         :showIcon="showIcon"
         :check-able="checkAble"
+        default-expand-all
         multiple
         wrapper-class="test-tree"
       />
@@ -69,6 +69,7 @@ const selectedKeys: Ref<string[]> = ref(['00'])
 const selectedKeys2: Ref<string[]> = ref(['0'])
 const showIcon = ref(false) as Ref<boolean>
 const checkAble = ref(false) as Ref<boolean>
+const defaultExpandAll = ref(false) as Ref<boolean>
 </script>
 
 <style scoped>
