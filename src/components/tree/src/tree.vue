@@ -33,9 +33,10 @@ export default defineComponent({
     },
     // 点击复选框的选中
     checkedKeys: {
-      type: Array as PropType<Key[]>
+      type: Array as PropType<Key[]>,
+      default: () => []
     },
-    // 节点前添加 Checkbox 复选框
+    // 节点前添加 Checkbox 复选框（完成）
     checkAble: {
       type: Boolean as PropType<boolean>
     },
@@ -77,7 +78,8 @@ export default defineComponent({
       selectedKeys,
       checkAble,
       defaultExpandAll,
-      showIcon
+      showIcon,
+      checkedKeys
     } = toRefs(props)
     const treeClass = computed(() => ['b-tree', unref(wrapperClass)])
     // 单选情况使用（传入 selectedKeys，将初始选中的那一项的索引作为 currentSelectedIndex 的初始值）
@@ -92,6 +94,7 @@ export default defineComponent({
       treeData: getRaw(treeData),
       treeDataCache,
       selectedKeys: getRaw(selectedKeys),
+      checkedKeys: getRaw(checkedKeys),
       multiple: unref(multiple),
       currentSelectedIndex,
       defaultExpandAll: unref(defaultExpandAll)

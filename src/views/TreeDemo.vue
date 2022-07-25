@@ -25,9 +25,14 @@
       />
     </div>
     <div class="tree-box">
-      <h2>节点多选 selectedKeys：{{ selectedKeys2 }}</h2>
+      <h2>
+        节点多选<br />
+        selectedKeys：{{ selectedKeys2 }}<br />
+        checkedKeys：{{ checkedKeys }}
+      </h2>
       <BTree
         v-model:selected-keys="selectedKeys2"
+        v-model:checked-keys="checkedKeys"
         :tree-data="treeData2"
         :showIcon="showIcon"
         :check-able="checkAble"
@@ -66,10 +71,10 @@ const testData = [
 const treeData = ref(testData) as Ref<TreeNode[]>
 const treeData2 = ref(testData3) as Ref<TreeNode[]>
 const selectedKeys: Ref<string[]> = ref(['00'])
-const selectedKeys2: Ref<string[]> = ref(['0'])
-const showIcon = ref(false) as Ref<boolean>
-const checkAble = ref(false) as Ref<boolean>
-const defaultExpandAll = ref(false) as Ref<boolean>
+const selectedKeys2: Ref<string[]> = ref(['0', '3'])
+const checkedKeys: Ref<string[]> = ref(['2', '3'])
+const showIcon = ref(true) as Ref<boolean>
+const checkAble = ref(true) as Ref<boolean>
 </script>
 
 <style scoped>

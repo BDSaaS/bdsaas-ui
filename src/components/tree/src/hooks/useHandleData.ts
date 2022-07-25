@@ -7,6 +7,7 @@ type Params = {
   treeData: TreeNode[]
   treeDataCache: Ref<TreeNode[]>
   selectedKeys: Key[]
+  checkedKeys: Key[]
   multiple: boolean
   currentSelectedIndex: Ref<string>
   defaultExpandAll: boolean
@@ -16,9 +17,11 @@ type Params2 = {
   target: TreeNode[]
   parentCurrentIndex?: string
   selectedKeys: Key[]
+  checkedKeys: Key[]
   multiple: boolean
   currentSelectedIndex: Ref<string>
   defaultExpandAll: boolean
+  parentHasChecked?: boolean // 将父节点的选中状态作为参数传递，判断子节点是否被选中
 }
 
 function setInitialSelected(item: TreeNode, currentSelectedIndex: Ref<string>) {
@@ -31,9 +34,11 @@ export function treeDataInitHandle({
   target,
   parentCurrentIndex,
   selectedKeys,
+  checkedKeys,
   multiple,
   currentSelectedIndex,
-  defaultExpandAll
+  defaultExpandAll,
+  parentHasChecked
 }: Params2): void {
   if (isArray(target) && target.length) {
     target.forEach((item, index) => {
@@ -41,7 +46,7 @@ export function treeDataInitHandle({
         Object.assign(item, {
           selected: selectedKeys?.includes(item.key),
           isExpanded: defaultExpandAll,
-          checked: false,
+          checked: !!parentHasChecked || checkedKeys?.includes(item.key),
           currentIndex: parentCurrentIndex
             ? `${parentCurrentIndex}-${index}`
             : `${index}`
@@ -57,9 +62,11 @@ export function treeDataInitHandle({
           target: item.children,
           parentCurrentIndex: item.currentIndex,
           selectedKeys,
+          checkedKeys,
           multiple,
           currentSelectedIndex,
-          defaultExpandAll
+          defaultExpandAll,
+          parentHasChecked: !!item.checked
         })
     })
   }
@@ -70,6 +77,7 @@ export function useInitTreeData({
   treeData,
   treeDataCache,
   selectedKeys,
+  checkedKeys,
   multiple,
   currentSelectedIndex,
   defaultExpandAll
@@ -78,6 +86,7 @@ export function useInitTreeData({
   treeDataInitHandle({
     target,
     selectedKeys: unref(selectedKeys),
+    checkedKeys,
     multiple,
     currentSelectedIndex,
     defaultExpandAll
