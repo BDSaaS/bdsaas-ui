@@ -100,6 +100,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/drawerDemo',
     name: 'DrawerDemo',
     component: () => import('@/views/DrawerDemo.vue')
+  },
+  {
+    path: '/tagDemo',
+    name: 'TagDemo',
+    component: () => import('@/views/TagDemo.vue')
   }
 ]
 

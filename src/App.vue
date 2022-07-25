@@ -33,6 +33,8 @@
     <router-link to="/messageDemo">message 组件</router-link>
     |
     <router-link to="/noticeDemo">notice 组件</router-link>
+    |
+    <router-link to="/tagDemo">tag 组件</router-link>
   </nav>
   <router-view />
 </template>
