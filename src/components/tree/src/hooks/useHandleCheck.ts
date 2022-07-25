@@ -44,10 +44,12 @@ function handleParentChecked(
     unref(treeData) as TreeNode[],
     getIndexList(getParentIndex(unref(treeNodeData).currentIndex as string))
   )
-  unref(parent).checked = (parent.children ?? [])?.every(item => !!item.checked)
+
+  if (isArray(parent.children)) {
+    unref(parent).checked = parent.children.every(item => !!item.checked)
+  }
 }
 
-// fixme 无父节点和子节点的单一节点选中有 bug
 export function useHandleCheckbox({
   treeData,
   currentTreeNode,
