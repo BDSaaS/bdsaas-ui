@@ -47,16 +47,19 @@
 <script lang="ts">
 import type { PropType } from 'vue'
 import type { TreeNode } from '@/components/tree/src/interface'
+import { Key } from '@/components/tree/src/interface'
 import BIcon from '@/components/icon/src/icon.vue'
 import BCheckbox from '@/components/checkbox/src/checkbox.vue'
 import CollapseTransition from '@/components/collapse-transition/src/collapse-transition.vue'
 import { injectMore } from '@tools/utils/vue-utils'
 import {
+  getIndexList,
+  getTreeNode,
   useSetSelectedKeys,
   useSingleSelect
 } from '@/components/tree/src/hooks/useHandleSelect'
-import { Key } from '@/components/tree/src/interface'
 import { isArray } from '@tools/utils/is'
+import { useHandleCheckbox } from '@/components/tree/src/hooks/useHandleCheck'
 
 export default defineComponent({
   name: 'tree-node',
@@ -142,11 +145,12 @@ export default defineComponent({
     }
 
     function checkHandler(val: boolean) {
-      if (isArray(unref(treeNodeData).children)) {
-        ;(unref(treeNodeData).children as TreeNode[]).forEach(item => {
-          item.checked = val
-        })
-      }
+      console.log(val)
+      useHandleCheckbox({
+        treeData: treeDataCache,
+        currentTreeNode: treeNodeData,
+        checked: val
+      })
     }
 
     return {
