@@ -56,6 +56,7 @@ import {
   useSetSelectedKeys,
   useSingleSelect
 } from '@/components/tree/src/hooks/useHandleSelect'
+import { Key } from '@/components/tree/src/interface'
 
 export default defineComponent({
   name: 'tree-node',
@@ -129,7 +130,7 @@ export default defineComponent({
       unref(updateSelectedKeys)(
         useSetSelectedKeys({
           multiple: multiple.value,
-          selectedKeys: getRaw(selectedKeys),
+          selectedKeys: getRaw<Key[]>(selectedKeys),
           selectedKey: unref(treeNodeData).key,
           selected: getRaw(treeNodeData).selected as boolean
         })
