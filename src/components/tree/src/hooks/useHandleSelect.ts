@@ -56,6 +56,8 @@ export function useSetSelectedKeys({
     if (multiple) {
       const index = selectedKeys.findIndex(key => key === selectedKey)
       selectedKeys.splice(index, 1)
+      /*☀️☀️☀️☀️☀️☀️*/
+      selectedKeys = [...new Set(selectedKeys)]
     } else {
       selectedKeys = []
     }
