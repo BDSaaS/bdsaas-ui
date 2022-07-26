@@ -3,6 +3,8 @@ import { Key, TreeNode } from '@/components/tree/src/interface'
 import { isArray, isObject } from '@tools/utils/is'
 import { cloneDeep } from 'lodash-es'
 
+type EmitCheckedKeysHandle = (checked: boolean, key: Key) => void
+
 type Params = {
   treeData: TreeNode[]
   treeDataCache: Ref<TreeNode[]>
@@ -11,6 +13,7 @@ type Params = {
   multiple: boolean
   currentSelectedIndex: Ref<string>
   defaultExpandAll: boolean
+  updateCheckedKeys: EmitCheckedKeysHandle
 }
 
 type Params2 = {
@@ -22,6 +25,7 @@ type Params2 = {
   currentSelectedIndex: Ref<string>
   defaultExpandAll: boolean
   parentHasChecked?: boolean // 将父节点的选中状态作为参数传递，判断子节点是否被选中
+  updateCheckedKeys: EmitCheckedKeysHandle
 }
 
 function setInitialSelected(item: TreeNode, currentSelectedIndex: Ref<string>) {
@@ -38,7 +42,8 @@ export function treeDataInitHandle({
   multiple,
   currentSelectedIndex,
   defaultExpandAll,
-  parentHasChecked
+  parentHasChecked,
+  updateCheckedKeys
 }: Params2): void {
   if (isArray(target) && target.length) {
     target.forEach((item, index) => {
@@ -46,7 +51,9 @@ export function treeDataInitHandle({
         Object.assign(item, {
           selected: selectedKeys?.includes(item.key),
           isExpanded: defaultExpandAll,
-          checked: !!parentHasChecked || checkedKeys?.includes(item.key),
+          checked:
+            (parentHasChecked || checkedKeys?.includes(item.key)) &&
+            updateCheckedKeys(true, item.key),
           currentIndex: parentCurrentIndex
             ? `${parentCurrentIndex}-${index}`
             : `${index}`
@@ -66,7 +73,8 @@ export function treeDataInitHandle({
           multiple,
           currentSelectedIndex,
           defaultExpandAll,
-          parentHasChecked: !!item.checked
+          parentHasChecked: !!item.checked,
+          updateCheckedKeys
         })
     })
   }
@@ -80,7 +88,8 @@ export function useInitTreeData({
   checkedKeys,
   multiple,
   currentSelectedIndex,
-  defaultExpandAll
+  defaultExpandAll,
+  updateCheckedKeys
 }: Params) {
   const target = cloneDeep(treeData)
   treeDataInitHandle({
@@ -89,7 +98,8 @@ export function useInitTreeData({
     checkedKeys,
     multiple,
     currentSelectedIndex,
-    defaultExpandAll
+    defaultExpandAll,
+    updateCheckedKeys
   })
   treeDataCache.value = target
 }

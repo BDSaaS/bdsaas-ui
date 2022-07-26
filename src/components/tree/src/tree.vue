@@ -100,6 +100,7 @@ export default defineComponent({
       }
       _checkedKeys = [...new Set(_checkedKeys)]
       emit('update:checkedKeys', _checkedKeys)
+      return true
     }
 
     useInitTreeData({
@@ -109,7 +110,8 @@ export default defineComponent({
       checkedKeys: getRaw(checkedKeys),
       multiple: unref(multiple),
       currentSelectedIndex,
-      defaultExpandAll: unref(defaultExpandAll)
+      defaultExpandAll: unref(defaultExpandAll),
+      updateCheckedKeys
     })
 
     provideMore({
