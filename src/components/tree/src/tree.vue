@@ -1,6 +1,6 @@
 <template>
-  {{ treeDataCache }}
-  <hr />
+  <!--  {{ treeDataCache }}-->
+  <!--  <hr />-->
   <ul :class="treeClass">
     <tree-node
       v-for="item of treeDataCache"
@@ -90,6 +90,18 @@ export default defineComponent({
       emit('update:selectedKeys', keys)
     }
 
+    function updateCheckedKeys(checked: boolean, key: Key) {
+      let _checkedKeys = getRaw(checkedKeys)
+      if (checked) {
+        _checkedKeys.push(key)
+      } else {
+        const index = _checkedKeys.indexOf(key)
+        index > -1 && _checkedKeys.splice(index, 1)
+      }
+      _checkedKeys = [...new Set(_checkedKeys)]
+      emit('update:checkedKeys', _checkedKeys)
+    }
+
     useInitTreeData({
       treeData: getRaw(treeData),
       treeDataCache,
@@ -106,6 +118,7 @@ export default defineComponent({
       treeDataCache,
       selectedKeys,
       updateSelectedKeys,
+      updateCheckedKeys,
       checkAble,
       showIcon
     })

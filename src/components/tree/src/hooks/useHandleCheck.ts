@@ -23,7 +23,7 @@ function getParentIndex(currentIndex: string): string {
 }
 
 // 选中/取消选中底下的子节点
-function handleChildrenChecked(
+export function handleChildrenChecked(
   currentTreeNode: Ref<TreeNode>,
   checked: boolean
 ) {
@@ -36,7 +36,7 @@ function handleChildrenChecked(
 }
 
 // 选中/取消选中上面的父节点
-function handleParentChecked(
+export function handleParentChecked(
   treeData: Ref<TreeNode[]>,
   treeNodeData: Ref<TreeNode>
 ) {
@@ -46,7 +46,11 @@ function handleParentChecked(
   )
 
   if (isArray(parent.children)) {
-    unref(parent).checked = parent.children.every(item => !!item.checked)
+    if (parent.children.every(item => !!item.checked)) {
+      unref(parent).checked = true
+    } else if (parent.children.every(item => !item.checked)) {
+      unref(parent).checked = false
+    }
   }
 }
 

@@ -53,13 +53,13 @@ import BCheckbox from '@/components/checkbox/src/checkbox.vue'
 import CollapseTransition from '@/components/collapse-transition/src/collapse-transition.vue'
 import { injectMore } from '@tools/utils/vue-utils'
 import {
-  getIndexList,
-  getTreeNode,
   useSetSelectedKeys,
   useSingleSelect
 } from '@/components/tree/src/hooks/useHandleSelect'
-import { isArray } from '@tools/utils/is'
-import { useHandleCheckbox } from '@/components/tree/src/hooks/useHandleCheck'
+import {
+  handleChildrenChecked,
+  handleParentChecked
+} from '@/components/tree/src/hooks/useHandleCheck'
 
 export default defineComponent({
   name: 'tree-node',
@@ -78,6 +78,7 @@ export default defineComponent({
       treeDataCache,
       selectedKeys,
       updateSelectedKeys,
+      updateCheckedKeys,
       checkAble,
       showIcon
     } = injectMore([
@@ -86,9 +87,19 @@ export default defineComponent({
       'treeDataCache',
       'selectedKeys',
       'updateSelectedKeys',
+      'updateCheckedKeys',
       'checkAble',
       'showIcon'
     ])
+
+    watch(
+      () => treeNodeData.value.checked,
+      checked => {
+        handleChildrenChecked(treeNodeData, !!checked)
+        handleParentChecked(treeDataCache, treeNodeData)
+        unref(updateCheckedKeys)(checked, treeNodeData.value.key)
+      }
+    )
 
     const hasLeaf = computed(
       () => (unref(treeNodeData).children as TreeNode[])?.length
@@ -144,13 +155,9 @@ export default defineComponent({
       unref(treeNodeData).isExpanded = !unref(treeNodeData).isExpanded
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     function checkHandler(val: boolean) {
-      console.log(val)
-      useHandleCheckbox({
-        treeData: treeDataCache,
-        currentTreeNode: treeNodeData,
-        checked: val
-      })
+      /*暂时没用上，后续用*/
     }
 
     return {
