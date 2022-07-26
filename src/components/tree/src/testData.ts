@@ -1048,7 +1048,31 @@ export const testData3 = [
     children: [
       {
         title: '节点-0-0',
-        key: '00'
+        key: '00',
+        children: [
+          {
+            title: '节点-0-0-1',
+            key: '001'
+          },
+          {
+            title: '节点-0-0-2',
+            key: '002'
+          }
+        ]
+      },
+      {
+        title: '节点-0-1',
+        key: '01',
+        children: [
+          {
+            title: '节点-0-1-1',
+            key: '011'
+          },
+          {
+            title: '节点-0-1-2',
+            key: '012'
+          }
+        ]
       }
     ]
   },
@@ -1058,7 +1082,7 @@ export const testData3 = [
     children: [
       {
         title: '节点-1-0',
-        key: '01',
+        key: '10',
         checkAble: false
       }
     ]
@@ -1069,11 +1093,11 @@ export const testData3 = [
     children: [
       {
         title: '节点-2-0',
-        key: '02'
+        key: '20'
       },
       {
         title: '节点-2-1',
-        key: '12'
+        key: '21'
       }
     ]
   },

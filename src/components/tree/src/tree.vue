@@ -46,13 +46,13 @@ export default defineComponent({
       default: false
     },
     // 展开指定的树节点
-    expandedKeys: {
-      type: Array as PropType<Key[]>
-    },
+    // expandedKeys: {
+    //   type: Array as PropType<Key[]>
+    // },
     // 加入线
-    showLine: {
-      type: Boolean as PropType<boolean>
-    },
+    // showLine: {
+    //   type: Boolean as PropType<boolean>
+    // },
     // 显示图标（完成）
     showIcon: {
       type: Boolean as PropType<boolean>,
