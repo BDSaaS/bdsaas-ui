@@ -29,7 +29,7 @@ export function handleChildrenChecked(
 ) {
   const treeNode = unref(currentTreeNode)
   if (isArray(treeNode.children)) {
-    ;(treeNode.children as TreeNode[]).forEach(item => {
+    (treeNode.children as TreeNode[]).forEach(item => {
       item.checked = checked
     })
   }

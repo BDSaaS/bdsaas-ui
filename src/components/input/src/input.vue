@@ -93,7 +93,7 @@ export default defineComponent({
 
     function query() {
       if (isSelect.value) {
-        ;(input.value as HTMLInputElement).focus()
+        (input.value as HTMLInputElement).focus()
       } else {
         emit('change', props.modelValue)
       }
