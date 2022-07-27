@@ -45,11 +45,29 @@ export function handleParentChecked(
     getIndexList(getParentIndex(unref(treeNodeData).currentIndex as string))
   )
 
+  // if (isArray(parent.children)) {
+  //   if (parent.children.every(item => !!item.checked)) {
+  //     unref(parent).checked = true
+  //   } else if (parent.children.every(item => !item.checked)) {
+  //     unref(parent).checked = false
+  //   }
+  // }
+
   if (isArray(parent.children)) {
-    if (parent.children.every(item => !!item.checked)) {
-      unref(parent).checked = true
-    } else if (parent.children.every(item => !item.checked)) {
-      unref(parent).checked = false
+    const length = parent.children.length
+    const checkedLength = parent.children.filter(item => !!item.checked).length
+    if (checkedLength === length) {
+      // 底下 checkbox 全选中
+      !unref(parent).checked && (unref(parent).checked = true)
+      unref(parent).indeterminate = false
+    } else if (checkedLength > 0 && checkedLength < length) {
+      // 底下 checkbox 部分选中
+      // unref(parent).checked && (unref(parent).checked = false)
+      unref(parent).indeterminate = true
+    } else if (checkedLength === 0) {
+      // 底下 checkbox 全部未选中
+      // unref(parent).checked && (unref(parent).checked = false)
+      unref(parent).indeterminate = false
     }
   }
 }

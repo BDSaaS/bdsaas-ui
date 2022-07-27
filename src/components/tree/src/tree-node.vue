@@ -12,6 +12,7 @@
         <b-checkbox
           v-if="checkAble && $props.treeNodeData.checkAble !== false"
           v-model="$props.treeNodeData.checked"
+          v-model:indeterminate="$props.treeNodeData.indeterminate"
           class="b-tree-node-checkbox"
           @change="checkHandler"
           @click.stop

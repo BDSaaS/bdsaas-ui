@@ -54,6 +54,7 @@ export function treeDataInitHandle({
           checked:
             (parentHasChecked || checkedKeys?.includes(item.key)) &&
             updateCheckedKeys(true, item.key),
+          indeterminate: false,
           currentIndex: parentCurrentIndex
             ? `${parentCurrentIndex}-${index}`
             : `${index}`
