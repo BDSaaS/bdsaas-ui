@@ -110,6 +110,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/tagDemo',
     name: 'TagDemo',
     component: () => import('@/views/TagDemo.vue')
+  },
+  {
+    path: '/tooltipDemo',
+    name: 'tooltipDemo',
+    component: () => import('@/views/TooltipDemo.vue')
+  },
+  {
+    path: '/popoverDemo',
+    name: 'popoverDemo',
+    component: () => import('@/views/PopoverDemo.vue')
   }
 ]
 

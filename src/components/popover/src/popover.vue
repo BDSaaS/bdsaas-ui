@@ -1,6 +1,6 @@
 <template>
   <div class="b-popover">
-    <div ref="trigger">
+    <div ref="popTrigger">
       <slot></slot>
     </div>
     <b-popover-content
@@ -18,7 +18,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref, watch } from 'vue'
+import {defineComponent, onMounted, reactive, Ref, ref, watch} from 'vue'
 import type { PropType } from 'vue'
 import BPopoverContent from './content.vue'
 export default defineComponent({
@@ -57,16 +57,21 @@ export default defineComponent({
   setup(props) {
     const initStatus = reactive({
       show: false,
-      boundClient: 0
+      boundClient: {
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0
+      }
     })
-    const popover = ref(null)
-    let trigger = ref(null)
+    const popover = ref() as Ref<HTMLElement>
+    const popTrigger = ref() as Ref<HTMLElement>
     const position = reactive({
       top: 0,
       left: 0
     })
     const showPopoverHandler = () => {
-      initStatus.boundClient = trigger.value.getBoundingClientRect()
+      initStatus.boundClient = popTrigger.value.getBoundingClientRect()
       initStatus.show = true
     }
     const closePopoverHandler = () => {
@@ -76,40 +81,40 @@ export default defineComponent({
     }
     onMounted(() => {
       if (props.trigger === 'hover') {
-        trigger.value.addEventListener('mouseenter', () => {
+        popTrigger.value.addEventListener('mouseenter', () => {
           showPopoverHandler()
         })
-        trigger.value.addEventListener('mouseleave', () => {
+        popTrigger.value.addEventListener('mouseleave', () => {
           closePopoverHandler()
         })
       }
       if (props.trigger === 'click') {
-        trigger.value.addEventListener('click', () => {
-          initStatus.boundClient = trigger.value.getBoundingClientRect()
+        popTrigger.value.addEventListener('click', () => {
+          initStatus.boundClient = popTrigger.value.getBoundingClientRect()
           initStatus.show = !initStatus.show
         })
         document.addEventListener('click', event => {
           const e = event || window.event
-          if (trigger && trigger.value && !trigger.value.contains(e.target)) {
+          if (popTrigger && popTrigger.value && !popTrigger.value.contains((e as any).target)) {
             initStatus.show = false
           }
         })
       }
       if (props.trigger === 'manual') {
-        trigger.value.addEventListener('click', () => {
-          initStatus.boundClient = trigger.value.getBoundingClientRect()
+        popTrigger.value.addEventListener('click', () => {
+          initStatus.boundClient = popTrigger.value.getBoundingClientRect()
           initStatus.show = !initStatus.show
         })
       }
       if (props.trigger === 'focus') {
-        trigger.value.addEventListener(
+        popTrigger.value.addEventListener(
           'mousedown',
           function () {
             showPopoverHandler()
           },
           true
         )
-        trigger.value.addEventListener(
+        popTrigger.value.addEventListener(
           'mouseup',
           function () {
             initStatus.show = false
@@ -118,7 +123,7 @@ export default defineComponent({
         )
         document.addEventListener('click', event => {
           const e = event || window.event
-          if (trigger && trigger.value && !trigger.value.contains(e.target)) {
+          if (popTrigger && popTrigger.value && !popTrigger.value.contains((e as any).target)) {
             initStatus.show = false
           }
         })
@@ -129,29 +134,29 @@ export default defineComponent({
       newValue => {
         if (newValue) {
           switch (props.placement) {
-            case 'top':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width / 2
-              position.top = initStatus.boundClient.top
-              break
-            case 'left':
-              position.left = initStatus.boundClient.left
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height / 2
-              break
-            case 'right':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height / 2
-              break
-            case 'bottom':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width / 2
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height
-              break
-            default:
+          case 'top':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width / 2
+            position.top = initStatus.boundClient.top
+            break
+          case 'left':
+            position.left = initStatus.boundClient.left
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height / 2
+            break
+          case 'right':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height / 2
+            break
+          case 'bottom':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width / 2
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height
+            break
+          default:
           }
         }
       }
@@ -160,6 +165,7 @@ export default defineComponent({
       position,
       initStatus,
       popover,
+      popTrigger,
       showPopoverHandler,
       closePopoverHandler
     }

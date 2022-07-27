@@ -16,8 +16,9 @@
   </teleport>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import {defineComponent, Ref, ref} from 'vue'
 import type { PropType } from 'vue'
+import type { Offset } from './interface'
 export default defineComponent({
   name: 'BTooltipContent',
   props: {
@@ -30,7 +31,7 @@ export default defineComponent({
       default: false
     },
     position: {
-      type: Object as PropType<object>,
+      type: Object as PropType<Offset>,
       default: () => ({
         left: 0,
         top: 0
@@ -46,39 +47,39 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const popover = ref<HTMLElement>()
+    const popover = ref() as Ref<HTMLElement>
     watch(
       () => props.show,
       value => {
         if (value) {
           switch (props.placement) {
-            case 'top':
-              popover.value.style.top =
-                props.position.top - popover.value.offsetHeight - 10 + 'px'
-              popover.value.style.left =
-                props.position.left - popover.value.offsetWidth / 2 + 'px'
-              break
-            case 'left':
-              popover.value.style.top =
-                props.position.top - popover.value.offsetHeight / 2 + 'px'
-              popover.value.style.left =
-                props.position.left - popover.value.offsetWidth - 10 + 'px'
-              break
-            case 'right':
-              popover.value.style.top =
-                props.position.top - popover.value.offsetHeight / 2 + 'px'
-              popover.value.style.left = props.position.left + 13 + 'px'
-              break
-            case 'bottom':
-              popover.value.style.top = props.position.top + 10 + 'px'
-              popover.value.style.left =
-                props.position.left - popover.value.offsetWidth / 2 + 'px'
-              break
-            default:
-              popover.value.style.top =
-                props.position.top - popover.value.offsetHeight - 10 + 'px'
-              popover.value.style.left =
-                props.position.left - popover.value.offsetWidth / 2 + 'px'
+          case 'top':
+            popover.value.style.top =
+              props.position.top - popover.value.offsetHeight - 10 + 'px'
+            popover.value.style.left =
+              props.position.left - popover.value.offsetWidth / 2 + 'px'
+            break
+          case 'left':
+            popover.value.style.top =
+              props.position.top - popover.value.offsetHeight / 2 + 'px'
+            popover.value.style.left =
+              props.position.left - popover.value.offsetWidth - 10 + 'px'
+            break
+          case 'right':
+            popover.value.style.top =
+              props.position.top - popover.value.offsetHeight / 2 + 'px'
+            popover.value.style.left = props.position.left + 13 + 'px'
+            break
+          case 'bottom':
+            popover.value.style.top = props.position.top + 10 + 'px'
+            popover.value.style.left =
+              props.position.left - popover.value.offsetWidth / 2 + 'px'
+            break
+          default:
+            popover.value.style.top =
+              props.position.top - popover.value.offsetHeight - 10 + 'px'
+            popover.value.style.left =
+              props.position.left - popover.value.offsetWidth / 2 + 'px'
           }
         }
       }

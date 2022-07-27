@@ -20,7 +20,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, watch } from 'vue'
+import { defineComponent, reactive, ref, watch, Ref } from 'vue'
 import type { PropType } from 'vue'
 import BTooltipContent from './content.vue'
 export default defineComponent({
@@ -55,10 +55,15 @@ export default defineComponent({
   setup(props) {
     const initStatus = reactive({
       show: false,
-      boundClient: 0
+      boundClient: {
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0
+      }
     })
     const popover = ref(null)
-    const trigger = ref(null)
+    const trigger = ref() as Ref<HTMLElement>
     const position = reactive({
       top: 0,
       left: 0
@@ -77,32 +82,32 @@ export default defineComponent({
       newValue => {
         if (newValue) {
           switch (props.placement) {
-            case 'top':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width / 2
-              position.top = initStatus.boundClient.top
-              break
-            case 'left':
-              position.left = initStatus.boundClient.left
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height / 2
-              break
-            case 'right':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height / 2
-              break
-            case 'bottom':
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width / 2
-              position.top =
-                initStatus.boundClient.top + initStatus.boundClient.height
-              break
-            default:
-              position.left =
-                initStatus.boundClient.left + initStatus.boundClient.width / 2
-              position.top = initStatus.boundClient.top
+          case 'top':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width / 2
+            position.top = initStatus.boundClient.top
+            break
+          case 'left':
+            position.left = initStatus.boundClient.left
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height / 2
+            break
+          case 'right':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height / 2
+            break
+          case 'bottom':
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width / 2
+            position.top =
+              initStatus.boundClient.top + initStatus.boundClient.height
+            break
+          default:
+            position.left =
+              initStatus.boundClient.left + initStatus.boundClient.width / 2
+            position.top = initStatus.boundClient.top
           }
         }
       }
