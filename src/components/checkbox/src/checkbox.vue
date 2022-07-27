@@ -35,7 +35,7 @@ export default defineComponent({
       type: Boolean as PropType<boolean>,
       default: false
     },
-    // 半选中状态（下属的 checkbox 没有全部选中时）:indeterminate=“true” :checked="false"
+    // 用于 checkbox 的半选中状态（当其下属的 checkbox 没有全部选中时为 true）:indeterminate=“true” :checked="false"
     // 选中状态（下属的 checkbox 全部选中时）:indeterminate=“false” :checked="true"
     // 未选中状态（下属的 checkbox 全部未选中时）:indeterminate=“false” :checked="false"
     indeterminate: {
@@ -53,13 +53,6 @@ export default defineComponent({
       indeterminate.value && 'is-indeterminate'
     ])
 
-    watch(
-      () => modelValue.value,
-      () => {
-        emit('update:indeterminate', false)
-      }
-    )
-
     // 监听半选中状态为 true 时，取消复选框的选中
     watch(
       () => indeterminate.value,
@@ -69,10 +62,10 @@ export default defineComponent({
     )
 
     function changeHandler(e: Event) {
-      console.log('checked')
       const checked = (e.target as HTMLInputElement).checked
+      console.log('checkbox 内部', checked)
       emit('update:modelValue', checked)
-      // emit('update:indeterminate', false)
+      emit('update:indeterminate', false)
       emit('change', checked)
     }
 
