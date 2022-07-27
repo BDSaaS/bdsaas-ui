@@ -1,22 +1,26 @@
 <template>
-  <div class="b-tooltip" >
-    <div ref="trigger" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+  <div class="b-tooltip">
+    <div
+      ref="trigger"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+    >
       <slot></slot>
     </div>
-    <b-tooltip-content v-if="!disabled"
+    <b-tooltip-content
+      v-if="!disabled"
       :show="initStatus.show"
-      :position="position" :effect="effect" :enterable="enterable"
-      :placement="placement">
+      :position="position"
+      :effect="effect"
+      :enterable="enterable"
+      :placement="placement"
+    >
       <slot name="content"></slot>
     </b-tooltip-content>
   </div>
 </template>
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  ref,
-  watch } from 'vue'
+import { defineComponent, reactive, ref, watch } from 'vue'
 import type { PropType } from 'vue'
 import BTooltipContent from './content.vue'
 export default defineComponent({
@@ -57,7 +61,7 @@ export default defineComponent({
     const trigger = ref(null)
     const position = reactive({
       top: 0,
-      left: 0,
+      left: 0
     })
     const handleMouseEnter = () => {
       initStatus.boundClient = trigger.value.getBoundingClientRect()
@@ -68,31 +72,41 @@ export default defineComponent({
         initStatus.show = false
       }, 200)
     }
-    watch(() => initStatus.show, (newValue) => {
-      if (newValue) {
-        switch (props.placement){
-        case 'top' :
-          position.left = initStatus.boundClient.left + initStatus.boundClient.width / 2
-          position.top = initStatus.boundClient.top
-          break
-        case 'left':
-          position.left = initStatus.boundClient.left
-          position.top = initStatus.boundClient.top + initStatus.boundClient.height / 2
-          break
-        case 'right':
-          position.left = initStatus.boundClient.left + initStatus.boundClient.width
-          position.top = initStatus.boundClient.top + initStatus.boundClient.height / 2
-          break
-        case 'bottom':
-          position.left = initStatus.boundClient.left + initStatus.boundClient.width / 2
-          position.top = initStatus.boundClient.top + initStatus.boundClient.height
-          break
-        default:
-          position.left = initStatus.boundClient.left + initStatus.boundClient.width / 2
-          position.top = initStatus.boundClient.top
+    watch(
+      () => initStatus.show,
+      newValue => {
+        if (newValue) {
+          switch (props.placement) {
+            case 'top':
+              position.left =
+                initStatus.boundClient.left + initStatus.boundClient.width / 2
+              position.top = initStatus.boundClient.top
+              break
+            case 'left':
+              position.left = initStatus.boundClient.left
+              position.top =
+                initStatus.boundClient.top + initStatus.boundClient.height / 2
+              break
+            case 'right':
+              position.left =
+                initStatus.boundClient.left + initStatus.boundClient.width
+              position.top =
+                initStatus.boundClient.top + initStatus.boundClient.height / 2
+              break
+            case 'bottom':
+              position.left =
+                initStatus.boundClient.left + initStatus.boundClient.width / 2
+              position.top =
+                initStatus.boundClient.top + initStatus.boundClient.height
+              break
+            default:
+              position.left =
+                initStatus.boundClient.left + initStatus.boundClient.width / 2
+              position.top = initStatus.boundClient.top
+          }
         }
       }
-    })
+    )
     return {
       position,
       initStatus,
@@ -102,8 +116,6 @@ export default defineComponent({
       handleMouseLeave
     }
   }
-
-
 })
 </script>
 <style lang="less">
