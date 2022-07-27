@@ -37,6 +37,7 @@ export default defineComponent({
     const switchValue = () => {
       if (disabled.value) return
       emit('update:checked', !checked.value)
+      emit('change', !checked.value)
     }
     return { switchClass, switchValue }
   }

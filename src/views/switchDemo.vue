@@ -1,6 +1,7 @@
 <template>
   <div class="b-switch-box">
-    <b-switch v-model:checked="checked" :disabled="disabled"> </b-switch>
+    <b-switch v-model:checked="checked" :disabled="disabled" @change="change">
+    </b-switch>
     <p>
       {{ checked }}
     </p>
@@ -23,11 +24,15 @@ export default defineComponent({
     const delDisabled = () => {
       disabled.value = false
     }
+    const change = (val: boolean) => {
+      console.log(val)
+    }
     return {
       checked,
       disabled,
       setDisabled,
-      delDisabled
+      delDisabled,
+      change
     }
   }
 })
