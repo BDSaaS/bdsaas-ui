@@ -26,6 +26,20 @@
       transition: 0.3s;
       transform: translate(-50%, -50%) scale3d(0, 0, 0);
     }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 8px;
+      height: 8px;
+      content: "";
+      background: #0056ff;
+      border-radius: 1px;
+      transition: 0.3s;
+      transform: translate(-50%, -50%) scale3d(0, 0, 0);
+    }
   }
 
   &-input {
@@ -54,6 +68,21 @@
 
     .b-checkbox-label {
       color: #0056ff;
+    }
+  }
+
+  &.is-indeterminate {
+    .b-checkbox-inner {
+      background: #fff;
+      border-color: #9ca6b9;
+
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+      }
     }
   }
 

@@ -3,19 +3,22 @@
   <br />
   <b-checkbox v-model="checked" disabled>Hello world</b-checkbox>
   <p>选中状态：{{ checked }}</p>
+  <hr />
+  <b-button @click="indeterminate = !indeterminate">切换半选中状态</b-button>
+  <br />
+  <br />
+  <b-checkbox v-model="checked2" v-model:indeterminate="indeterminate"
+    >Hello world {{ checked2 }}
+  </b-checkbox>
+  <p>半选中状态：{{ indeterminate }}</p>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue'
+<script lang="ts" setup>
 import BCheckbox from '../components/checkbox/src/checkbox.vue'
+import BButton from '@/components/button/src/button.vue'
+import { Ref } from 'vue'
 
-export default defineComponent({
-  name: 'CheckboxDemo',
-  components: { BCheckbox },
-  setup() {
-    const checked = ref(true)
-
-    return { checked }
-  }
-})
+const checked = ref(true)
+const checked2 = ref(false)
+const indeterminate = ref(true) as Ref<boolean>
 </script>

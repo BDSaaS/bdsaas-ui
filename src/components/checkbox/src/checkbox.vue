@@ -34,20 +34,46 @@ export default defineComponent({
     disabled: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+    // 半选中状态（下属的 checkbox 没有全部选中时）:indeterminate=“true” :checked="false"
+    // 选中状态（下属的 checkbox 全部选中时）:indeterminate=“false” :checked="true"
+    // 未选中状态（下属的 checkbox 全部未选中时）:indeterminate=“false” :checked="false"
+    indeterminate: {
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'update:indeterminate', 'change'],
   setup(props, { emit }) {
-    const { modelValue, disabled } = toRefs(props)
+    const { modelValue, disabled, indeterminate } = toRefs(props)
 
     const checkboxClass = computed(() => [
       modelValue.value && 'is-checked',
-      disabled.value && 'is-disabled'
+      disabled.value && 'is-disabled',
+      indeterminate.value && 'is-indeterminate'
     ])
 
+    watch(
+      () => modelValue.value,
+      () => {
+        emit('update:indeterminate', false)
+      }
+    )
+
+    // 监听半选中状态为 true 时，取消复选框的选中
+    watch(
+      () => indeterminate.value,
+      indeterminate => {
+        indeterminate && emit('update:modelValue', false)
+      }
+    )
+
     function changeHandler(e: Event) {
-      emit('update:modelValue', (e.target as HTMLInputElement).checked)
-      emit('change', (e.target as HTMLInputElement).checked)
+      console.log('checked')
+      const checked = (e.target as HTMLInputElement).checked
+      emit('update:modelValue', checked)
+      // emit('update:indeterminate', false)
+      emit('change', checked)
     }
 
     return {
