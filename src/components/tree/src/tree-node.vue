@@ -17,11 +17,16 @@
           @change="checkHandler"
           @click.stop
         />
-        <!--      TODO 根据 Tree 的 show-icon 属性，判断显示，有插槽默认值以及定制图标-->
+        <!--      TODO 根据 Tree 的 show-icon 属性，判断显示，有插槽默认值以及定制图标，外部组件通过判断 key 来实现插槽自定义-->
         <span class="b-tree-node-inner">
-          <slot v-if="showIcon" name="icon">
+          <slot v-if="showIcon" name="icon" :key="$props.treeNodeData.key">
             <span class="b-tree-node-icon">
-              <b-icon name="customer" />
+              <img
+                v-if="$props.treeNodeData.imgUrl"
+                :src="$props.treeNodeData.imgUrl"
+                alt="头像"
+              />
+              <b-icon v-else :name="$props.treeNodeData.icon || 'customer'" />
             </span>
           </slot>
           <span class="b-tree-node-title">

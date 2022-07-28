@@ -1045,10 +1045,12 @@ export const testData3 = [
   {
     title: '节点-0',
     key: '0',
+    icon: 'notice',
     children: [
       {
         title: '节点-0-0',
         key: '00',
+        imgUrl: 'https://avatars.githubusercontent.com/u/40376068?s=64&v=4',
         children: [
           {
             title: '节点-0-0-1',
