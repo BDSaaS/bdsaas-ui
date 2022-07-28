@@ -1052,7 +1052,27 @@ export const testData3 = [
         children: [
           {
             title: '节点-0-0-1',
-            key: '001'
+            key: '001',
+            children: [
+              {
+                title: '节点-0-0-1-1',
+                key: '0011',
+                children: [
+                  {
+                    title: '节点-0-0-1-1-1',
+                    key: '00111'
+                  },
+                  {
+                    title: '节点-0-0-2-1-1',
+                    key: '00211'
+                  }
+                ]
+              },
+              {
+                title: '节点-0-0-2-1',
+                key: '0021'
+              }
+            ]
           },
           {
             title: '节点-0-0-2',
