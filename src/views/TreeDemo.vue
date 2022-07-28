@@ -72,7 +72,7 @@ const treeData = ref(testData) as Ref<TreeNode[]>
 const treeData2 = ref(testData3) as Ref<TreeNode[]>
 const selectedKeys: Ref<string[]> = ref(['00'])
 const selectedKeys2: Ref<string[]> = ref(['0', '3'])
-const checkedKeys: Ref<string[]> = ref(['0', '3'])
+const checkedKeys: Ref<string[]> = ref(['012'])
 const showIcon = ref(true) as Ref<boolean>
 const checkAble = ref(true) as Ref<boolean>
 </script>

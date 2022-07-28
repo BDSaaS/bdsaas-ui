@@ -94,10 +94,16 @@ export default defineComponent({
     ])
 
     watch(
-      () => treeNodeData.value.checked,
-      checked => {
-        handleChildrenChecked(treeNodeData, !!checked)
-        handleParentChecked(treeDataCache, treeNodeData)
+      () => [treeNodeData.value.checked, treeNodeData.value.indeterminate],
+      ([checked, indeterminate]) => {
+        // console.log(checked, indeterminate, '[checked, indeterminate]', treeNodeData.value.title)
+        if ((checked && !indeterminate) || (!checked && !indeterminate)) {
+          handleChildrenChecked(treeNodeData, !!checked)
+        }
+
+        if (checked || !checked || indeterminate) {
+          handleParentChecked(treeDataCache, treeNodeData)
+        }
         unref(updateCheckedKeys)(checked, treeNodeData.value.key)
       }
     )
