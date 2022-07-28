@@ -31,10 +31,11 @@ export function handleChildrenChecked(
   if (isArray(treeNode.children)) {
     ;(treeNode.children as TreeNode[]).forEach(item => {
       item.checked = checked
+      item.indeterminate = false
     })
-  } else {
-    // console.log('该节点是末级子节点，没有 children', treeNode.title)
-  }
+  } /*else {
+    console.log('该节点没有 children', treeNode.title)
+  }*/
 }
 
 // 选中|取消选中|半选中上面的父节点
@@ -73,13 +74,4 @@ export function handleParentChecked(
       unref(parent).indeterminate = indeterminateLength > 0
     }
   }
-}
-
-export function useHandleCheckbox({
-  treeData,
-  currentTreeNode,
-  checked
-}: Params) {
-  handleChildrenChecked(currentTreeNode, checked)
-  handleParentChecked(treeData, currentTreeNode)
 }

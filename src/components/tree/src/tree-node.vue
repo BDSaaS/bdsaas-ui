@@ -101,25 +101,21 @@ export default defineComponent({
       'showIcon'
     ])
 
+    // 递归初始化父节点 indeterminate
     watch(
       () => checkedKeys.value,
       () => {
         if (unref(isInitHandle) && treeNodeData.value.checked) {
           handleParentChecked(treeDataCache, treeNodeData)
-          // console.log(
-          //   treeNodeData.value.checked,
-          //   checkedKeys,
-          //   'checked, checkedKeys'
-          // )
         }
         isInitHandle.value = false
       }
     )
 
+    // 点击复选框，递归更新子节点、父节点 checked、indeterminate
     watch(
       () => [treeNodeData.value.checked, treeNodeData.value.indeterminate],
       ([checked, indeterminate]) => {
-        // console.log(checked, indeterminate, '[checked, indeterminate]', treeNodeData.value.title)
         if ((checked && !indeterminate) || (!checked && !indeterminate)) {
           handleChildrenChecked(treeNodeData, !!checked)
         }
@@ -127,6 +123,7 @@ export default defineComponent({
         if (checked || !checked || indeterminate) {
           handleParentChecked(treeDataCache, treeNodeData)
         }
+
         unref(updateCheckedKeys)(checked, treeNodeData.value.key)
       }
     )
