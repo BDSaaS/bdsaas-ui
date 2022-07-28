@@ -72,7 +72,7 @@ const treeData = ref(testData) as Ref<TreeNode[]>
 const treeData2 = ref(testData3) as Ref<TreeNode[]>
 const selectedKeys: Ref<string[]> = ref(['00'])
 const selectedKeys2: Ref<string[]> = ref(['0', '3'])
-const checkedKeys: Ref<string[]> = ref(['012'])
+const checkedKeys: Ref<string[]> = ref([]) // fixme 初始赋值的半选中状态有问题
 const showIcon = ref(true) as Ref<boolean>
 const checkAble = ref(true) as Ref<boolean>
 </script>
