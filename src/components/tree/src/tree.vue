@@ -6,6 +6,7 @@
       v-for="item of treeDataCache"
       :key="item.key"
       :tree-node-data="item"
+      :checked-keys="$props.checkedKeys"
     />
   </ul>
 </template>
