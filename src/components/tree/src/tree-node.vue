@@ -39,6 +39,7 @@
           v-for="item of $props.treeNodeData.children"
           :key="item.key"
           :tree-node-data="item"
+          :checked-keys="$props.checkedKeys"
         />
       </ul>
     </collapse-transition>
@@ -69,10 +70,17 @@ export default defineComponent({
     treeNodeData: {
       type: Object as PropType<TreeNode>,
       required: true
+    },
+    // tree 的选中节点，这里用来进行初始的 checked 和 indeterminate 判断赋值
+    checkedKeys: {
+      type: Array as PropType<Key[]>,
+      default: () => []
     }
   },
   setup(props) {
-    const { treeNodeData } = toRefs(props)
+    // "tree 的选中节点，这里用来进行初始的 checked 和 indeterminate 判断赋值" 初始标记
+    const isInitHandle = ref(true)
+    const { treeNodeData, checkedKeys } = toRefs(props)
     const {
       currentSelectedIndex,
       multiple,
@@ -92,6 +100,21 @@ export default defineComponent({
       'checkAble',
       'showIcon'
     ])
+
+    watch(
+      () => checkedKeys.value,
+      () => {
+        if (unref(isInitHandle) && treeNodeData.value.checked) {
+          handleParentChecked(treeDataCache, treeNodeData)
+          // console.log(
+          //   treeNodeData.value.checked,
+          //   checkedKeys,
+          //   'checked, checkedKeys'
+          // )
+        }
+        isInitHandle.value = false
+      }
+    )
 
     watch(
       () => [treeNodeData.value.checked, treeNodeData.value.indeterminate],
