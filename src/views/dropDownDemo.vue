@@ -54,7 +54,7 @@ export default defineComponent({
   name: 'DropDownDemo',
   components: { BDropDown, BDropDownMenu, BDropDownMenuItem },
   setup() {
-    const selected1 = ref(null)
+    const selected1 = ref()
     const selected2 = ref('1')
     const selected3 = ref('1')
     const selected4 = ref('1')
