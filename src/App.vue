@@ -20,6 +20,8 @@
     |
     <router-link to="/treeDemo">Tree 组件</router-link>
     |
+    <router-link to="/treeSelectDemo">TreeSelect 组件</router-link>
+    |
     <router-link to="/confirmDemo">confirm 组件</router-link>
     |
     <router-link to="/badgeDemo">badge 组件</router-link>

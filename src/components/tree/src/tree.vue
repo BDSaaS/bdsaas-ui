@@ -70,7 +70,13 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['update:selectedKeys', 'update:checkedKeys', 'update:expandedKeys'],
+  emits: [
+    'update:selectedKeys',
+    'update:checkedKeys',
+    'update:expandedKeys',
+    'select',
+    'check'
+  ],
   setup(props, { emit }) {
     const {
       wrapperClass,
