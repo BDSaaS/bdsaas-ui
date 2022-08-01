@@ -6,7 +6,7 @@
 // document.head.appendChild(styleHtml)
 
 import { createVNode, render } from 'vue'
-import notice from './notice.vue'
+import notice from './notice-comp.vue'
 
 // options: type：类型, text：描述,zIndex: 层级, duration：动画时间,offsetTop: 距离窗口顶部距离, showClose:是否显示关闭按钮, center: 文字是否居中
 interface defaultOptionsInter {
