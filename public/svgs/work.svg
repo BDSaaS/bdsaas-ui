@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 16</title>
+    <g id="组件库" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="组件库3.0" transform="translate(-79.000000, -9800.000000)" fill="currentColor">
+            <g id="编组-31" transform="translate(60.000000, 9460.000000)">
+                <g id="编组-16" transform="translate(19.000000, 340.000000)">
+                    <path d="M25,7 C26.1045695,7 27,7.8954305 27,9 L27,21 C27,22.1045695 26.1045695,23 25,23 L8,23 C6.8954305,23 6,22.1045695 6,21 L6,9 C6,7.8954305 6.8954305,7 8,7 L25,7 Z M25,8.6 L8,8.6 C7.80670034,8.6 7.64542508,8.7371128 7.60812658,8.91938605 L7.6,9 L7.6,21 C7.6,21.1932997 7.7371128,21.3545749 7.91938605,21.3918734 L8,21.4 L25,21.4 C25.1932997,21.4 25.3545749,21.2628872 25.3918734,21.080614 L25.4,21 L25.4,9 C25.4,8.80670034 25.2628872,8.64542508 25.080614,8.60812658 L25,8.6 Z" id="矩形" fill-rule="nonzero"></path>
+                    <rect id="矩形" x="13" y="12" width="7" height="1.6"></rect>
+                    <rect id="矩形" x="10" y="25" width="13" height="1.6"></rect>
+                    <rect id="矩形" x="16" y="21.6" width="1.6" height="4"></rect>
+                    <rect id="矩形" x="13" y="16" width="7" height="1.6"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

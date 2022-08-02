@@ -1,3 +1,6 @@
+import '../assets/css/base.less'
+import '../assets/css/common.less'
+
 import Badge from './badge'
 import BasicSelect from './basicSelect'
 import Button from './button'
