@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import VueTypeImports from 'vite-plugin-vue-type-imports'
 import AutoImport from 'unplugin-auto-import/vite'
+import dts from 'vite-plugin-dts'
 
 import { svgBuilder } from './svgBuilder'
 
@@ -55,9 +56,10 @@ export default defineConfig(({ command, mode }) => {
     },
     build: {
       lib: {
+        // entry: path.resolve(__dirname, 'src/components/index.ts'),
         entry: path.resolve(__dirname, 'src/components/index.ts'),
-        name: 'BDSaasUI',
-        fileName: format => `bdsaas-ui.${format}.js`
+        name: 'BdUI',
+        fileName: format => `bd-ui.${format}.js`
       },
       rollupOptions: {
         // 确保外部化处理那些你不想打包进库的依赖

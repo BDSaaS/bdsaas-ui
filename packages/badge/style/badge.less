@@ -1,0 +1,67 @@
+.b-badge {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  .b-badge-content {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 20px;
+    color: @backgroundColor;
+    text-align: center;
+    white-space: nowrap;
+    background-color: @dangerColor;
+    border-radius: 10px;
+    transform: translateY(-50%) translateX(100%);
+  }
+
+  .b-badge-isdot {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    right: 4px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background-color: @dangerColor;
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(100%);
+  }
+
+  .b-badge-shallow {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #f12525;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #feeaea;
+    border-radius: 10px;
+    transform: translateY(-50%) translateX(100%);
+  }
+}
+
+.b-zoom-in-center-enter-active,
+.b-zoom-in-center-leave-active {
+  transition: all 0.3s ease;
+}
+
+.b-zoom-in-center-enter,
+.b-zoom-in-center-leave-active {
+  opacity: 0;
+  transform: scaleX(0);
+}

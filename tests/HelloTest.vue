@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import DzButton from '../src/components/button/src/button.vue'
+import BButton from '../packages/button/src/button.vue'
 
 const props = defineProps<{ count: number }>()
 
@@ -12,5 +12,5 @@ defineExpose(props)
 
 <template>
   <div>{{ count }} x {{ times }} = {{ result }}</div>
-  <dz-button type="default" @click="times += 1">times: {{ times }}</dz-button>
+  <b-button type="default" @click="times += 1">times: {{ times }}</b-button>
 </template>
