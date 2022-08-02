@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue'
 export default defineComponent({
-  name: 'radioComponent',
+  name: 'BRadio',
   props: {
     radioName: String as PropType<string>,
     modelValue: String as PropType<string>,
