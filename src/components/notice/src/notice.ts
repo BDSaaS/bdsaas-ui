@@ -1,10 +1,3 @@
-// // 引入css样式
-// import styles from '../style/notice.less'
-// // 创建style标签,并填充css样式,将元素插到head里面
-// const styleHtml = document.createElement('style')
-// styleHtml.textContent = styles
-// document.head.appendChild(styleHtml)
-
 import { createVNode, render } from 'vue'
 import notice from './notice.vue'
 
