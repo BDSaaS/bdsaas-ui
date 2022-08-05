@@ -1,0 +1,108 @@
+@import "../../style/theme";
+
+.b-drawer-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 10%);
+
+  .b-drawer-container {
+    .b-drawer-open {
+      animation-name: animation-show-dialog-in;
+      animation-duration: 0.4s;
+    }
+
+    .b-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 700px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -10px 0 40px 0 rgb(100 107 122 / 15%);
+
+      .b-drawer-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 34px 25px 28px;
+        border-bottom: 1px solid @line;
+
+        span {
+          width: 200px;
+          height: 18px;
+          overflow: hidden;
+          font-family: PingFangSC-Medium, "PingFang SC", serif;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 18px;
+          color: @primaryText;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .b-drawer-body {
+        flex-grow: 1;
+        overflow: auto;
+      }
+
+      .b-drawer-footer {
+        flex-shrink: 0;
+        width: 700px;
+        height: 80px;
+        padding: 20px 0 20px 28px;
+        background: #fff;
+        box-shadow: 0 0 40px 0 rgb(100 107 122 / 15%);
+      }
+    }
+  }
+}
+
+.b-drawer-fade-enter-from,
+.b-drawer-fade-leave-to {
+  opacity: 0;
+}
+
+.b-drawer-fade-enter-active {
+  transition: opacity 0.4s;
+}
+
+.b-drawer-fade-leave-active {
+  transition: opacity 0.4s;
+
+  .b-drawer-open.b-drawer {
+    animation-name: animation-show-dialog-out;
+  }
+}
+
+.b-drawer-fade-enter-to,
+.b-drawer-fade-leave-from {
+  opacity: 1;
+}
+
+@keyframes animation-show-dialog-in {
+  0% {
+    right: -700px;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes animation-show-dialog-out {
+  0% {
+    right: 0;
+  }
+
+  100% {
+    right: -700px;
+  }
+}

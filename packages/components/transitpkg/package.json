@@ -1,0 +1,26 @@
+{
+  "name": "bdsaas-ui",
+  "version": "0.0.4",
+  "description": "",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "types": "es/index.d.ts",
+  "style": "es/style/index.css",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "exports": {
+    ".": {
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./es/style/index.css": "./es/style/index.css"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

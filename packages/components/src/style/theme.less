@@ -1,0 +1,45 @@
+/* ========== css variables ========== */
+
+/*  主题颜色  */
+@mainColor: #0056ff;
+
+/*  悬停颜色  */
+@hoverColor: #004de5;
+
+/*  按下颜色  */
+@activeColor: #0046d0;
+
+/*  辅助颜色  */
+@successColor: #2ed4a9;
+@dangerColor: #f12525;
+@warningColor: #ff7125;
+@yellowColor: #ffc420;
+
+/*  文字颜色  */
+@primaryText: #242934;
+@regularText: #646b7a;
+@secondaryText: #9ca6b9;
+
+/*  边框颜色  */
+@border: #e1e4e8;
+
+/*  分割线颜色  */
+@line: #edf1f6;
+
+/*  背景颜色  */
+@backgroundColor: #f5f7fb;
+@mainBackgroundColor: rgba(0, 86, 255, 0.05);
+
+/*   使用.XXX(参数1, 参数2) 将其混入到元素样式中   */
+.flex-mixin(@alignItems,@justifyContent) {
+  display: flex;
+  align-items: @alignItems;
+  justify-content: @justifyContent;
+}
+
+.flex-column-mixin(@direction,@alignItems,@justifyContent) {
+  display: flex;
+  flex-direction: @direction;
+  align-items: @alignItems;
+  justify-content: @justifyContent;
+}

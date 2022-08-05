@@ -1,0 +1,40 @@
+@import "../../style/theme.less";
+
+.b-tag {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.b-tag-default {
+  color: @primaryText;
+  background: rgb(0 86 255 / 3%);
+  border-color: #e1e4e8;
+
+  .tag-close {
+    &:hover {
+      color: #fff !important;
+      cursor: pointer;
+      background: #9ca6b9;
+      border-radius: 50%;
+    }
+  }
+}
+
+.b-tag-primary {
+  color: @mainColor;
+  background: rgb(0 86 255 / 3%);
+  border-color: @mainColor;
+
+  .tag-close:hover {
+    //&:hover {
+    color: #f7faff !important;
+    cursor: pointer;
+    background: @mainColor;
+    border-radius: 50%;
+  }
+
+  //}
+}

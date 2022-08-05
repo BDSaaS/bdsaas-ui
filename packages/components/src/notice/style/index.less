@@ -1,0 +1,97 @@
+@import "../../style/theme.less";
+
+/* 消息提示框容器样式 */
+.b-notice {
+  position: fixed;
+  right: 0;
+  z-index: 9999;
+  width: 420px;
+  padding: 24px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 1px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px 0 rgb(100 107 122 / 15%);
+  transition: opacity 0.3s, transform 0.5s, top 0.3s;
+  transform: translateX(-20px);
+
+  &.b-notice-transition {
+    transition: opacity 0.3s, top 0.3s;
+  }
+
+  .b-notice-title {
+    .flex-mixin(center, normal);
+
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #242934;
+
+    .b-icon-notice {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+  }
+
+  .b-notice-content {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #646b7a;
+  }
+
+  .b-notice-close {
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    .flex-mixin(center,center);
+
+    width: 16px;
+    height: 16px;
+    color: #9ca6b9;
+    cursor: pointer;
+    border-radius: 100%;
+    transform: translateY(-50%);
+
+    &:hover {
+      color: #fff;
+      background-color: #9ca6b9;
+      opacity: 0.4;
+    }
+  }
+}
+
+.b-notice-hide {
+  opacity: 0;
+  transform: translate(100%);
+}
+
+/* 错误提示框样式 */
+.b-notice-info {
+  color: @yellowColor;
+  background-color: #fffbee;
+}
+
+/* 成功提示框样式 */
+.b-notice-success {
+  color: @successColor;
+  background: #effcf9;
+}
+
+/* 警告提示框样式 */
+.b-notice-warn {
+  color: @warningColor;
+  background-color: #fff4ee;
+}
+
+/* 错误提示框样式 */
+.b-notice-error {
+  color: @dangerColor;
+  background-color: #fef2f2;
+}
