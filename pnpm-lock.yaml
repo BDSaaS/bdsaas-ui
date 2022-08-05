@@ -44,7 +44,7 @@ importers:
 
   examples:
     specifiers:
-      bdsaas-ui: workspace:^0.0.2
+      bdsaas-ui: workspace:^1.0.0
     dependencies:
       bdsaas-ui: link:../packages/components
 
