@@ -4,7 +4,7 @@
     <slot name="icon">
       <transition appear>
         <b-icon
-          v-if="closeAble"
+          v-if="isCloseAble"
           name="close"
           class="tag-close"
           style="width: 16px; height: 16px; margin-left: 4px;"
@@ -39,7 +39,7 @@ export default defineComponent({
   emits: ['close'],
   setup(props, { emit }) {
     const { closeAble } = toRefs(props)
-
+    const isCloseAble = closeAble
     const tagClass = computed(() => ['b-tag', `b-tag-${props.type}`])
     const handleClose = () => {
       console.log('BTag')
@@ -47,8 +47,7 @@ export default defineComponent({
     }
     console.log('props', props)
 
-    // eslint-disable-next-line vue/no-dupe-keys
-    return { handleClose, tagClass, closeAble }
+    return { handleClose, tagClass, isCloseAble }
   }
 })
 </script>

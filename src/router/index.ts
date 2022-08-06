@@ -117,6 +117,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/TagDemo.vue')
   },
   {
+    path: '/cardDemo',
+    name: 'cardDemo',
+    component: () => import('@/views/cardDemo.vue')
+  },
+  {
     path: '/tooltipDemo',
     name: 'tooltipDemo',
     component: () => import('@/views/TooltipDemo.vue')
