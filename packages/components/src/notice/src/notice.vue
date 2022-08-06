@@ -2,12 +2,12 @@
   <div class="b-notice b-notice-hide" :style="`zIndex:${zIndex};`">
     <div class="b-notice-title">
       <svg
-          class="b-icon b-icon-notice"
-          aria-hidden="true"
-          width="1em"
-          height="1em"
+        class="b-icon b-icon-notice"
+        aria-hidden="true"
+        width="1em"
+        height="1em"
       >
-        <use href="#b-icon-notice"/>
+        <use href="#b-icon-notice" />
       </svg>
       {{ title }}
     </div>
@@ -15,22 +15,20 @@
       {{ message }}
     </div>
     <svg
-        class="b-icon b-notice-close"
-        aria-hidden="true"
-        width="1em"
-        height="1em"
-        v-show="showClose"
-        @click="handleClose"
+      class="b-icon b-notice-close"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      v-show="showClose"
+      @click="handleClose"
     >
-      <use href="#b-icon-close"/>
+      <use href="#b-icon-close" />
     </svg>
   </div>
 </template>
 <script lang="ts">
-import "../style/index.less";
-import {defineComponent} from 'vue'
-import type {PropType} from 'vue'
-
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 export default defineComponent({
   name: 'notice-components',
   props: {
@@ -52,3 +50,6 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="less" scoped>
+@import "../style/notice.less";
+</style>
