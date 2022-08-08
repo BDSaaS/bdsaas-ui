@@ -1,5 +1,5 @@
 <template>
-  <span :class="['icon-' + name]"></span>
+  <span :class="['b-icon-' + name]"></span>
 </template>
 
 <script lang="ts">
