@@ -1,5 +1,5 @@
 <template>
-  <span :class="['iconfont', 'icon-' + $props.name]"></span>
+  <span :class="['icon-' + name]"></span>
 </template>
 
 <script lang="ts">
