@@ -1,6 +1,6 @@
 // 引入css样式
 // @ts-ignore
-import styles from '../style/message.less'
+import styles from '../style/index.less'
 // 创建style标签,并填充css样式,将元素插到head里面
 const styleHtml = document.createElement('style')
 styleHtml.textContent = styles
