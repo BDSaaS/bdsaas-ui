@@ -1,7 +1,5 @@
 <template>
-  <svg class="b-icon" aria-hidden="true" width="1em" height="1em">
-    <use :href="'#b-icon-' + name"/>
-  </svg>
+  <span :class="['iconfont', 'icon-' + $props.name]"></span>
 </template>
 
 <script lang="ts">

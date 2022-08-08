@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts">
-import "../style/index.less";
+import "../style/index.less"
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 export default defineComponent({
