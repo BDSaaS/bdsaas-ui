@@ -9,7 +9,7 @@
       @blur="blurHandler"
     >
       <template #suffix>
-        <i class="iconfont icon-xiajiantou"></i>
+        <i class="iconfont b-icon-xiajiantou"></i>
       </template>
     </b-input>
     <transition name="zoom-in-top">

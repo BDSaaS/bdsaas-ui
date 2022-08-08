@@ -14,15 +14,15 @@
           {{ record.gender }}
           <i
             v-if="record.gender === '男'"
-            class="icon-nan iconfont"
+            class="b-icon-nan iconfont"
             style="color: deepskyblue;"
           ></i>
-          <i v-else class="icon-nv iconfont" style="color: deeppink;"></i>
+          <i v-else class="b-icon-nv iconfont" style="color: deeppink;"></i>
         </template>
       </template>
       <template #footer>
         <div class="list-footer">
-          <b-button type="primary" icon="icon-jiazai_shuaxin"
+          <b-button type="primary" icon="b-icon-jiazai_shuaxin"
             >刷新表格
           </b-button>
         </div>

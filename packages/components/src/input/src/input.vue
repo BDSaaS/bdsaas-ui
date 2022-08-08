@@ -15,7 +15,7 @@
         @keydown.enter="query"
     />
     <div :class="suffixClass" @click="query">
-      <i v-if="isSearch" class="iconfont icon-icon-test"></i>
+      <i v-if="isSearch" class="iconfont b-icon-b-icon-test"></i>
       <slot v-else name="suffix"></slot>
     </div>
   </div>

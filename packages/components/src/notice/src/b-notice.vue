@@ -2,12 +2,12 @@
   <div class="b-notice b-notice-hide" :style="`zIndex:${zIndex};`">
     <div class="b-notice-title">
       <svg
-        class="b-icon b-icon-notice"
+        class="b-icon b-b-icon-notice"
         aria-hidden="true"
         width="1em"
         height="1em"
       >
-        <use href="#b-icon-notice" />
+        <use href="#b-b-icon-notice" />
       </svg>
       {{ title }}
     </div>
@@ -22,7 +22,7 @@
       v-show="showClose"
       @click="handleClose"
     >
-      <use href="#b-icon-close" />
+      <use href="#b-b-icon-close" />
     </svg>
   </div>
 </template>

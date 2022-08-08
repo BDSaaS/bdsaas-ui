@@ -3,8 +3,8 @@ export type ButtonSize = 'small' | 'default'
 export type ButtonType = 'default' | 'primary'
 
 export type IconType =
-    | 'icon-jiahao'
-    | 'icon-sousuo'
-    | 'icon-icon-test1'
-    | 'icon-jiazai_shuaxin'
+    | 'b-icon-jiahao'
+    | 'b-icon-sousuo'
+    | 'b-icon-b-icon-test1'
+    | 'b-icon-jiazai_shuaxin'
 

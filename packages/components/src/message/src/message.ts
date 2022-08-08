@@ -52,7 +52,7 @@ class Message {
       const span: HTMLSpanElement = document.createElement('span')
       span.className = 'icon'
       span.innerHTML =
-        '<svg class="b-icon" aria-hidden="true" width="1em" height="1em"><use href="#b-icon-close" /></svg>'
+        '<svg class="b-icon" aria-hidden="true" width="1em" height="1em"><use href="#b-b-icon-close" /></svg>'
       el.appendChild(span)
       span.onclick = function () {
         clearTimeout(el.timer)
