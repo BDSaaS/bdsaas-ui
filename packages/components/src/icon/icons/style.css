@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./fonts/icomoon.eot?43y1h4');
+  src:  url('./fonts/icomoon.eot?43y1h4#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?43y1h4') format('truetype'),
+    url('./fonts/icomoon.woff?43y1h4') format('woff'),
+    url('./fonts/icomoon.svg?43y1h4#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before {
+  content: "\e900";
+}
+.icon-app:before {
+  content: "\e901";
+}
+.icon-approval:before {
+  content: "\e902";
+}
+.icon-arrow-down-bold:before {
+  content: "\e903";
+}
+.icon-arrow-down-filling:before {
+  content: "\e904";
+}
+.icon-arrow-left-bold:before {
+  content: "\e905";
+}
+.icon-arrow-left-filling:before {
+  content: "\e906";
+}
+.icon-arrow-right-bold:before {
+  content: "\e907";
+}
+.icon-arrow-right-filling:before {
+  content: "\e908";
+}
+.icon-arrow-up-bold:before {
+  content: "\e909";
+}
+.icon-arrow-up-filling:before {
+  content: "\e90a";
+}
+.icon-bag:before {
+  content: "\e90b";
+}
+.icon-close:before {
+  content: "\e90c";
+}
+.icon-customer:before {
+  content: "\e90d";
+}
+.icon-disk:before {
+  content: "\e90e";
+}
+.icon-edit:before {
+  content: "\e90f";
+}
+.icon-error:before {
+  content: "\e910";
+}
+.icon-finance:before {
+  content: "\e911";
+}
+.icon-home:before {
+  content: "\e912";
+}
+.icon-location:before {
+  content: "\e913";
+}
+.icon-market:before {
+  content: "\e914";
+}
+.icon-more:before {
+  content: "\e915";
+}
+.icon-order:before {
+  content: "\e916";
+}
+.icon-output:before {
+  content: "\e917";
+}
+.icon-person:before {
+  content: "\e918";
+}
+.icon-project:before {
+  content: "\e919";
+}
+.icon-salary:before {
+  content: "\e91a";
+}
+.icon-sales:before {
+  content: "\e91b";
+}
+.icon-search:before {
+  content: "\e91c";
+}
+.icon-select:before {
+  content: "\e91d";
+}
+.icon-sell:before {
+  content: "\e91e";
+}
+.icon-setting:before {
+  content: "\e91f";
+}
+.icon-work:before {
+  content: "\e920";
+}

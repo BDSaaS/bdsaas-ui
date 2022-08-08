@@ -17,6 +17,8 @@
   <pagination-demo/>
   <hr>
   <tree-demo/>
+  <hr>
+  <icon-demo/>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
@@ -24,6 +26,7 @@ import ListDemo from "./ListDemo.vue";
 import {Message, Notice} from 'bdsaas-ui'
 import PaginationDemo from "./PaginationDemo.vue";
 import TreeDemo from "./TreeDemo.vue";
+import IconDemo from "./IconDemo.vue";
 
 const checked = ref(true)
 const msg = ref('2131')
