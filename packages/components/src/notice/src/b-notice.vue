@@ -51,5 +51,5 @@ export default defineComponent({
 })
 </script>
 <style lang="less" scoped>
-@import "../style/notice.less";
+@import "../style/index.less";
 </style>
