@@ -84,7 +84,6 @@ export default class EventBus {
 	 * @return {*}
 	 */
 	public static emit(name: string, ...payload: any[]): UtilityFunction {
-		console.log('###@@@', name, ...payload)
 		return EventBus.getEvent(name) ? EventBus.getEvent(name)(...payload) : () => null
 	}
 
