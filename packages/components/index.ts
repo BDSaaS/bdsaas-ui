@@ -21,6 +21,8 @@ import Tag from "./src/tag";
 import Tooltip from "./src/tooltip";
 import Tree from "./src/tree";
 import TreeSelect from "./src/treeSelect";
+import Form from './src/form'
+import FormItem from './src/form-item'
 // 函数式组件
 import Message from "./src/message"
 import Notice from "./src/notice"
@@ -53,6 +55,8 @@ const components = [
     Tooltip,
     Tree,
     TreeSelect,
+    Form,
+    FormItem,
 ]
 
 const install = (app: App) => {
@@ -85,6 +89,8 @@ export {
     Tooltip,
     Tree,
     TreeSelect,
+    Form,
+    FormItem,
     Message,
     Notice,
 }

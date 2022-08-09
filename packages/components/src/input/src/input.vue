@@ -1,18 +1,18 @@
 <template>
   <div class="b-input">
     <input
-      ref="input"
-      class="b-input-inner error"
-      placeholder="请输入"
-      :type="$props.type"
-      :value="$props.modelValue"
-      :class="inputClass"
-      :readonly="$props.readonly"
-      :disabled="$props.disabled"
-      @input="changeHandler"
-      @focus="focusHandler"
-      @blur="blurHandler"
-      @keydown.enter="query"
+        ref="input"
+        class="b-input-inner error"
+        placeholder="请输入"
+        :type="$props.type"
+        :value="$props.modelValue"
+        :class="inputClass"
+        :readonly="$props.readonly"
+        :disabled="$props.disabled"
+        @input="changeHandler"
+        @focus="focusHandler"
+        @blur="blurHandler"
+        @keydown.enter="query"
     />
     <div :class="suffixClass" @click="query">
       <i v-if="isSearch" class="iconfont icon-icon-test"></i>
@@ -23,8 +23,10 @@
 
 <script lang="ts">
 import '../style/index.less'
-import { computed, defineComponent, ref, toRefs } from 'vue'
-import type { PropType } from 'vue'
+import {computed, defineComponent, inject, ref, toRefs} from 'vue'
+import type {PropType} from 'vue'
+import Validator from '../../utils/wrenches/Validator'
+import {string} from 'fast-glob/out/utils'
 
 type InputType = 'text' | 'search' | 'password'
 
@@ -33,33 +35,33 @@ export default defineComponent({
   props: {
     modelValue: {
       type: String as PropType<string>,
-      default: ''
+      default: '',
     },
     readonly: {
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     type: {
       type: String as PropType<InputType>,
-      default: 'text'
+      default: 'text',
     },
     isError: {
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     // 是否用在 Select 组件中
     isSelect: {
       type: Boolean as PropType<boolean>,
-      default: false
-    }
+      default: false,
+    },
   },
   emits: ['update:modelValue', 'change', 'focus', 'blur'],
-  setup(props, { emit, expose, slots }) {
-    const { readonly, disabled, type, isError, isSelect } = toRefs(props)
+  setup(props, {emit, expose, slots}) {
+    const {readonly, disabled, type, isError, isSelect} = toRefs(props)
     const isSearch = computed(() => type.value === 'search')
     const input = ref<null | HTMLInputElement>(null)
     const hasRotate = ref(false)
@@ -70,26 +72,32 @@ export default defineComponent({
       isError.value && 'is-error',
       isSearch.value && 'is-suffix',
       isSelect.value && 'is-select',
-      slots.suffix && 'is-suffix'
+      slots.suffix && 'is-suffix',
     ])
 
     const suffixClass = computed(() => [
       'suffix',
       isSelect.value && 'no-event',
-      hasRotate.value && 'rotate'
+      hasRotate.value && 'rotate',
     ])
+
+    const rules = inject('rules')
+    const field = inject('field')
 
     function changeHandler(e: Event): void {
       emit('update:modelValue', (e.target as HTMLInputElement).value)
+      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'input')
     }
 
     function focusHandler(e: Event): void {
       emit('focus', e)
+      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'focus')
     }
 
     function blurHandler(e: Event): void {
       emit('blur', e)
       emit('change', e)
+      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'blur')
     }
 
     function query() {
@@ -104,7 +112,7 @@ export default defineComponent({
       hasRotate.value = value
     }
 
-    expose({ setRotate })
+    expose({setRotate})
 
     return {
       input,
@@ -114,8 +122,8 @@ export default defineComponent({
       changeHandler,
       focusHandler,
       blurHandler,
-      query
+      query,
     }
-  }
+  },
 })
 </script>
