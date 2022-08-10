@@ -127,6 +127,10 @@ export default class Validator implements IValidator {
 	 * @return {*}
 	 */
 	static eventEmit(rules: TRules, field: string, value: unknown, trigger: string): any {
+		// 未设置规则和字段
+		if (Lib.isEmpty(rules) || Lib.isEmpty(field)) {
+			return
+		}
 		const name = Validator.createEventBusName(field, rules)
 		const tester = Tester.validate(rules[field], value)
 		const error = tester[0] ? tester[0].message : ''

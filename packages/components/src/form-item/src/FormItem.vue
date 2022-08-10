@@ -44,8 +44,6 @@ export default defineComponent({
     // 注入
     const rules = inject('rules')
     const config = inject('config')
-    provide('rules', rules)
-    provide('field', field.value)
 
     const eMsg = ref('')
     const eMessage = ref('')
@@ -75,6 +73,10 @@ export default defineComponent({
     // })
     //
     // expose(validatorOn)
+
+    // 下发数据
+    provide('rules', rules)
+    provide('field', field.value)
 
     return {
       config,

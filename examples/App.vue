@@ -1,5 +1,7 @@
 <template>
   <div class="demo-box">
+    <b-input v-model="myInput" type="text" placeholder="单个input"/>
+    <hr>
     <b-form ref="login" :rules="loginValidatorRules" :formData="loginForm" :label-display="false">
       <b-form-item field="account">
         <b-input v-model="loginForm.account" type="text" placeholder="手机号"/>
@@ -27,21 +29,20 @@
   <pagination-demo/>
   <hr>
   <tree-demo/>
-  <hr>
-  <b-modal v-model:visible="checked"/>
 </template>
 <script lang="ts" setup>
-import {ref, reactive} from 'vue'
+import {ref, reactive, toRefs} from 'vue'
 import ListDemo from './ListDemo.vue'
 import {Message, Notice} from 'bdsaas-ui'
 import PaginationDemo from './PaginationDemo.vue'
 import TreeDemo from './TreeDemo.vue'
 
+const myInput = ref()
 const loginForm = reactive({
   account: '',
   password: '',
 })
-const loginValidatorRules = reactive({
+const loginValidatorRules = {
   account: [
     {
       required: true,
@@ -64,7 +65,7 @@ const loginValidatorRules = reactive({
       message: '密码不少于6位',
       trigger: 'blur',
     }],
-})
+}
 
 const checked = ref(true)
 const msg = ref('2131')
@@ -81,7 +82,7 @@ function noticeHandle() {
     zIndex: 20000000,
     duration: 3000,
     offsetTop: 50,
-    showClose: false,
+    showClose: false
   })
 }
 </script>
