@@ -66,8 +66,8 @@ export default defineComponent({
       required: true
     },
     rowSelection: {
-      type: Object as PropType<RowSelection>,
-      default: () => ({})
+      type: Object as PropType<RowSelection | null>,
+      default: null
     }
   },
   emits: ['selectAllChange'],
@@ -75,7 +75,7 @@ export default defineComponent({
     const {data, rowSelection} = toRefs(props)
     const {selectedAll, selectAllChange} = useListSelected(
         data.value,
-        rowSelection.value,
+        rowSelection.value as RowSelection,
         emit
     )
 
