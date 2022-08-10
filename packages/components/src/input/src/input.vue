@@ -83,6 +83,7 @@ export default defineComponent({
 
     const rules = inject('rules')
     const field = inject('field')
+    console.log('field~~~~~~~~~~`', rules, field)
 
     function changeHandler(e: Event): void {
       emit('update:modelValue', (e.target as HTMLInputElement).value)

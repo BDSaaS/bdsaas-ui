@@ -4,6 +4,7 @@ import Button from './button'
 import Checkbox from './checkbox'
 import BasicSelect from './basicSelect'
 import Input from './input'
+import Image from './image'
 import Badge from './badge'
 import Confirm from './confirm'
 import Drawer from './drawer'
@@ -34,6 +35,7 @@ const components = [
 	Checkbox,
 	BasicSelect,
 	Input,
+	Image,
 	Badge,
 	Confirm,
 	Drawer,
@@ -68,6 +70,7 @@ export {
 	Button,
 	BasicSelect,
 	Input,
+	Image,
 	Badge,
 	Confirm,
 	Drawer,
