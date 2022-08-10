@@ -27,6 +27,7 @@
   </div>
 </template>
 <script lang="ts">
+import "../style/index.less";
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 export default defineComponent({
@@ -50,6 +51,3 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="less" scoped>
-@import "../style/index.less";
-</style>
