@@ -27,6 +27,8 @@
   <pagination-demo/>
   <hr>
   <tree-demo/>
+  <hr>
+  <b-modal v-model:visible="checked"/>
 </template>
 <script lang="ts" setup>
 import {ref, reactive} from 'vue'

@@ -23,6 +23,7 @@ import Tree from "./src/tree";
 import TreeSelect from "./src/treeSelect";
 import Form from './src/form'
 import FormItem from './src/form-item'
+import Modal from './src/modal'
 // 函数式组件
 import Message from "./src/message"
 import Notice from "./src/notice"
@@ -57,6 +58,7 @@ const components = [
     TreeSelect,
     Form,
     FormItem,
+    Modal,
 ]
 
 const install = (app: App) => {
@@ -91,6 +93,7 @@ export {
     TreeSelect,
     Form,
     FormItem,
+    Modal,
     Message,
     Notice,
 }
