@@ -29,6 +29,8 @@
   <pagination-demo/>
   <hr>
   <tree-demo/>
+  <hr>
+  <TreeSelectDemo/>
 </template>
 <script lang="ts" setup>
 import {ref, reactive, toRefs} from 'vue'
@@ -36,6 +38,7 @@ import ListDemo from './ListDemo.vue'
 import {Message, Notice} from 'bdsaas-ui'
 import PaginationDemo from './PaginationDemo.vue'
 import TreeDemo from './TreeDemo.vue'
+import TreeSelectDemo from "./TreeSelectDemo.vue";
 
 const myInput = ref()
 const loginForm = reactive({
@@ -67,7 +70,7 @@ const loginValidatorRules = {
     }],
 }
 
-const checked = ref(true)
+const checked = ref(false)
 const msg = ref('2131')
 
 function showMessage() {
