@@ -15,7 +15,7 @@ import '../style/index.less'
 import Validator from '../../utils/wrenches/Validator'
 import Lib from '../../utils/wrenches/Lib'
 import {watch, defineComponent, inject, PropType, provide, onMounted, ref, toRefs} from 'vue'
-import {UtilityFunction} from '@/utils/wrenches/Types/utility'
+import {UtilityFunction} from '../../utils/wrenches/Types/utility'
 // block-view
 export default defineComponent({
   name: 'BFormItem',

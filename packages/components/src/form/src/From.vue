@@ -8,7 +8,7 @@
 import Validator from '../../utils/wrenches/Validator'
 import Lib from '../../utils/wrenches/Lib'
 import {computed, defineComponent, PropType, provide, reactive, toRefs} from 'vue'
-import {UtilityFunction} from '@/utils/wrenches/Types/utility'
+import {UtilityFunction} from '../../utils/wrenches/Types/utility'
 // block-view
 export default defineComponent({
   name: 'BForm',
