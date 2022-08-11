@@ -3,7 +3,7 @@
     <input
         ref="input"
         class="b-input-inner error"
-        placeholder="请输入"
+        :placeholder="$props.placeholder"
         :type="$props.type"
         :value="$props.modelValue"
         :class="inputClass"
@@ -34,6 +34,10 @@ export default defineComponent({
   name: 'BInput',
   props: {
     modelValue: {
+      type: String as PropType<string>,
+      default: '',
+    },
+    placeholder: {
       type: String as PropType<string>,
       default: '',
     },
