@@ -1,7 +1,7 @@
 <template>
   <label class="b-checkbox" :class="checkboxClass">
     <span class="b-checkbox-input">
-      <span class="b-checkbox-inner iconfont b-icon-duihao"></span>
+      <b-icon class="b-checkbox-inner" name="select"/>
       <input
           :checked="modelValue"
           :disabled="disabled"
