@@ -1,13 +1,15 @@
 <template>
   <div class="b-tree-select">
-    <basic-select>
+    {{ selectedKeysCache }}
+    <basic-select >
       <BTree
-          v-model:selected-keys="$props.selectedKeys"
+          v-model:selected-keys="selectedKeysCache"
           :tree-data="$props.treeData"
           :showIcon="showIcon"
           :default-expand-all="defaultExpandAll"
           :wrapper-class="wrapperClass"
           :checkAble="checkAble"
+          multiple
       />
     </basic-select>
   </div>
@@ -63,6 +65,31 @@ export default defineComponent({
     wrapperClass: {
       type: String as PropType<string>,
       default: ''
+    }
+  },
+  emits: ['update:selectedKeys'],
+  setup(props, {emit}) {
+    const {selectedKeys} = toRefs(props)
+    const selectedKeysCache = ref(selectedKeys.value)
+
+    watch(
+        () => selectedKeys.value,
+        val => {
+          selectedKeysCache.value = val
+          console.log('selectedKeys')
+        }
+    )
+
+    watch(
+        () => selectedKeysCache.value,
+        val => {
+          emit('update:selectedKeys', val)
+          console.log('selectedKeysCache')
+        }
+    )
+
+    return {
+      selectedKeysCache
     }
   }
 })

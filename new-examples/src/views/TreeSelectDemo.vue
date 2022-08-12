@@ -1,15 +1,14 @@
 <template>
   <div style="display: flex; flex-direction: column; align-items: center; height: 500px;">
+    <h2>{{ selectedKeys }}</h2>
+    <br/>
+    <br/>
     <b-tree-select
-      v-model:selected-keys="selectedKeys"
-      :tree-data="treeData"
-      show-icon
-      check-able
-      default-expand-all
+        v-model:selected-keys="selectedKeys"
+        :tree-data="treeData"
+        show-icon
+        default-expand-all
     />
-    <br/>
-    <br/>
-    {{ selectedKeys }}
   </div>
 </template>
 
@@ -103,6 +102,8 @@ const testData3 = [
     key: '3'
   }
 ]
+
+
 const treeData = ref(testData3) as Ref<any[]>
 const selectedKeys: Ref<string[]> = ref(['0'])
 </script>
