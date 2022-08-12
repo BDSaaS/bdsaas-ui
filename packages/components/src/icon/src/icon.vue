@@ -1,5 +1,5 @@
 <template>
-  <span :class="['b-icon-' + name]"></span>
+  <span class="b-icon" :class="['b-icon-' + name]"></span>
 </template>
 
 <script lang="ts">
@@ -19,3 +19,8 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped lang="less">
+.b-icon {
+  transition: all .3s linear;
+}
+</style>

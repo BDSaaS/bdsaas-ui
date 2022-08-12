@@ -1,9 +1,9 @@
 <template>
   <div class="content">
     <ul class="list clearfix">
-      <li class="item">
-        <b-icon name="add"/>
-        <p>add</p>
+      <li v-for="(v, i) in modulesNames" :key="i" class="item">
+        <b-icon :name="v" :style="{'fontSize': size + 'px','color': color}"/>
+        <p>{{ v }}</p>
       </li>
     </ul>
     <div style="margin-top: 20px;">
@@ -25,13 +25,7 @@ import {ref} from 'vue'
 export default {
   name: 'IconDemo',
   setup() {
-    const modulesFiles = import.meta.glob('@/assets/svgs/*.svg')
-    const modulesNames = []
-    for (const path in modulesFiles) {
-      const splitArr = path.split('/')
-      const fileName = splitArr[splitArr.length - 1].split('.')[0]
-      modulesNames.push(fileName)
-    }
+    const modulesNames = ['add', 'app', 'approval', 'arrow-down-bold', 'arrow-down-filling', 'arrow-left-bold', 'arrow-left-filling', 'arrow-right-bold', 'arrow-right-filling', 'arrow-up-bold', 'arrow-up-filling', 'bag', 'close', 'customer', 'disk', 'edit', 'error', 'finance', 'home', 'location', 'market', 'more', 'order', 'output', 'person', 'project', 'salary', 'sales', 'search', 'select', 'sell', 'setting', 'work']
 
     const color = ref('#000')
 
