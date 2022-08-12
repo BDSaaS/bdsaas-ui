@@ -2,7 +2,7 @@
   <button :class="buttonClass" :disabled="$props.disabled">
     <slot></slot>
     <slot name="icon">
-      <i v-if="showPropIcon" :class="iconClass"></i>
+      <b-icon v-if="showPropIcon" :name="$props.icon"/>
     </slot>
   </button>
 </template>
@@ -16,9 +16,13 @@ import type {
   ButtonType,
   IconType
 } from '../types'
+import BIcon from '../../icon/src/icon.vue'
 
 export default defineComponent({
   name: 'BButton',
+  components: {
+    BIcon
+  },
   props: {
     // 按钮类别
     type: {

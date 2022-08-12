@@ -7,6 +7,7 @@
       :round="round"
       :disabled="disabled"
       @click="btnHandler"
+      icon="select"
     >
       Hello
     </b-button>
@@ -15,11 +16,10 @@
       :type="type"
       :round="round"
       :disabled="disabled"
-      icon="icon-icon-test1"
     >
       World
       <template #icon>
-        <i class="iconfont icon-icon-test1"></i>
+        <b-icon name="add" />
       </template>
     </b-button>
   </div>
