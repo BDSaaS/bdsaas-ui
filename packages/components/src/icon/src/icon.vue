@@ -19,8 +19,3 @@ export default defineComponent({
   }
 })
 </script>
-<style scoped lang="less">
-.b-icon {
-  transition: all .3s linear;
-}
-</style>

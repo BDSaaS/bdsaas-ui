@@ -1,5 +1,8 @@
 <template>
   <div class="content">
+    <h2>使用示例： {{
+        '<b-icon name="add"/>'
+      }} <b-icon name="add"/></h2>
     <ul class="list clearfix">
       <li v-for="(v, i) in modulesNames" :key="i" class="item">
         <b-icon :name="v" :style="{'fontSize': size + 'px','color': color}"/>
