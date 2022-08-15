@@ -17,7 +17,7 @@ import type {PropType, Ref} from 'vue'
 import {ref, defineComponent, computed, toRefs, unref} from 'vue'
 import type {Key, TreeNode as ITreeNode} from '../types'
 import TreeNode from './tree-node.vue'
-import {useInitTreeData} from './hooks/useHandleData'
+import {flatTree, useInitTreeData} from './hooks/useHandleData'
 import {provideMore, getRaw} from '../../utils/vue-utils'
 
 export default defineComponent({
@@ -94,8 +94,12 @@ export default defineComponent({
     // 单选情况使用（传入 selectedKeys，将初始选中的那一项的索引作为 currentSelectedIndex 的初始值）
     const currentSelectedIndex = ref('')
     const treeDataCache = ref([]) as Ref<ITreeNode[]>
+    // 扁平化树数组
+    const flatTreeData = ref([]) as Ref<ITreeNode[]>
+    flatTree(treeData.value, flatTreeData.value)
 
     function updateSelectedKeys(keys: Key[]) {
+      emit('select', toRaw(flatTreeData.value).filter(item => keys.includes(item.key) && item))
       emit('update:selectedKeys', keys)
     }
 
@@ -108,6 +112,7 @@ export default defineComponent({
         index > -1 && _checkedKeys.splice(index, 1)
       }
       _checkedKeys = [...new Set(_checkedKeys)]
+      emit('check', toRaw(flatTreeData.value).filter(item => _checkedKeys.includes(item.key) && item))
       emit('update:checkedKeys', _checkedKeys)
       return true
     }

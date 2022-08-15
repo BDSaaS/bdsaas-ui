@@ -1,7 +1,7 @@
 <template>
   <div class="b-tree-select">
     {{ selectedKeysCache }}
-    <basic-select >
+    <basic-select :selectItems="selectItems">
       <BTree
           v-model:selected-keys="selectedKeysCache"
           :tree-data="$props.treeData"
@@ -10,6 +10,8 @@
           :wrapper-class="wrapperClass"
           :checkAble="checkAble"
           multiple
+          @select="selectHandler"
+          @check="checkHandler"
       />
     </basic-select>
   </div>
@@ -71,6 +73,8 @@ export default defineComponent({
   setup(props, {emit}) {
     const {selectedKeys} = toRefs(props)
     const selectedKeysCache = ref(selectedKeys.value)
+    const selectItems = ref([])
+    const checkItems = ref([])
 
     watch(
         () => selectedKeys.value,
@@ -88,8 +92,21 @@ export default defineComponent({
         }
     )
 
+    function selectHandler(val: any) {
+      selectItems.value = val
+      console.log(val, 'line 93 93 93 93 93 93 93 93 93')
+    }
+
+    function checkHandler(val: any) {
+      checkItems.value = val
+      console.log(val, 'line 99 99 99 99 99 99 99 99 99')
+    }
+
     return {
-      selectedKeysCache
+      selectItems,
+      selectedKeysCache,
+      selectHandler,
+      checkHandler
     }
   }
 })

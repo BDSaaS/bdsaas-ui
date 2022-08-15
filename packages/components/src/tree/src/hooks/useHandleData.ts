@@ -106,3 +106,15 @@ export function useInitTreeData({
   })
   treeDataCache.value = target
 }
+
+export function flatTree(target: TreeNode[], result: TreeNode[]) {
+  target.forEach((item) => {
+    result.push({
+      title: item.title,
+      key: item.key
+    })
+    if (item?.children?.length) {
+      flatTree(item.children, result)
+    }
+  })
+}

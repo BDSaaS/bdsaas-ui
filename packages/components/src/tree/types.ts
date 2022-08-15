@@ -17,3 +17,5 @@ export interface TreeNode {
   title: string // 节点的文本
   children?: TreeNode[]
 }
+
+// export type SelectedItem = Pick<TreeNode, 'key' | 'title'>
