@@ -45,6 +45,7 @@
             :key="item.key"
             :tree-node-data="item"
             :checked-keys="$props.checkedKeys"
+            :disabledSelected="$props.disabledSelected"
         />
       </ul>
     </collapse-transition>
