@@ -8,7 +8,8 @@
   "license": "ISC",
   "scripts": {
     "build:bdui": "gulp -f packages/components/script/build/gulpfile.ts",
-    "publish:bdui": "gulp -f packages/components/script/publish/gulpfile.ts"
+    "publish:bdui": "gulp -f packages/components/script/publish/gulpfile.ts",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.9",
