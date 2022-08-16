@@ -1,6 +1,8 @@
 <template>
   <div class="b-select-basic" @click.stop="showDropdown">
     <b-input
+        :title="label"
+        placeholder="请选择"
         ref="input"
         v-model="label"
         readonly
@@ -34,13 +36,14 @@ import {
 import type {PropType} from 'vue'
 import {addEvent, removeEvent} from '../../utils/vue-utils'
 import BInput from '../../input/src/input.vue'
+import {SelectedItem} from "../../treeSelect/types";
 
 export default defineComponent({
   name: 'BasicSelect',
   components: {BInput},
   props: {
     selectItems: {
-      type: Array as PropType<unknown[]>,
+      type: Array as PropType<SelectedItem[]>,
       default: () => []
     },
     modelValue: {
@@ -55,10 +58,12 @@ export default defineComponent({
   emits: ['update:modelValue', 'change', 'focus', 'blur', 'visible-change'],
   setup(props, {emit}) {
 
-    console.log(props.selectItems, 'line 58 58 58 58 58 58')
+    watch(() => props.selectItems, val => {
+      state.label = toRaw(val).map(item => item.title).join()
+    })
 
     const state = reactive({
-      label: 'hello world',
+      label: '',
       visible: false
     })
     const input = ref(null)

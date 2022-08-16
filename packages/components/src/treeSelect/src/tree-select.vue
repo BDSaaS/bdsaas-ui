@@ -1,9 +1,10 @@
 <template>
   <div class="b-tree-select">
-    {{ selectedKeysCache }}
-    <basic-select :selectItems="selectItems">
+    <basic-select :selectItems="selectOrCheckItems">
       <BTree
+          ref="tree"
           v-model:selected-keys="selectedKeysCache"
+          v-model:checked-keys="checkedKeysCache"
           :tree-data="$props.treeData"
           :showIcon="showIcon"
           :default-expand-all="defaultExpandAll"
@@ -23,7 +24,8 @@ import {defineComponent} from 'vue'
 import BasicSelect from '../../basicSelect/src/basic-select.vue'
 import BTree from '../../tree/src/tree.vue'
 import {PropType} from 'vue'
-import {Key, TreeNode as ITreeNode} from '../types'
+import {Key, SelectedItem, TreeNode as ITreeNode} from '../types'
+import {getRaw} from "../../utils/vue-utils"
 
 export default defineComponent({
   name: 'BTreeSelect',
@@ -32,7 +34,7 @@ export default defineComponent({
     // 点击节点本身的选中
     selectedKeys: {
       type: Array as PropType<Key[]>,
-      required: true
+      default: () => []
     },
     // 是否开启多选（只针对点击节点本身的多选）
     multiple: {
@@ -69,12 +71,27 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['update:selectedKeys'],
+  emits: ['update:selectedKeys', 'update:checkedKeys'],
   setup(props, {emit}) {
-    const {selectedKeys} = toRefs(props)
-    const selectedKeysCache = ref(selectedKeys.value)
-    const selectItems = ref([])
-    const checkItems = ref([])
+    const {selectedKeys, checkedKeys} = toRefs(props)
+    const selectedKeysCache = ref(getRaw(selectedKeys))
+    const checkedKeysCache = ref(getRaw(checkedKeys))
+    const selectItems = ref<SelectedItem[]>([])
+    const checkItems = ref<SelectedItem[]>([])
+    const selectOrCheckItems = computed(() => {
+      if (selectedKeys?.value?.length) {
+        return selectItems.value
+      } else if (checkItems?.value?.length) {
+        return checkItems.value
+      }
+      return []
+    })
+    const tree = ref()
+
+    onMounted(() => {
+      selectItems.value = unref(tree).getSelectedOrCheckedKeys(getRaw(selectedKeys) || [])
+      checkItems.value = unref(tree).getSelectedOrCheckedKeys(getRaw(checkedKeys) || [])
+    })
 
     watch(
         () => selectedKeys.value,
@@ -88,23 +105,30 @@ export default defineComponent({
         () => selectedKeysCache.value,
         val => {
           emit('update:selectedKeys', val)
-          console.log('selectedKeysCache')
         }
     )
 
-    function selectHandler(val: any) {
+    watch(
+        () => checkedKeysCache.value,
+        val => {
+          emit('update:checkedKeys', val)
+        }
+    )
+
+    function selectHandler(val: SelectedItem[]) {
       selectItems.value = val
-      console.log(val, 'line 93 93 93 93 93 93 93 93 93')
     }
 
-    function checkHandler(val: any) {
+    function checkHandler(val: SelectedItem[]) {
       checkItems.value = val
       console.log(val, 'line 99 99 99 99 99 99 99 99 99')
     }
 
     return {
-      selectItems,
+      tree,
+      selectOrCheckItems,
       selectedKeysCache,
+      checkedKeysCache,
       selectHandler,
       checkHandler
     }

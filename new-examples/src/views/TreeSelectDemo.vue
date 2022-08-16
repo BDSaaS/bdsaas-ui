@@ -1,10 +1,12 @@
 <template>
   <div style="display: flex; flex-direction: column; align-items: center; height: 500px;">
     <h2>{{ selectedKeys }}</h2>
+    <h2>{{ checkedKeys }}</h2>
     <br/>
     <br/>
     <b-tree-select
-        v-model:selected-keys="selectedKeys"
+        v-model:checked-keys="checkedKeys"
+        checkAble
         :tree-data="treeData"
         show-icon
         default-expand-all
@@ -106,4 +108,5 @@ const testData3 = [
 
 const treeData = ref(testData3) as Ref<any[]>
 const selectedKeys: Ref<string[]> = ref(['0'])
+const checkedKeys: Ref<string[]> = ref([])
 </script>

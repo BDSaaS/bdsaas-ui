@@ -1,6 +1,4 @@
 <template>
-  <!--  {{ treeDataCache }}-->
-  <!--  <hr />-->
   <ul :class="treeClass">
     <tree-node
         v-for="item of treeDataCache"
@@ -79,7 +77,7 @@ export default defineComponent({
     'select',
     'check'
   ],
-  setup(props, {emit}) {
+  setup(props, {emit, expose}) {
     const {
       wrapperClass,
       treeData,
@@ -137,6 +135,12 @@ export default defineComponent({
       updateCheckedKeys,
       checkAble,
       showIcon
+    })
+
+    expose({
+      getSelectedOrCheckedKeys: (keys: (string | number)[]) => {
+        return toRaw(flatTreeData.value).filter(item => keys.includes(item.key) && item)
+      }
     })
 
     return {
