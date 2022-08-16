@@ -45,7 +45,8 @@ export default defineConfig(({command, mode}) => {
       }
     },
     server: {
-      open: true
+      open: true,
+      port: 8089
     },
     define: {
       __APP_VERSION__: JSON.stringify({name: 'vite-demo', version: '1.0.0'}),
