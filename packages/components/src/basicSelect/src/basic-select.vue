@@ -31,7 +31,8 @@ import {
   reactive,
   ref,
   toRefs,
-  watch
+  watch,
+  toRaw
 } from 'vue'
 import type {PropType} from 'vue'
 import {addEvent, removeEvent} from '../../utils/vue-utils'

@@ -13,6 +13,7 @@
 <script lang="ts">
 import "../style/index.less";
 import type {PropType, Ref} from 'vue'
+import {toRaw} from 'vue'
 import {ref, defineComponent, computed, toRefs, unref} from 'vue'
 import type {Key, TreeNode as ITreeNode} from '../types'
 import TreeNode from './tree-node.vue'
