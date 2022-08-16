@@ -76,6 +76,11 @@ export default defineComponent({
       type: Object as PropType<TreeNode>,
       required: true
     },
+    // 禁用 selected 选中功能
+    disabledSelected: {
+      type: Boolean,
+      default: false
+    },
     // tree 的选中节点，这里用来进行初始的 checked 和 indeterminate 判断赋值
     checkedKeys: {
       type: Array as PropType<Key[]>,
@@ -152,6 +157,8 @@ export default defineComponent({
     }
 
     function clickNode() {
+      if (props.disabledSelected) return
+
       // Todo 待转成 hooks
       /*多选*/
       if (multiple.value) {

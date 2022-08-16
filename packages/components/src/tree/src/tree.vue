@@ -5,6 +5,7 @@
         :key="item.key"
         :tree-node-data="item"
         :checked-keys="$props.checkedKeys"
+        :disabledSelected="$props.disabledSelected"
     />
   </ul>
 </template>
@@ -25,7 +26,13 @@ export default defineComponent({
     // 点击节点本身的选中（完成）
     selectedKeys: {
       type: Array as PropType<Key[]>,
+      default: () => [],
       required: true
+    },
+    // 禁用 selected 选中功能
+    disabledSelected: {
+      type: Boolean,
+      default: false
     },
     // 是否开启多选（只针对点击节点本身的多选）（完成）
     multiple: {

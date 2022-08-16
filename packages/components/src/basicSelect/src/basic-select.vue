@@ -36,7 +36,7 @@ import {
 import type {PropType} from 'vue'
 import {addEvent, removeEvent} from '../../utils/vue-utils'
 import BInput from '../../input/src/input.vue'
-import {SelectedItem} from "../../treeSelect/types";
+import {SelectedItem} from "../../treeSelect/types"
 
 export default defineComponent({
   name: 'BasicSelect',
@@ -81,11 +81,6 @@ export default defineComponent({
         }
     )
 
-    function selectHandler(item: any) {
-      state.label = item.label
-      emit('update:modelValue', item.value)
-    }
-
     function showDropdown() {
       state.visible = !state.visible
     }
@@ -104,7 +99,6 @@ export default defineComponent({
       blurHandler,
       focusHandler,
       showDropdown,
-      selectHandler
     }
   }
 })

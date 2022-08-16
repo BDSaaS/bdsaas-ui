@@ -6,10 +6,11 @@
           v-model:selected-keys="selectedKeysCache"
           v-model:checked-keys="checkedKeysCache"
           :tree-data="$props.treeData"
-          :showIcon="showIcon"
-          :default-expand-all="defaultExpandAll"
-          :wrapper-class="wrapperClass"
-          :checkAble="checkAble"
+          :showIcon="$props.showIcon"
+          :default-expand-all="$props.defaultExpandAll"
+          :wrapper-class="$props.wrapperClass"
+          :checkAble="$props.checkAble"
+          :disabled-selected="$props.checkAble"
           multiple
           @select="selectHandler"
           @check="checkHandler"
@@ -19,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import "../style/index.less";
+import "../style/index.less"
 import {defineComponent} from 'vue'
 import BasicSelect from '../../basicSelect/src/basic-select.vue'
 import BTree from '../../tree/src/tree.vue'
-import {PropType} from 'vue'
+import type {PropType} from 'vue'
 import {Key, SelectedItem, TreeNode as ITreeNode} from '../types'
 import {getRaw} from "../../utils/vue-utils"
 
