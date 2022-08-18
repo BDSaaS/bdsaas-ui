@@ -20,6 +20,7 @@
           :key="row.key"
           @mouseenter="enterHandler"
           @mouseleave="leaveHandler"
+          @click="clickTr(row)"
       >
         <td v-if="rowSelection">
           <b-checkbox v-model="row.selected"></b-checkbox>
@@ -37,11 +38,11 @@
     </div>
   </div>
 
-  <teleport to="body">
-    <transition name="slide-fade">
-      <div v-if="showFocusMask" class="tr-focus-mask"/>
-    </transition>
-  </teleport>
+  <!--  <teleport to="body">-->
+  <!--    <transition name="slide-fade">-->
+  <!--      <div v-if="showFocusMask" class="tr-focus-mask"/>-->
+  <!--    </transition>-->
+  <!--  </teleport>-->
 </template>
 
 <script lang="ts">
@@ -70,7 +71,7 @@ export default defineComponent({
       default: null
     }
   },
-  emits: ['selectAllChange'],
+  emits: ['selectAllChange', 'row-click'],
   setup(props, {emit}: SetupContext) {
     const {data, rowSelection} = toRefs(props)
     const {selectedAll, selectAllChange} = useListSelected(
@@ -83,11 +84,17 @@ export default defineComponent({
       showFocusMask.value = false
     })
 
+    function clickTr(val: TableData) {
+      console.log(val)
+      emit('row-click', val)
+    }
+
     return {
       selectedAll,
       selectAllChange,
       showFocusMask,
       enterHandler,
+      clickTr,
       leaveHandler
     }
   }
