@@ -47,11 +47,11 @@
 
 <script lang="ts">
 import "../style/index.less"
-import {defineComponent, toRefs, onBeforeUnmount} from 'vue'
+import {defineComponent, toRefs, onBeforeUnmount, toRaw} from 'vue'
 import {useListSelected} from './hooks/useListSelected'
 import {showFocusMask, enterHandler, leaveHandler} from './hooks/useTableRowFocus'
 import type {TableData, Columns, RowSelection} from '../types'
-import type {PropType, SetupContext} from 'vue'
+import type {PropType} from 'vue'
 import BCheckbox from '../../checkbox/src/checkbox.vue'
 
 export default defineComponent({
@@ -72,7 +72,7 @@ export default defineComponent({
     }
   },
   emits: ['selectAllChange', 'row-click'],
-  setup(props, {emit}: SetupContext) {
+  setup(props, {emit}) {
     const {data, rowSelection} = toRefs(props)
     const {selectedAll, selectAllChange} = useListSelected(
         data.value,
@@ -85,8 +85,8 @@ export default defineComponent({
     })
 
     function clickTr(val: TableData) {
-      console.log(val)
-      emit('row-click', val)
+      console.log(toRaw(val))
+      emit('row-click', toRaw(val))
     }
 
     return {

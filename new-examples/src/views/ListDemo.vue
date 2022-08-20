@@ -12,12 +12,8 @@
       <template #bodyCell="{ column, record }">
         <template v-if="column === 'gender'">
           {{ record.gender }}
-          <i
-            v-if="record.gender === '男'"
-            class="icon-nan iconfont"
-            style="color: deepskyblue;"
-          ></i>
-          <i v-else class="icon-nv iconfont" style="color: deeppink;"></i>
+          <b-icon name="app" v-if="record.gender === '男'" style="color: deepskyblue;"/>
+          <b-icon name="customer" v-else style="color: deeppink;"/>
         </template>
       </template>
       <template #footer>
@@ -39,7 +35,7 @@ export default defineComponent({
   setup() {
     const state = reactive({
       listData: [
-        { name: '张三', age: 20, gender: '男', key: '1' },
+        { name: '张三2', age: 20, gender: '男', key: '1' },
         { name: '小红', age: 20, gender: '女', key: '2' },
         { name: '张三', age: 20, gender: '男', key: '3' }
       ],
