@@ -38,11 +38,13 @@
     </div>
   </div>
 
-  <!--  <teleport to="body">-->
-  <!--    <transition name="slide-fade">-->
-  <!--      <div v-if="showFocusMask" class="tr-focus-mask"/>-->
-  <!--    </transition>-->
-  <!--  </teleport>-->
+  <teleport to="body">
+    <transition name="slide-fade">
+      <div v-if="showFocusMask" class="tr-focus-mask">
+        <div class="info-box"></div>
+      </div>
+    </transition>
+  </teleport>
 </template>
 
 <script lang="ts">
@@ -53,6 +55,7 @@ import {showFocusMask, enterHandler, leaveHandler} from './hooks/useTableRowFocu
 import type {TableData, Columns, RowSelection} from '../types'
 import type {PropType} from 'vue'
 import BCheckbox from '../../checkbox/src/checkbox.vue'
+import {Data} from "../types";
 
 export default defineComponent({
   name: 'BList',
@@ -84,7 +87,7 @@ export default defineComponent({
       showFocusMask.value = false
     })
 
-    function clickTr(val: TableData) {
+    function clickTr(val: Data) {
       console.log(toRaw(val))
       emit('row-click', toRaw(val))
     }
