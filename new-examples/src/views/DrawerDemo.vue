@@ -2,6 +2,8 @@
   <b-drawer
     title="我是标题111111111111111111111111111111111111111111111"
     v-model:visible="show"
+    width="50%"
+    :beforeClose="beforeClose"
   >
     <div style="height: 1000px; background: red;"></div>
     123
@@ -18,8 +20,16 @@ export default defineComponent({
   setup() {
     let show = ref(false)
 
+    function beforeClose(done:Function){
+      setTimeout(() => {
+        done()
+      }, 1000)
+    }
+
+
     return {
-      show
+      show,
+      beforeClose
     }
   }
 })

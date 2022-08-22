@@ -8,6 +8,7 @@ import Image from './src/image'
 import Badge from './src/badge'
 import Confirm from './src/confirm'
 import Drawer from './src/drawer'
+import Space from './src/space'
 import Icon from './src/icon'
 import DropDown, {DropDownMenu, DropDownMenuItem} from './src/dropDown'
 import CollapseTransition from './src/collapse-transition'
@@ -40,6 +41,7 @@ const components = [
 	Badge,
 	Confirm,
 	Drawer,
+	Space,
 	Icon,
 	DropDown,
 	DropDownMenu,

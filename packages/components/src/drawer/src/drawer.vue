@@ -4,7 +4,8 @@
       class="b-drawer-wrapper"
       tabindex="-1"
       v-if="visible"
-      @click.self="hide"
+      @click.self="close"
+      :style="{'--drawer-width': drawerWidth}"
     >
       <div class="b-drawer-container" role="document" tabindex="-1">
         <div
@@ -21,7 +22,9 @@
             <slot name="title">
               <span role="heading" :title="title">{{ title }}</span>
             </slot>
-            <div @click="hide" style="cursor: pointer;">关闭按钮</div>
+            <div @click="close" class="b-drawer-header_close" style="cursor: pointer;font-size:18px">
+              <i class="b-icon b-icon-close"> </i>
+            </div>
           </header>
           <section class="b-drawer-body">
             <slot></slot>
@@ -37,7 +40,11 @@
 
 <script lang="ts">
 import "../style/index.less";
-import { defineComponent } from 'vue'
+import { 
+  defineComponent,
+  computed,
+  watch 
+  } from 'vue'
 export default defineComponent({
   name: 'BDrawer',
   props: {
@@ -46,16 +53,56 @@ export default defineComponent({
       default: ''
     },
     visible: {
-      type: Boolean
+      type: Boolean,
+      default: false
+    },
+    beforeClose: {
+      type: Function
+    },
+    width: {
+      type: String || Number,
+      default:'700px'
     }
   },
   setup(props, { emit }) {
-    function hide() {
-      emit('update:visible', false)
+    function close () {
+      if (typeof props.beforeClose === 'function') {
+        props.beforeClose(hide);
+      } else {
+        hide();
+      }
     }
 
+    function hide (cancel?:Boolean) {
+      if ( cancel !== false) {
+        emit('update:visible', false)
+      } else {
+
+      }
+    }
+
+    watch([props.visible], newVal => {
+      if ( !newVal ) {
+        close()
+      }
+    })
+
+    const drawerWidth = computed(() =>{
+      if (/[0-9]px$/.test(props.width)) {
+        return props.width
+      } else if (/[0-9]\%$/.test(props.width)) {
+        return props.width
+      } else if (/[0-9]$/.test(props.width)) {
+        return props.width + 'px'
+      } else {
+        return '700px'
+      }
+    })
+
     return {
-      hide
+      close,
+      hide,
+      drawerWidth
     }
   }
 })

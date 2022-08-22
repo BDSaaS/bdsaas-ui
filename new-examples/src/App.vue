@@ -48,6 +48,8 @@
     <router-link to="/tooltipDemo">tooltip 组件</router-link>
     |
     <router-link to="/popoverDemo">popover 组件</router-link>
+    |
+    <router-link to="/spaceDemo">space组件</router-link>
   </nav>
   <router-view />
 </template>

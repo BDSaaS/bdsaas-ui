@@ -130,7 +130,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/popoverDemo',
     name: 'popoverDemo',
     component: () => import('@/views/PopoverDemo.vue')
-  }
+  },
+  {
+    path: '/spaceDemo',
+    name: 'SpaceDemo',
+    component: () => import('@/views/SpaceDemo.vue')
+  },
 ]
 
 const router = createRouter({

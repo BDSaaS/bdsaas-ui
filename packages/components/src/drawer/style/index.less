@@ -21,7 +21,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 700px;
+      width: var(--drawer-width);
       height: 100%;
       background: #fff;
       box-shadow: -10px 0 40px 0 rgb(100 107 122 / 15%);
@@ -33,7 +33,6 @@
         justify-content: space-between;
         padding: 25px 34px 25px 28px;
         border-bottom: 1px solid @line;
-
         span {
           width: 200px;
           height: 18px;
@@ -46,6 +45,17 @@
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+        .b-drawer-header_close{
+          cursor: pointer;
+          font-size: 18px;
+          color: #9CA6B9;
+          &:hover{
+            color: #0056FF;
+          }
+          &:active{
+            color: #0056FF;
+          }
+        }
       }
 
       .b-drawer-body {
@@ -55,7 +65,7 @@
 
       .b-drawer-footer {
         flex-shrink: 0;
-        width: 700px;
+        width: var(--drawer-width);
         height: 80px;
         padding: 20px 0 20px 28px;
         background: #fff;
@@ -89,7 +99,7 @@
 
 @keyframes animation-show-dialog-in {
   0% {
-    right: -700px;
+    right: -var(--drawer-width);
   }
 
   100% {
@@ -103,6 +113,6 @@
   }
 
   100% {
-    right: -700px;
+    right: -var(--drawer-width);
   }
 }
