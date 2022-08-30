@@ -38,13 +38,13 @@
     </div>
   </div>
 
-  <teleport to="body">
-    <transition name="slide-fade">
-      <div v-if="showFocusMask" class="tr-focus-mask">
-        <div class="info-box"></div>
-      </div>
-    </transition>
-  </teleport>
+<!--  <teleport to="body">-->
+<!--    <transition name="slide-fade">-->
+<!--      <div v-if="showFocusMask" class="tr-focus-mask">-->
+<!--        <div class="info-box"></div>-->
+<!--      </div>-->
+<!--    </transition>-->
+<!--  </teleport>-->
 </template>
 
 <script lang="ts">
@@ -88,7 +88,6 @@ export default defineComponent({
     })
 
     function clickTr(val: Data) {
-      console.log(toRaw(val))
       emit('row-click', toRaw(val))
     }
 

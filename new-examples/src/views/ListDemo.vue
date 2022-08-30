@@ -8,6 +8,7 @@
         onChange: onSelectChange
       }"
       @select-all-change="selectAllChange"
+      @row-click="rowClick"
     >
       <template #bodyCell="{ column, record }">
         <template v-if="column === 'gender'">
@@ -54,8 +55,13 @@ export default defineComponent({
       console.log(selectedRowKeys, selectedRows)
     }
 
+    function rowClick(rowData: any) {
+      console.log('你点击了表格行', rowData);
+    }
+
     return {
       ...toRefs(state),
+      rowClick,
       onSelectChange,
       selectAllChange: (val: boolean) => {
         console.log('全选状态是：', val)
