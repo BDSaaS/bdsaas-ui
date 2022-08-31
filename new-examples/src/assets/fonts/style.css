@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?fov08o');
-  src:  url('icomoon.eot?fov08o#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?fov08o') format('truetype'),
-    url('icomoon.woff?fov08o') format('woff'),
-    url('icomoon.svg?fov08o#icomoon') format('svg');
+  src:  url('icomoon.eot?3ye11c');
+  src:  url('icomoon.eot?3ye11c#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?3ye11c') format('truetype'),
+    url('icomoon.woff?3ye11c') format('woff'),
+    url('icomoon.svg?3ye11c#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -276,116 +276,154 @@
 .b-icon-person:before {
   content: "\e94b";
 }
-.b-icon-phone-call:before {
+.b-icon-person-account .path1:before {
   content: "\e94c";
 }
-.b-icon-Production:before {
+.b-icon-person-account .path2:before {
   content: "\e94d";
+  margin-left: -1.0498046875em;
 }
-.b-icon-production-center:before {
+.b-icon-person-account .path3:before {
   content: "\e94e";
+  margin-left: -1.0498046875em;
 }
-.b-icon-project:before {
+.b-icon-person-arror:before {
   content: "\e94f";
 }
-.b-icon-project-management:before {
+.b-icon-person-camera .path1:before {
   content: "\e950";
+  opacity: 0.4209;
 }
-.b-icon-QR-code:before {
+.b-icon-person-camera .path2:before {
   content: "\e951";
+  margin-left: -1em;
 }
-.b-icon-Quality-inspection:before {
+.b-icon-person-company:before {
   content: "\e952";
 }
-.b-icon-salary:before {
+.b-icon-person-home .path1:before {
   content: "\e953";
 }
-.b-icon-sales:before {
+.b-icon-person-home .path2:before {
   content: "\e954";
+  margin-left: -1.0498046875em;
 }
-.b-icon-search:before {
+.b-icon-person-info:before {
   content: "\e955";
 }
-.b-icon-select:before {
+.b-icon-person-password:before {
   content: "\e956";
 }
-.b-icon-sell:before {
+.b-icon-phone-call:before {
   content: "\e957";
 }
-.b-icon-selling-centre:before {
+.b-icon-Production:before {
   content: "\e958";
 }
-.b-icon-setting:before {
+.b-icon-production-center:before {
   content: "\e959";
 }
-.b-icon-sheep-data-analysis .path1:before {
+.b-icon-project:before {
   content: "\e95a";
 }
-.b-icon-sheep-data-analysis .path2:before {
+.b-icon-project-management:before {
   content: "\e95b";
+}
+.b-icon-QR-code:before {
+  content: "\e95c";
+}
+.b-icon-Quality-inspection:before {
+  content: "\e95d";
+}
+.b-icon-salary:before {
+  content: "\e95e";
+}
+.b-icon-sales:before {
+  content: "\e95f";
+}
+.b-icon-search:before {
+  content: "\e960";
+}
+.b-icon-select:before {
+  content: "\e961";
+}
+.b-icon-sell:before {
+  content: "\e962";
+}
+.b-icon-selling-centre:before {
+  content: "\e963";
+}
+.b-icon-setting:before {
+  content: "\e964";
+}
+.b-icon-sheep-data-analysis .path1:before {
+  content: "\e965";
+}
+.b-icon-sheep-data-analysis .path2:before {
+  content: "\e966";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path3:before {
-  content: "\e95c";
+  content: "\e967";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path4:before {
-  content: "\e95d";
+  content: "\e968";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path5:before {
-  content: "\e95e";
+  content: "\e969";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path6:before {
-  content: "\e95f";
+  content: "\e96a";
   margin-left: -1em;
 }
 .b-icon-Shopping-mall:before {
-  content: "\e960";
+  content: "\e96b";
 }
 .b-icon-Smart-CRM:before {
-  content: "\e961";
+  content: "\e96c";
 }
 .b-icon-SMS-Marketing .path1:before {
-  content: "\e962";
+  content: "\e96d";
 }
 .b-icon-SMS-Marketing .path2:before {
-  content: "\e963";
+  content: "\e96e";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path3:before {
-  content: "\e964";
+  content: "\e96f";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path4:before {
-  content: "\e965";
+  content: "\e970";
   margin-left: -1em;
 }
 .b-icon-Warehousing:before {
-  content: "\e966";
+  content: "\e971";
 }
 .b-icon-work:before {
-  content: "\e967";
+  content: "\e972";
 }
 .b-icon-workbench:before {
-  content: "\e968";
+  content: "\e973";
 }
 .b-icon-work-log:before {
-  content: "\e969";
+  content: "\e974";
 }
 .b-icon-work-order:before {
-  content: "\e96a";
+  content: "\e975";
 }
 .b-icon-work-together:before {
-  content: "\e96b";
+  content: "\e976";
 }
 .b-icon-zsq-finance:before {
-  content: "\e96c";
+  content: "\e977";
 }
 .b-icon-zsq-order:before {
-  content: "\e96d";
+  content: "\e978";
 }
 .b-icon-zsq-Salary:before {
-  content: "\e96e";
+  content: "\e979";
 }
