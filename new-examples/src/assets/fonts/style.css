@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?uurw9r');
-  src:  url('icomoon.eot?uurw9r#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?uurw9r') format('truetype'),
-    url('icomoon.woff?uurw9r') format('woff'),
-    url('icomoon.svg?uurw9r#icomoon') format('svg');
+  src:  url('icomoon.eot?pwjqfq');
+  src:  url('icomoon.eot?pwjqfq#iefix') format('embedded-opentype'),
+  url('icomoon.ttf?pwjqfq') format('truetype'),
+  url('icomoon.woff?pwjqfq') format('woff'),
+  url('icomoon.svg?pwjqfq#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -293,166 +293,169 @@
 .b-icon-output:before {
   content: "\e94f";
 }
-.b-icon-person:before {
+.b-icon-payment:before {
   content: "\e950";
 }
-.b-icon-person-account .path1:before {
+.b-icon-person:before {
   content: "\e951";
 }
-.b-icon-person-account .path2:before {
+.b-icon-person-account .path1:before {
   content: "\e952";
-  margin-left: -1.0498046875em;
 }
-.b-icon-person-account .path3:before {
+.b-icon-person-account .path2:before {
   content: "\e953";
   margin-left: -1.0498046875em;
 }
-.b-icon-person-arror:before {
+.b-icon-person-account .path3:before {
   content: "\e954";
+  margin-left: -1.0498046875em;
+}
+.b-icon-person-arror:before {
+  content: "\e955";
 }
 .b-icon-person-camera .path1:before {
-  content: "\e955";
+  content: "\e956";
   opacity: 0.4209;
 }
 .b-icon-person-camera .path2:before {
-  content: "\e956";
+  content: "\e957";
   margin-left: -1em;
 }
 .b-icon-person-company:before {
-  content: "\e957";
-}
-.b-icon-person-home .path1:before {
   content: "\e958";
 }
-.b-icon-person-home .path2:before {
+.b-icon-person-home .path1:before {
   content: "\e959";
+}
+.b-icon-person-home .path2:before {
+  content: "\e95a";
   margin-left: -1.0498046875em;
 }
 .b-icon-person-info:before {
-  content: "\e95a";
-}
-.b-icon-person-password:before {
   content: "\e95b";
 }
-.b-icon-phone-call:before {
+.b-icon-person-password:before {
   content: "\e95c";
 }
-.b-icon-Production:before {
+.b-icon-phone-call:before {
   content: "\e95d";
 }
-.b-icon-production-center:before {
+.b-icon-Production:before {
   content: "\e95e";
 }
-.b-icon-project:before {
+.b-icon-production-center:before {
   content: "\e95f";
 }
-.b-icon-project-management:before {
+.b-icon-project:before {
   content: "\e960";
 }
-.b-icon-QR-code:before {
+.b-icon-project-management:before {
   content: "\e961";
 }
-.b-icon-Quality-inspection:before {
+.b-icon-QR-code:before {
   content: "\e962";
 }
-.b-icon-salary:before {
+.b-icon-Quality-inspection:before {
   content: "\e963";
 }
-.b-icon-sales:before {
+.b-icon-salary:before {
   content: "\e964";
 }
-.b-icon-search:before {
+.b-icon-sales:before {
   content: "\e965";
 }
-.b-icon-select:before {
+.b-icon-search:before {
   content: "\e966";
 }
-.b-icon-sell:before {
+.b-icon-select:before {
   content: "\e967";
 }
-.b-icon-selling-centre:before {
+.b-icon-sell:before {
   content: "\e968";
 }
-.b-icon-setting:before {
+.b-icon-selling-centre:before {
   content: "\e969";
 }
-.b-icon-sheep-data-analysis .path1:before {
+.b-icon-setting:before {
   content: "\e96a";
 }
-.b-icon-sheep-data-analysis .path2:before {
+.b-icon-sheep-data-analysis .path1:before {
   content: "\e96b";
-  margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path3:before {
+.b-icon-sheep-data-analysis .path2:before {
   content: "\e96c";
   margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path4:before {
+.b-icon-sheep-data-analysis .path3:before {
   content: "\e96d";
   margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path5:before {
+.b-icon-sheep-data-analysis .path4:before {
   content: "\e96e";
   margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path6:before {
+.b-icon-sheep-data-analysis .path5:before {
   content: "\e96f";
   margin-left: -1em;
 }
-.b-icon-shopping-cart:before {
+.b-icon-sheep-data-analysis .path6:before {
   content: "\e970";
-}
-.b-icon-Shopping-mall:before {
-  content: "\e971";
-}
-.b-icon-Smart-CRM:before {
-  content: "\e972";
-}
-.b-icon-SMS-Marketing .path1:before {
-  content: "\e973";
-}
-.b-icon-SMS-Marketing .path2:before {
-  content: "\e974";
   margin-left: -1em;
 }
-.b-icon-SMS-Marketing .path3:before {
+.b-icon-shopping-cart:before {
+  content: "\e971";
+}
+.b-icon-Shopping-mall:before {
+  content: "\e972";
+}
+.b-icon-Smart-CRM:before {
+  content: "\e973";
+}
+.b-icon-SMS-Marketing .path1:before {
+  content: "\e974";
+}
+.b-icon-SMS-Marketing .path2:before {
   content: "\e975";
   margin-left: -1em;
 }
-.b-icon-SMS-Marketing .path4:before {
+.b-icon-SMS-Marketing .path3:before {
   content: "\e976";
   margin-left: -1em;
 }
-.b-icon-submit-order:before {
+.b-icon-SMS-Marketing .path4:before {
   content: "\e977";
+  margin-left: -1em;
 }
-.b-icon-three-line:before {
+.b-icon-submit-order:before {
   content: "\e978";
 }
-.b-icon-Warehousing:before {
+.b-icon-three-line:before {
   content: "\e979";
 }
-.b-icon-work:before {
+.b-icon-Warehousing:before {
   content: "\e97a";
 }
-.b-icon-workbench:before {
+.b-icon-work:before {
   content: "\e97b";
 }
-.b-icon-work-log:before {
+.b-icon-workbench:before {
   content: "\e97c";
 }
-.b-icon-work-order:before {
+.b-icon-work-log:before {
   content: "\e97d";
 }
-.b-icon-work-together:before {
+.b-icon-work-order:before {
   content: "\e97e";
 }
-.b-icon-zsq-finance:before {
+.b-icon-work-together:before {
   content: "\e97f";
 }
-.b-icon-zsq-order:before {
+.b-icon-zsq-finance:before {
   content: "\e980";
 }
-.b-icon-zsq-Salary:before {
+.b-icon-zsq-order:before {
   content: "\e981";
+}
+.b-icon-zsq-Salary:before {
+  content: "\e982";
 }
