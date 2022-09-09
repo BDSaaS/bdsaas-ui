@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?8eiyum');
-  src:  url('icomoon.eot?8eiyum#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?8eiyum') format('truetype'),
-    url('icomoon.woff?8eiyum') format('woff'),
-    url('icomoon.svg?8eiyum#icomoon') format('svg');
+  src:  url('icomoon.eot?uurw9r');
+  src:  url('icomoon.eot?uurw9r#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?uurw9r') format('truetype'),
+    url('icomoon.woff?uurw9r') format('woff'),
+    url('icomoon.svg?uurw9r#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -166,281 +166,293 @@
   content: "\e929";
   margin-left: -1.03125em;
 }
-.b-icon-customer:before {
+.b-icon-coupon-logo:before {
   content: "\e92a";
 }
-.b-icon-customer-21 .path1:before {
+.b-icon-customer:before {
   content: "\e92b";
 }
-.b-icon-customer-21 .path2:before {
+.b-icon-customer-21 .path1:before {
   content: "\e92c";
-  margin-left: -1em;
 }
-.b-icon-customer-21 .path3:before {
+.b-icon-customer-21 .path2:before {
   content: "\e92d";
   margin-left: -1em;
 }
-.b-icon-customer-21 .path4:before {
+.b-icon-customer-21 .path3:before {
   content: "\e92e";
   margin-left: -1em;
 }
-.b-icon-customer-21 .path5:before {
+.b-icon-customer-21 .path4:before {
   content: "\e92f";
   margin-left: -1em;
 }
-.b-icon-customer-21 .path6:before {
+.b-icon-customer-21 .path5:before {
   content: "\e930";
   margin-left: -1em;
 }
-.b-icon-Customer-Care:before {
+.b-icon-customer-21 .path6:before {
   content: "\e931";
+  margin-left: -1em;
 }
-.b-icon-daily-management:before {
+.b-icon-Customer-Care:before {
   content: "\e932";
 }
-.b-icon-delete:before {
+.b-icon-customer-management:before {
   content: "\e933";
 }
-.b-icon-disk:before {
+.b-icon-daily-management:before {
   content: "\e934";
 }
-.b-icon-edit:before {
+.b-icon-delete:before {
   content: "\e935";
 }
-.b-icon-Enterprise-Cloud-Call .path1:before {
+.b-icon-disk:before {
   content: "\e936";
 }
-.b-icon-Enterprise-Cloud-Call .path2:before {
+.b-icon-edit:before {
   content: "\e937";
+}
+.b-icon-Enterprise-Cloud-Call .path1:before {
+  content: "\e938";
+}
+.b-icon-Enterprise-Cloud-Call .path2:before {
+  content: "\e939";
   margin-left: -1em;
 }
 .b-icon-error:before {
-  content: "\e938";
-}
-.b-icon-fast-approval:before {
-  content: "\e939";
-}
-.b-icon-finance:before {
   content: "\e93a";
 }
-.b-icon-financial-center:before {
+.b-icon-fast-approval:before {
   content: "\e93b";
 }
-.b-icon-home:before {
+.b-icon-finance:before {
   content: "\e93c";
 }
-.b-icon-gray-logo .path1:before {
+.b-icon-financial-center:before {
   content: "\e93d";
+}
+.b-icon-gray-logo .path1:before {
+  content: "\e93e";
   opacity: 0.8;
 }
 .b-icon-gray-logo .path2:before {
-  content: "\e93e";
-  margin-left: -5.2939453125em;
-  opacity: 0.72;
-}
-.b-icon-gray-logo .path3:before {
   content: "\e93f";
   margin-left: -5.2939453125em;
   opacity: 0.72;
 }
-.b-icon-knowledge-base:before {
+.b-icon-gray-logo .path3:before {
   content: "\e940";
+  margin-left: -5.2939453125em;
+  opacity: 0.72;
 }
-.b-icon-location:before {
+.b-icon-home:before {
   content: "\e941";
 }
-.b-icon-Mall-customers:before {
+.b-icon-knowledge-base:before {
   content: "\e942";
 }
-.b-icon-market:before {
+.b-icon-location:before {
   content: "\e943";
 }
-.b-icon-marketing-center:before {
+.b-icon-Mall-customers:before {
   content: "\e944";
 }
-.b-icon-more:before {
+.b-icon-market:before {
   content: "\e945";
 }
-.b-icon-move:before {
+.b-icon-marketing-center:before {
   content: "\e946";
 }
-.b-icon-my-feedback .path1:before {
+.b-icon-more:before {
   content: "\e947";
 }
-.b-icon-my-feedback .path2:before {
+.b-icon-move:before {
   content: "\e948";
+}
+.b-icon-my-feedback .path1:before {
+  content: "\e949";
+}
+.b-icon-my-feedback .path2:before {
+  content: "\e94a";
   margin-left: -1em;
 }
 .b-icon-my-feedback .path3:before {
-  content: "\e949";
+  content: "\e94b";
   margin-left: -1em;
 }
 .b-icon-National-Broker:before {
-  content: "\e94a";
-}
-.b-icon-Official-website:before {
-  content: "\e94b";
-}
-.b-icon-order:before {
   content: "\e94c";
 }
-.b-icon-output:before {
+.b-icon-Official-website:before {
   content: "\e94d";
 }
-.b-icon-person:before {
+.b-icon-order:before {
   content: "\e94e";
 }
-.b-icon-person-account .path1:before {
+.b-icon-output:before {
   content: "\e94f";
 }
-.b-icon-person-account .path2:before {
+.b-icon-person:before {
   content: "\e950";
+}
+.b-icon-person-account .path1:before {
+  content: "\e951";
+}
+.b-icon-person-account .path2:before {
+  content: "\e952";
   margin-left: -1.0498046875em;
 }
 .b-icon-person-account .path3:before {
-  content: "\e951";
+  content: "\e953";
   margin-left: -1.0498046875em;
 }
 .b-icon-person-arror:before {
-  content: "\e952";
+  content: "\e954";
 }
 .b-icon-person-camera .path1:before {
-  content: "\e953";
+  content: "\e955";
   opacity: 0.4209;
 }
 .b-icon-person-camera .path2:before {
-  content: "\e954";
+  content: "\e956";
   margin-left: -1em;
 }
 .b-icon-person-company:before {
-  content: "\e955";
+  content: "\e957";
 }
 .b-icon-person-home .path1:before {
-  content: "\e956";
+  content: "\e958";
 }
 .b-icon-person-home .path2:before {
-  content: "\e957";
+  content: "\e959";
   margin-left: -1.0498046875em;
 }
 .b-icon-person-info:before {
-  content: "\e958";
-}
-.b-icon-person-password:before {
-  content: "\e959";
-}
-.b-icon-phone-call:before {
   content: "\e95a";
 }
-.b-icon-Production:before {
+.b-icon-person-password:before {
   content: "\e95b";
 }
-.b-icon-production-center:before {
+.b-icon-phone-call:before {
   content: "\e95c";
 }
-.b-icon-project:before {
+.b-icon-Production:before {
   content: "\e95d";
 }
-.b-icon-project-management:before {
+.b-icon-production-center:before {
   content: "\e95e";
 }
-.b-icon-QR-code:before {
+.b-icon-project:before {
   content: "\e95f";
 }
-.b-icon-Quality-inspection:before {
+.b-icon-project-management:before {
   content: "\e960";
 }
-.b-icon-salary:before {
+.b-icon-QR-code:before {
   content: "\e961";
 }
-.b-icon-sales:before {
+.b-icon-Quality-inspection:before {
   content: "\e962";
 }
-.b-icon-search:before {
+.b-icon-salary:before {
   content: "\e963";
 }
-.b-icon-select:before {
+.b-icon-sales:before {
   content: "\e964";
 }
-.b-icon-sell:before {
+.b-icon-search:before {
   content: "\e965";
 }
-.b-icon-selling-centre:before {
+.b-icon-select:before {
   content: "\e966";
 }
-.b-icon-setting:before {
+.b-icon-sell:before {
   content: "\e967";
 }
-.b-icon-sheep-data-analysis .path1:before {
+.b-icon-selling-centre:before {
   content: "\e968";
 }
-.b-icon-sheep-data-analysis .path2:before {
+.b-icon-setting:before {
   content: "\e969";
-  margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path3:before {
+.b-icon-sheep-data-analysis .path1:before {
   content: "\e96a";
-  margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path4:before {
+.b-icon-sheep-data-analysis .path2:before {
   content: "\e96b";
   margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path5:before {
+.b-icon-sheep-data-analysis .path3:before {
   content: "\e96c";
   margin-left: -1em;
 }
-.b-icon-sheep-data-analysis .path6:before {
+.b-icon-sheep-data-analysis .path4:before {
   content: "\e96d";
   margin-left: -1em;
 }
-.b-icon-Shopping-mall:before {
+.b-icon-sheep-data-analysis .path5:before {
   content: "\e96e";
+  margin-left: -1em;
 }
-.b-icon-Smart-CRM:before {
+.b-icon-sheep-data-analysis .path6:before {
   content: "\e96f";
+  margin-left: -1em;
 }
-.b-icon-SMS-Marketing .path1:before {
+.b-icon-shopping-cart:before {
   content: "\e970";
 }
-.b-icon-SMS-Marketing .path2:before {
+.b-icon-Shopping-mall:before {
   content: "\e971";
+}
+.b-icon-Smart-CRM:before {
+  content: "\e972";
+}
+.b-icon-SMS-Marketing .path1:before {
+  content: "\e973";
+}
+.b-icon-SMS-Marketing .path2:before {
+  content: "\e974";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path3:before {
-  content: "\e972";
+  content: "\e975";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path4:before {
-  content: "\e973";
+  content: "\e976";
   margin-left: -1em;
 }
-.b-icon-three-line:before {
-  content: "\e974";
-}
-.b-icon-Warehousing:before {
-  content: "\e975";
-}
-.b-icon-work:before {
-  content: "\e976";
-}
-.b-icon-workbench:before {
+.b-icon-submit-order:before {
   content: "\e977";
 }
-.b-icon-work-log:before {
+.b-icon-three-line:before {
   content: "\e978";
 }
-.b-icon-work-order:before {
+.b-icon-Warehousing:before {
   content: "\e979";
 }
-.b-icon-work-together:before {
+.b-icon-work:before {
   content: "\e97a";
 }
-.b-icon-zsq-finance:before {
+.b-icon-workbench:before {
   content: "\e97b";
 }
-.b-icon-zsq-order:before {
+.b-icon-work-log:before {
   content: "\e97c";
 }
-.b-icon-zsq-Salary:before {
+.b-icon-work-order:before {
   content: "\e97d";
+}
+.b-icon-work-together:before {
+  content: "\e97e";
+}
+.b-icon-zsq-finance:before {
+  content: "\e97f";
+}
+.b-icon-zsq-order:before {
+  content: "\e980";
+}
+.b-icon-zsq-Salary:before {
+  content: "\e981";
 }
