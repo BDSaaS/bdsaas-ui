@@ -2,8 +2,23 @@
   background: #fff;
   border-radius: 12px;
 
+  .b-list-head {
+    padding: 0 12px;
+    box-shadow: 0px 10px 24px 0px rgba(36, 41, 52, 0.05);
+    border-radius: 12px 12px 0px 0px;
+    border-bottom: 1px solid #edf1f6;
+  }
+
   table {
-    width: 100%;
+    &.table-head {
+      width: 100%;
+    }
+
+    &.table-body {
+      width: calc(100% - 24px);
+      margin: 9px 12px;
+    }
+
     text-align: left;
     table-layout: auto;
     border-spacing: 0;
@@ -14,8 +29,6 @@
   thead {
     tr {
       height: 68px;
-      border-radius: 4px 4px 0 0;
-      box-shadow: 0 10px 24px 0 rgb(36 41 52 / 5%);
     }
 
     th {
@@ -27,7 +40,6 @@
       line-height: 14px;
       color: #9ca6b9;
       text-align: left;
-      border-bottom: 1px solid #edf1f6;
       transition: background 0.3s ease;
     }
   }
@@ -46,30 +58,24 @@
     tr {
       position: relative;
       height: 80px;
-      transition: 0.6s ease-in-out;
+      transition: 0.5s ease-in-out;
       border-radius: 8px;
 
       &.focused {
         z-index: 2;
         box-shadow: 0 10px 60px 0 rgba(100, 107, 122, 0.3);
         border-radius: 12px;
-        transform: scale3d(0.98, 1, 0.9);
       }
 
       &:hover {
-        z-index: 2;
         box-shadow: 0 10px 60px 0 rgba(100, 107, 122, 0.3);
         border-radius: 12px;
-        transform: scale3d(0.98, 1, 0.9);
-      }
-
-      &:last-child td {
-        border-bottom: 1px solid #edf1f6;
       }
     }
   }
 
   .list-footer {
+    border-top: 1px solid #edf1f6;
     min-height: 79px;
   }
 }

@@ -1,19 +1,39 @@
 <template>
   <div class="b-list">
-    <table>
-      <thead>
-      <tr>
-        <th v-if="rowSelection">
-          <b-checkbox
-              v-model="selectedAll"
-              @change="selectAllChange"
-          ></b-checkbox>
-        </th>
-        <th v-for="(col, index) of columns" :key="index">
-          {{ col.title }}
-        </th>
-      </tr>
-      </thead>
+    <div class="b-list-head">
+      <table class="table-head">
+        <colgroup>
+          <col v-if="rowSelection" style="width: 60px;">
+          <col
+              v-for="(col, index) of columns"
+              :key="index"
+              :style="{ width: col.width }"
+          >
+        </colgroup>
+        <thead>
+        <tr>
+          <th v-if="rowSelection">
+            <b-checkbox
+                v-model="selectedAll"
+                @change="selectAllChange"
+            ></b-checkbox>
+          </th>
+          <th v-for="(col, index) of columns" :key="index">
+            {{ col.title }}
+          </th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+    <table class="table-body">
+      <colgroup>
+        <col v-if="rowSelection" style="width: 60px;">
+        <col
+            v-for="(col, index) of columns"
+            :key="index"
+            :style="{ width: col.width }"
+        >
+      </colgroup>
       <tbody>
       <tr
           v-for="row of data"
@@ -38,13 +58,13 @@
     </div>
   </div>
 
-<!--  <teleport to="body">-->
-<!--    <transition name="slide-fade">-->
-<!--      <div v-if="showFocusMask" class="tr-focus-mask">-->
-<!--        <div class="info-box"></div>-->
-<!--      </div>-->
-<!--    </transition>-->
-<!--  </teleport>-->
+  <!--  <teleport to="body">-->
+  <!--    <transition name="slide-fade">-->
+  <!--      <div v-if="showFocusMask" class="tr-focus-mask">-->
+  <!--        <div class="info-box"></div>-->
+  <!--      </div>-->
+  <!--    </transition>-->
+  <!--  </teleport>-->
 </template>
 
 <script lang="ts">
