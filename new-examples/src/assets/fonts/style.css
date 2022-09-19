@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?6rzpms');
-  src:  url('icomoon.eot?6rzpms#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?6rzpms') format('truetype'),
-    url('icomoon.woff?6rzpms') format('woff'),
-    url('icomoon.svg?6rzpms#icomoon') format('svg');
+  src:  url('icomoon.eot?v9oqix');
+  src:  url('icomoon.eot?v9oqix#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?v9oqix') format('truetype'),
+    url('icomoon.woff?v9oqix') format('woff'),
+    url('icomoon.svg?v9oqix#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -105,434 +105,391 @@
 .b-icon-basic-configuration:before {
   content: "\e918";
 }
-.b-icon-biological-asset-management .path1:before {
+.b-icon-biological-asset-management:before {
   content: "\e919";
 }
-.b-icon-biological-asset-management .path2:before {
-  content: "\e91a";
-  margin-left: -1em;
-}
-.b-icon-biological-asset-management .path3:before {
-  content: "\e91b";
-  margin-left: -1em;
-}
-.b-icon-biological-asset-management .path4:before {
-  content: "\e91c";
-  margin-left: -1em;
-}
-.b-icon-biological-asset-management .path5:before {
-  content: "\e91d";
-  margin-left: -1em;
-}
-.b-icon-biological-asset-management .path6:before {
-  content: "\e91e";
-  margin-left: -1em;
-}
 .b-icon-Breeding-management:before {
-  content: "\e91f";
+  content: "\e91a";
 }
 .b-icon-channel-management:before {
-  content: "\e920";
+  content: "\e91b";
 }
 .b-icon-circle-of-colleagues:before {
-  content: "\e921";
+  content: "\e91c";
 }
 .b-icon-close:before {
-  content: "\e922";
+  content: "\e91d";
 }
 .b-icon-cloud-disk:before {
-  content: "\e923";
+  content: "\e91e";
 }
 .b-icon-cloud-sign-in:before {
-  content: "\e924";
+  content: "\e91f";
 }
-.b-icon-colleagues-birthday .path1:before {
-  content: "\e925";
-}
-.b-icon-colleagues-birthday .path2:before {
-  content: "\e926";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path3:before {
-  content: "\e927";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path4:before {
-  content: "\e928";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path5:before {
-  content: "\e929";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path6:before {
-  content: "\e92a";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path7:before {
-  content: "\e92b";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path8:before {
-  content: "\e92c";
-  margin-left: -1em;
-}
-.b-icon-colleagues-birthday .path9:before {
-  content: "\e92d";
-  margin-left: -1em;
+.b-icon-colleagues-birthday:before {
+  content: "\e920";
 }
 .b-icon-commodity:before {
-  content: "\e92e";
+  content: "\e921";
 }
 .b-icon-company-policy:before {
-  content: "\e92f";
+  content: "\e922";
 }
 .b-icon-corporate-procurement .path1:before {
-  content: "\e930";
+  content: "\e923";
 }
 .b-icon-corporate-procurement .path2:before {
-  content: "\e931";
+  content: "\e924";
   margin-left: -1em;
 }
 .b-icon-corporate-procurement .path3:before {
-  content: "\e932";
+  content: "\e925";
   margin-left: -1em;
 }
 .b-icon-coupon-logo:before {
-  content: "\e933";
+  content: "\e926";
 }
 .b-icon-customer:before {
-  content: "\e934";
+  content: "\e927";
 }
 .b-icon-customer-21 .path1:before {
-  content: "\e935";
+  content: "\e928";
 }
 .b-icon-customer-21 .path2:before {
-  content: "\e936";
+  content: "\e929";
   margin-left: -1em;
 }
 .b-icon-customer-21 .path3:before {
-  content: "\e937";
+  content: "\e92a";
   margin-left: -1em;
 }
 .b-icon-customer-21 .path4:before {
-  content: "\e938";
+  content: "\e92b";
   margin-left: -1em;
 }
 .b-icon-customer-21 .path5:before {
-  content: "\e939";
+  content: "\e92c";
   margin-left: -1em;
 }
 .b-icon-customer-21 .path6:before {
-  content: "\e93a";
+  content: "\e92d";
   margin-left: -1em;
 }
 .b-icon-Customer-Care:before {
-  content: "\e93b";
+  content: "\e92e";
 }
 .b-icon-customer-deduplication:before {
-  content: "\e93c";
+  content: "\e92f";
 }
 .b-icon-customer-management:before {
-  content: "\e93d";
+  content: "\e930";
 }
 .b-icon-customer-visit:before {
-  content: "\e93e";
+  content: "\e931";
 }
 .b-icon-daily-management:before {
-  content: "\e93f";
+  content: "\e932";
 }
 .b-icon-delete:before {
-  content: "\e940";
+  content: "\e933";
 }
 .b-icon-disk:before {
-  content: "\e941";
+  content: "\e934";
 }
 .b-icon-ear-tag:before {
-  content: "\e942";
+  content: "\e935";
 }
 .b-icon-edit:before {
-  content: "\e943";
+  content: "\e936";
 }
 .b-icon-Enterprise-Cloud-Call .path1:before {
-  content: "\e944";
+  content: "\e937";
 }
 .b-icon-Enterprise-Cloud-Call .path2:before {
-  content: "\e945";
+  content: "\e938";
   margin-left: -1em;
 }
 .b-icon-enterprise-information-settings:before {
-  content: "\e946";
+  content: "\e939";
 }
 .b-icon-error:before {
-  content: "\e947";
+  content: "\e93a";
 }
 .b-icon-fast-approval:before {
-  content: "\e948";
+  content: "\e93b";
 }
 .b-icon-finance:before {
-  content: "\e949";
+  content: "\e93c";
 }
 .b-icon-financial-center:before {
-  content: "\e94a";
+  content: "\e93d";
 }
 .b-icon-gray-logo .path1:before {
-  content: "\e94b";
+  content: "\e93e";
   opacity: 0.8;
 }
 .b-icon-gray-logo .path2:before {
-  content: "\e94c";
+  content: "\e93f";
   margin-left: -1em;
   opacity: 0.72;
 }
 .b-icon-gray-logo .path3:before {
-  content: "\e94d";
+  content: "\e940";
   margin-left: -1em;
   opacity: 0.72;
 }
 .b-icon-high-seas-customers:before {
-  content: "\e94e";
+  content: "\e941";
 }
 .b-icon-home:before {
-  content: "\e94f";
+  content: "\e942";
 }
 .b-icon-knowledge-base:before {
-  content: "\e950";
+  content: "\e943";
 }
 .b-icon-location:before {
-  content: "\e951";
+  content: "\e944";
 }
 .b-icon-logistics-scheduling:before {
-  content: "\e952";
+  content: "\e945";
 }
 .b-icon-Mall-customers:before {
-  content: "\e953";
+  content: "\e946";
 }
 .b-icon-market:before {
-  content: "\e954";
+  content: "\e947";
+}
+.b-icon-market-delete:before {
+  content: "\e948";
 }
 .b-icon-marketing-center:before {
-  content: "\e955";
+  content: "\e949";
 }
 .b-icon-material-preparation-management:before {
-  content: "\e956";
+  content: "\e94a";
 }
 .b-icon-more:before {
-  content: "\e957";
+  content: "\e94b";
 }
 .b-icon-move:before {
-  content: "\e958";
+  content: "\e94c";
 }
 .b-icon-my-feedback .path1:before {
-  content: "\e959";
+  content: "\e94d";
 }
 .b-icon-my-feedback .path2:before {
-  content: "\e95a";
+  content: "\e94e";
   margin-left: -1em;
 }
 .b-icon-my-feedback .path3:before {
-  content: "\e95b";
+  content: "\e94f";
   margin-left: -1em;
 }
 .b-icon-National-Broker:before {
-  content: "\e95c";
+  content: "\e950";
 }
 .b-icon-Official-website:before {
-  content: "\e95d";
+  content: "\e951";
 }
 .b-icon-order:before {
-  content: "\e95e";
+  content: "\e952";
 }
 .b-icon-organizational:before {
-  content: "\e95f";
+  content: "\e953";
 }
 .b-icon-output:before {
-  content: "\e960";
+  content: "\e954";
 }
 .b-icon-payment:before {
-  content: "\e961";
+  content: "\e955";
 }
 .b-icon-person:before {
-  content: "\e962";
+  content: "\e956";
 }
 .b-icon-person-account .path1:before {
-  content: "\e963";
+  content: "\e957";
 }
 .b-icon-person-account .path2:before {
-  content: "\e964";
+  content: "\e958";
   margin-left: -1em;
 }
 .b-icon-person-account .path3:before {
-  content: "\e965";
+  content: "\e959";
   margin-left: -1em;
 }
 .b-icon-person-arror:before {
-  content: "\e966";
+  content: "\e95a";
 }
 .b-icon-person-camera .path1:before {
-  content: "\e967";
+  content: "\e95b";
   opacity: 0.4209;
 }
 .b-icon-person-camera .path2:before {
-  content: "\e968";
+  content: "\e95c";
   margin-left: -1em;
 }
 .b-icon-person-company:before {
-  content: "\e969";
+  content: "\e95d";
 }
 .b-icon-person-home .path1:before {
-  content: "\e96a";
+  content: "\e95e";
 }
 .b-icon-person-home .path2:before {
-  content: "\e96b";
+  content: "\e95f";
   margin-left: -1em;
 }
 .b-icon-person-info:before {
-  content: "\e96c";
+  content: "\e960";
 }
 .b-icon-person-password:before {
-  content: "\e96d";
+  content: "\e961";
 }
 .b-icon-phone-call:before {
-  content: "\e96e";
+  content: "\e962";
 }
 .b-icon-pig-production:before {
-  content: "\e96f";
+  content: "\e963";
 }
 .b-icon-Production:before {
-  content: "\e970";
+  content: "\e964";
 }
 .b-icon-production-base-configuration:before {
-  content: "\e971";
+  content: "\e965";
 }
 .b-icon-production-center:before {
-  content: "\e972";
+  content: "\e966";
 }
 .b-icon-production-plan:before {
-  content: "\e973";
+  content: "\e967";
 }
 .b-icon-production-plan-to-be-scheduled:before {
-  content: "\e974";
+  content: "\e968";
 }
 .b-icon-project:before {
-  content: "\e975";
+  content: "\e969";
 }
 .b-icon-project-management:before {
-  content: "\e976";
+  content: "\e96a";
 }
 .b-icon-QR-code:before {
-  content: "\e977";
+  content: "\e96b";
 }
 .b-icon-Quality-inspection:before {
-  content: "\e978";
+  content: "\e96c";
 }
 .b-icon-salary:before {
-  content: "\e979";
+  content: "\e96d";
 }
 .b-icon-sales:before {
-  content: "\e97a";
+  content: "\e96e";
 }
 .b-icon-search:before {
-  content: "\e97b";
+  content: "\e96f";
 }
 .b-icon-select:before {
-  content: "\e97c";
+  content: "\e970";
 }
 .b-icon-sell:before {
-  content: "\e97d";
+  content: "\e971";
 }
 .b-icon-selling-centre:before {
-  content: "\e97e";
+  content: "\e972";
 }
 .b-icon-setting:before {
-  content: "\e97f";
+  content: "\e973";
 }
 .b-icon-sheep-data-analysis .path1:before {
-  content: "\e980";
+  content: "\e974";
 }
 .b-icon-sheep-data-analysis .path2:before {
-  content: "\e981";
+  content: "\e975";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path3:before {
-  content: "\e982";
+  content: "\e976";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path4:before {
-  content: "\e983";
+  content: "\e977";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path5:before {
-  content: "\e984";
+  content: "\e978";
   margin-left: -1em;
 }
 .b-icon-sheep-data-analysis .path6:before {
-  content: "\e985";
+  content: "\e979";
   margin-left: -1em;
 }
+.b-icon-sheep-data-report:before {
+  content: "\e97a";
+}
 .b-icon-shopping-cart:before {
-  content: "\e986";
+  content: "\e97b";
 }
 .b-icon-Shopping-mall:before {
-  content: "\e987";
+  content: "\e97c";
 }
 .b-icon-Smart-CRM:before {
-  content: "\e988";
+  content: "\e97d";
 }
 .b-icon-SMS-Marketing .path1:before {
-  content: "\e989";
+  content: "\e97e";
 }
 .b-icon-SMS-Marketing .path2:before {
-  content: "\e98a";
+  content: "\e97f";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path3:before {
-  content: "\e98b";
+  content: "\e980";
   margin-left: -1em;
 }
 .b-icon-SMS-Marketing .path4:before {
-  content: "\e98c";
+  content: "\e981";
   margin-left: -1em;
 }
 .b-icon-submit-order:before {
-  content: "\e98d";
+  content: "\e982";
+}
+.b-icon-task-configuration-process:before {
+  content: "\e983";
 }
 .b-icon-task-process-configuration:before {
-  content: "\e98e";
+  content: "\e984";
 }
 .b-icon-three-line:before {
-  content: "\e98f";
+  content: "\e985";
 }
 .b-icon-voice-call:before {
-  content: "\e990";
+  content: "\e986";
 }
 .b-icon-Warehousing:before {
-  content: "\e991";
+  content: "\e987";
 }
 .b-icon-work:before {
-  content: "\e992";
+  content: "\e988";
 }
 .b-icon-workbench:before {
-  content: "\e993";
+  content: "\e989";
 }
 .b-icon-work-log:before {
-  content: "\e994";
+  content: "\e98a";
 }
 .b-icon-work-order:before {
-  content: "\e995";
+  content: "\e98b";
 }
 .b-icon-work-together:before {
-  content: "\e996";
+  content: "\e98c";
 }
 .b-icon-yunjike:before {
-  content: "\e997";
+  content: "\e98d";
 }
 .b-icon-zsq-finance:before {
-  content: "\e998";
+  content: "\e98e";
 }
 .b-icon-zsq-order:before {
-  content: "\e999";
+  content: "\e98f";
 }
 .b-icon-zsq-Salary:before {
-  content: "\e99a";
+  content: "\e990";
 }
