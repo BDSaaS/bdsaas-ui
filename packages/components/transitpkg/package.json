@@ -1,7 +1,7 @@
 {
   "name": "bdsaas-ui",
   "private": false,
-  "version": "0.0.33",
+  "version": "0.0.37",
   "description": "",
   "files": [
     "lib",
