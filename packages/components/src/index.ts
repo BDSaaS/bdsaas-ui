@@ -29,7 +29,7 @@ import Modal from './modal'
 // 函数式组件
 import Message from './message'
 import Notice from './notice'
-
+import Message1 from "../src/message1";
 type PluginInstallFunction = (app: App) => any;
 
 const components = [
@@ -101,6 +101,7 @@ export {
     Modal,
 	Message,
 	Notice,
+	Message1
 }
 export default {
     install,

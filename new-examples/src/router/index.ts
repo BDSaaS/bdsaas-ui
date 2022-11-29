@@ -136,6 +136,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'SpaceDemo',
     component: () => import('@/views/SpaceDemo.vue')
   },
+  {
+    path: '/messageDemo1',
+    name: 'messageDemo1',
+    component: () => import('@/views/MessageDemo1.vue')
+  },
 ]
 
 const router = createRouter({
