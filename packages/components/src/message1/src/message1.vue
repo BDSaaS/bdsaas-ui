@@ -8,8 +8,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, defineProps, onMounted, onUnmounted, ref} from 'vue'
-const props = defineProps(['type', 'message'])
+import {computed, defineComponent, onMounted, onUnmounted, ref} from 'vue'
 export default defineComponent({
   name: 'message1',
   props: {

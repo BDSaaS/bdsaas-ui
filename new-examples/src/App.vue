@@ -52,6 +52,8 @@
     <router-link to="/spaceDemo">space组件</router-link>
     |
     <router-link to="/messageDemo1">Message1组件</router-link>
+    |
+    <router-link to="/confirmDemo1">Confirm1组件</router-link>
   </nav>
   <router-view />
 </template>

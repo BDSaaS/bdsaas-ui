@@ -30,6 +30,7 @@ import Modal from './modal'
 import Message from './message'
 import Notice from './notice'
 import Message1 from "../src/message1";
+import Confirm1 from "../src/confirm1";
 type PluginInstallFunction = (app: App) => any;
 
 const components = [
@@ -101,7 +102,8 @@ export {
     Modal,
 	Message,
 	Notice,
-	Message1
+	Message1,
+	Confirm1
 }
 export default {
     install,
