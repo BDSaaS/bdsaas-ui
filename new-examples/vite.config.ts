@@ -21,15 +21,15 @@ export default defineConfig(({command, mode}) => {
       vue(),
       DefineOptions(),
       VueTypeImports(),
-      // AutoImport({
-      //   imports: ['vue', 'pinia'],
-      //   dts: 'src/auto-imports.d.ts',
-      //   dirs: ['src/store', 'bd-tools/utils'],
-      //   eslintrc: {
-      //     enabled: true
-      //   },
-      //   vueTemplate: true
-      // }),
+      AutoImport({
+        imports: ['vue', 'pinia'],
+        dts: 'src/auto-imports.d.ts',
+        dirs: ['src/store', 'bd-tools/utils'],
+        eslintrc: {
+          enabled: true
+        },
+        vueTemplate: true
+      }),
     ],
     css: {
       preprocessorOptions: {
