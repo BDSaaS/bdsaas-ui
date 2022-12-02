@@ -23,10 +23,8 @@
 
 <script lang="ts">
 import '../style/index.less'
-import {computed, defineComponent, inject, ref, toRefs} from 'vue'
+import {computed, defineComponent, ref, toRefs} from 'vue'
 import type {PropType} from 'vue'
-import Validator from '../../utils/wrenches/Validator'
-import {string} from 'fast-glob/out/utils'
 
 type InputType = 'text' | 'search' | 'password'
 
@@ -85,23 +83,17 @@ export default defineComponent({
       hasRotate.value && 'rotate',
     ])
 
-    const rules = inject('rules')
-    const field = inject('field')
-
     function changeHandler(e: Event): void {
       emit('update:modelValue', (e.target as HTMLInputElement).value)
-      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'input')
     }
 
     function focusHandler(e: Event): void {
       emit('focus', e)
-      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'focus')
     }
 
     function blurHandler(e: Event): void {
       emit('blur', e)
       emit('change', e)
-      Validator.eventEmit(rules as Record<string, any>, field as string, (e.target as HTMLInputElement).value, 'blur')
     }
 
     function query() {
