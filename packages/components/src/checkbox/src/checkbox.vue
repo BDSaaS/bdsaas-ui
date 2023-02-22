@@ -21,9 +21,13 @@
 import '../style/index.less'
 import {defineComponent, toRefs, computed, watch} from 'vue'
 import type {PropType} from 'vue'
+import BIcon from '../../icon/src/icon.vue'
 
 export default defineComponent({
   name: 'BCheckbox',
+  components: {
+    BIcon
+  },
   props: {
     label: {
       type: String as PropType<string>
