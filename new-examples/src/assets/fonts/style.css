@@ -10,6 +10,18 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?fc61a4');
+  src:  url('fonts/icomoon.eot?fc61a4#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fc61a4') format('truetype'),
+    url('fonts/icomoon.woff?fc61a4') format('woff'),
+    url('fonts/icomoon.svg?fc61a4#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 [class^="b-icon-"], [class*=" b-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -493,3 +505,7 @@
 .b-icon-zsq-Salary:before {
   content: "\e990";
 }
+.b-icon-wecom:before {
+  content: "\e996";
+}
+
